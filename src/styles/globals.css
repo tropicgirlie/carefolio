@@ -1,0 +1,2505 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@300;400;500;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px; /* Increased from 14px for better visibility */
+  
+  /* Updated Carefolio Color Palette - New Green System */
+  /* Backgrounds - Deep Navy for Gravitas */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F6F4FA;    /* light lavender */
+  --bg-card: #FFFFFF;
+  --bg-table-alt: #FBFAFD;    /* ultra-light lavender for table rows */
+  --bg-deep-navy: #0D1B2A;    /* Deep Navy for stronger contrast */
+  --bg-navy-medium: #1A2F42;  /* Medium navy for cards on navy */
+  --bg-navy-light: #2A3F52;   /* Light navy for surfaces */
+  
+  /* NEW: Mint Surface for notification banners - WCAG compliant */
+  --bg-mint-surface: #E9F7EF;  /* Muted mint background for status chips */
+
+  /* Text - Enhanced contrast */
+  --text-primary: #1A1A1A;    /* almost-black */
+  --text-secondary: #6B7280;
+  --text-on-navy: #FAFAFA;    /* White text on navy */
+  --text-on-navy-secondary: #B0BEC5;  /* Muted white on navy */
+  --text-on-mint: #0D1B2A;    /* Deep navy text on mint surface - WCAG AAA */
+
+  /* NEW CAREFOLIO GREEN SYSTEM - Primary Data Colors */
+  --care-emerald: #2BAE66;     /* Primary Carefolio green - main data/content */
+  --care-vibrant-mint: #00C896; /* Secondary hover/accent green - interactive states */
+  --care-teal: #009688;        /* Alternative primary green - for variety */
+  
+  /* Legacy mapping for compatibility - Updated to new green system */
+  --care-mint: var(--care-vibrant-mint);      /* Maps to Vibrant Mint for accents */
+  --care-turquoise: var(--care-emerald);      /* Maps to Emerald as primary */
+
+  /* Orange/Coral for CTAs and highlights - NOW PURPLE */
+  --cta-orange: var(--fintech-feminine-purple); /* Primary CTA color - now purple */
+  --cta-orange-light: #7A4FB8; /* Lighter purple for hovers */
+  --cta-orange-dark: #5A3188;  /* Darker purple for pressed states */
+  --highlight-orange: var(--fintech-feminine-purple); /* For text highlights like "Care as Capital" */
+
+  /* UPDATED FINTECH-FEMININE PALETTE */
+  --fintech-feminine-purple: #6B3FA0;    /* Strong purple for kickers, highlights, secondary CTAs - enhanced depth */
+  --fintech-feminine-lavender: #C7A0E5;  /* Soft lavender for secondary elements */
+  --fintech-feminine-coral: #FF6B6B;     /* Coral/pink for hover states, accents, warnings */
+  --fintech-feminine-coral-soft: #FF8A8A; /* Softer coral for gentler accents */
+  --fintech-feminine-coral-soft: #FF8A8A; /* Softer coral for gentler accents */
+  --fintech-feminine-bg-lavender: #F5ECFA; /* Very soft lavender for gradient backgrounds */
+  
+  /* Legacy mappings for compatibility */
+  --female-invest-lavender: var(--fintech-feminine-lavender);
+  --female-invest-coral: var(--fintech-feminine-coral);
+  --female-invest-soft-pink: var(--fintech-feminine-bg-lavender);
+  --female-invest-lavender-light: var(--fintech-feminine-bg-lavender);
+  --female-invest-coral-light: var(--fintech-feminine-coral-soft);
+
+  /* Harm/Risk (negative) - Enhanced Coral accent */
+  --harm-coral: #E46C6C;      /* Warm accent for risk/harm/needs nurturing */
+  --harm-rose: #C94D6A;
+  --needs-nurturing: #E46C6C; /* Specific color for "Needs Nurturing" */
+
+  /* Neutral - Off-White + Gray for calm - REMOVED ALL PINK */
+  --neutral-lilac: #B8A9C9;
+  --neutral-blush: #F2F4F7;    /* CHANGED: was pink #F9DDE7, now pale gray */
+  --neutral-off-white: #FDFDFD;  /* Off-white for calm backgrounds */
+  --neutral-warm-gray: #F5F5F7;  /* Warm gray for subtle areas */
+
+  /* MomOps Maternal System Colors - Updated with new greens */
+  --maternal-wisdom: #8B5A8C;     /* Deep purple for wisdom */
+  --maternal-nurture: var(--care-vibrant-mint);    /* Vibrant Mint for nurturing */
+  --maternal-growth: var(--care-emerald);          /* Emerald for growth */
+  --maternal-attention: #E46C6C;  /* Coral for attention needed */
+  --maternal-connection: #6B73FF; /* Connection blue */
+
+  /* Enhanced Gradients - New Green System */
+  --gradient-cta: linear-gradient(135deg, var(--fintech-feminine-purple) 0%, #0D1B2A 100%);
+  --gradient-maternal: linear-gradient(135deg, var(--care-vibrant-mint) 0%, #8B5A8C 100%);
+  --gradient-care-glow: linear-gradient(135deg, var(--care-vibrant-mint) 0%, var(--care-emerald) 100%); /* New green gradient */
+  --gradient-wisdom: linear-gradient(135deg, #8B5A8C 0%, #B8A9C9 100%);
+  --gradient-attention: linear-gradient(135deg, #E46C6C 0%, #C94D6A 100%);
+  --gradient-cta-orange: linear-gradient(135deg, var(--fintech-feminine-purple) 0%, #5A3188 100%); /* Purple CTA gradient */
+  --gradient-emerald-teal: linear-gradient(135deg, var(--care-emerald) 0%, var(--care-teal) 100%); /* Primary green gradient */
+  
+  /* FINTECH-FEMININE GRADIENTS */
+  --gradient-hero-fintech: linear-gradient(135deg, #FFFFFF 0%, rgba(107, 63, 160, 0.25) 30%, var(--fintech-feminine-bg-lavender) 50%, rgba(107, 63, 160, 0.20) 70%, #FFFFFF 100%); /* Enhanced depth fintech gradient */
+  --gradient-purple-accent: linear-gradient(135deg, var(--fintech-feminine-purple) 0%, var(--fintech-feminine-lavender) 100%); /* Purple highlight gradient */
+  --gradient-coral-hover: linear-gradient(135deg, var(--fintech-feminine-coral) 0%, var(--fintech-feminine-coral-soft) 100%); /* Coral hover gradient */
+  
+  /* Legacy mappings */
+  --gradient-hero-coinbase: var(--gradient-hero-fintech);
+  --gradient-female-invest-warm: var(--gradient-purple-accent);
+
+  /* Carefolio Band Colors - Updated with new green system */
+  --carefolio-band-a: var(--care-vibrant-mint);  /* Vibrant Mint - Nurture Excellence */
+  --carefolio-band-b: var(--care-emerald);       /* Emerald - Strong Care */
+  --carefolio-band-c: #B8A9C9;                   /* Lavender - Moderate Care */
+  --carefolio-band-d: #E46C6C;                   /* Coral - Needs Nurturing */
+  --carefolio-band-e: #0D1B2A;                   /* Deep Navy - Critical Attention */
+  --carefolio-band-e-accent: #E46C6C;            /* Coral accent for E-band */
+  --carefolio-legendary: var(--fintech-feminine-purple); /* Purple for Legendary Care badge */
+
+  /* Garden Health States - Updated with new greens */
+  --garden-blooming: var(--care-vibrant-mint);   /* 🌸 Blooming - Vibrant Mint */
+  --garden-growing: var(--care-emerald);         /* 🌱 Growing - Emerald */
+  --garden-needs-nurturing: #E46C6C;             /* 🛑 Needs Nurturing - Coral */
+  --garden-transforming: #8B5A8C;                /* 🔄 Transforming - Maternal Wisdom */
+
+  /* FIFA Colors */
+  --fifa-field-green: #1a472a;
+  --fifa-field-green-light: #2d5a36;
+  --fifa-gold: #FFD700;
+  --fifa-silver: #C0C0C0;
+  --fifa-bronze: #CD7F32;
+
+  /* MomOps Colors - Enhanced with new greens */
+  --momops-constellation-dark: #0D1B2A;      /* Updated to Deep Navy */
+  --momops-constellation-medium: #1A2F42;    /* Medium navy */
+  --momops-constellation-light: #2A3F52;     /* Light navy */
+  --momops-care-glow: rgba(0, 200, 150, 0.3);  /* Updated to Vibrant Mint glow */
+  --momops-harm-smoke: rgba(228, 108, 108, 0.2);  /* Updated to coral */
+  --momops-low-care-fade: rgba(184, 169, 201, 0.1);
+  --momops-wisdom-aura: rgba(139, 90, 140, 0.15);  /* Maternal wisdom */
+  --momops-emerald-glow: rgba(43, 174, 102, 0.25); /* New Emerald glow */
+
+  /* Material 3 Mapped Colors - Updated with new greens */
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --surface: var(--bg-card);
+  --surface-dim: var(--bg-secondary);
+  --surface-bright: var(--bg-card);
+  --surface-container-lowest: var(--bg-card);
+  --surface-container-low: var(--bg-secondary);
+  --surface-container: var(--bg-table-alt);
+  --surface-container-high: #F0F0F5;
+  --surface-container-highest: #EEEEF4;
+  --surface-variant: var(--bg-secondary);
+  --on-surface: var(--text-primary);
+  --on-surface-variant: var(--text-secondary);
+  --outline: #D1D5DB;
+  --outline-variant: #E5E7EB;
+  
+  --primary: var(--care-emerald);
+  --on-primary: #ffffff;
+  --primary-container: var(--neutral-blush);   /* CHANGED: was pink, now pale gray */
+  --on-primary-container: var(--text-primary);
+  --primary-fixed: var(--neutral-blush);       /* CHANGED: was pink, now pale gray */
+  --primary-fixed-dim: var(--neutral-lilac);
+  --on-primary-fixed: var(--text-primary);
+  --on-primary-fixed-variant: var(--care-emerald);
+  
+  --secondary: var(--neutral-lilac);
+  --on-secondary: #ffffff;
+  --secondary-container: var(--bg-secondary);
+  --on-secondary-container: var(--text-primary);
+  --secondary-fixed: var(--bg-secondary);
+  --secondary-fixed-dim: var(--neutral-lilac);
+  --on-secondary-fixed: var(--text-primary);
+  --on-secondary-fixed-variant: var(--neutral-lilac);
+  
+  --tertiary: var(--care-vibrant-mint);
+  --on-tertiary: #ffffff;
+  --tertiary-container: #E8F5F2;
+  --on-tertiary-container: var(--text-primary);
+  --tertiary-fixed: #E8F5F2;
+  --tertiary-fixed-dim: var(--care-vibrant-mint);
+  --on-tertiary-fixed: var(--text-primary);
+  --on-tertiary-fixed-variant: var(--care-emerald);
+  
+  --error: var(--harm-coral);
+  --on-error: #ffffff;
+  --error-container: #FDF2F2;
+  --on-error-container: var(--text-primary);
+  
+  /* REFINED ELEVATION SYSTEM - Two Levels Only */
+  --elevation-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  /* Subtle - for table rows, hover states, secondary elements */
+  --elevation-subtle: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.08);
+  /* Strong - for hero cards, CTAs, primary interactive elements */
+  --elevation-strong: 0 8px 16px rgba(0,0,0,0.12), 0 4px 6px rgba(0,0,0,0.08);
+  
+  /* Legacy elevation mappings for compatibility */
+  --elevation-1: var(--elevation-subtle);
+  --elevation-2: var(--elevation-subtle);
+  --elevation-3: var(--elevation-strong);
+  --elevation-4: var(--elevation-strong);
+  --elevation-5: var(--elevation-strong);
+  
+  /* CONTEXT-AWARE TYPOGRAPHY SYSTEM - REFINED FOR BALANCE */
+  
+  /* HERO HEADLINES - Figtree SemiBold - Landing/About Pages */
+  --headline-hero-size: 56px;          /* For landing page heroes (unchanged) */
+  --headline-hero-line: 1.15;          /* 64px line height (tighter for impact) */
+  
+  /* SUBPAGE HEADLINES - Figtree SemiBold - Dashboard/Care Index */
+  --headline-subpage-size: 48px;       /* For dashboard/data pages (reduced from 56px) */
+  --headline-subpage-line: 1.2;        /* 58px line height */
+  
+  /* SECTION HEADERS - Figtree SemiBold */
+  --headline-h2-size: 36px;            /* Section headers (reduced from 42px) */
+  --headline-h2-line: 1.2;             /* 43px line height */
+  
+  /* SUB-HEADERS - Figtree SemiBold */
+  --headline-h3-size: 24px;            /* Sub-headers (reduced from 28px) */
+  --headline-h3-line: 1.25;            /* 30px line height */
+  
+  /* BODY TEXT - Context-Aware Sizing */
+  /* About/Reports Pages - Large Body Text */
+  --body-content-size: 22px;           /* For content-heavy pages (About, Reports) */
+  --body-content-line: 1.45;           /* 32px line height (145%) */
+  
+  /* Dashboard/Tables - Scannable Body Text */
+  --body-data-size: 16px;              /* For dashboard tables (reduced from 18px) */
+  --body-data-line: 1.4;               /* 22px line height (140%) */
+  
+  /* Standard Body Text */
+  --body-medium-size: 18px;            /* Standard body text (unchanged) */
+  --body-medium-line: 1.5;             /* 27px line height (150%) */
+  --body-small-size: 16px;             /* Small body text (unchanged) */
+  --body-small-line: 1.4;              /* 22px line height (140%) */
+  
+  /* DATA & STATS - IBM Plex Mono - Context-Aware */
+  --data-large-size: 20px;             /* Large data display (reduced from 24px) */
+  --data-large-line: 1.2;              /* 24px line height */
+  --data-medium-size: 18px;            /* Standard data/stats (reduced from 20px) */
+  --data-medium-line: 1.25;            /* 23px line height */
+  --data-small-size: 14px;             /* Small data labels (reduced from 16px) */
+  --data-small-line: 1.3;              /* 18px line height */
+  
+  /* BUTTON SIZING - Context-Aware Heights */
+  --btn-hero-height: 64px;             /* Hero/Landing page CTAs (largest) */
+  --btn-primary-height: 52px;          /* Primary CTAs (standard) */
+  --btn-secondary-height: 44px;        /* Secondary/utility buttons */
+  --btn-tertiary-height: 40px;         /* Tertiary/filter buttons (smallest) */
+  
+  /* Legacy Variables - Updated to context-aware system */
+  --page-title-size: var(--headline-hero-size);
+  --page-title-line: calc(var(--headline-hero-size) * var(--headline-hero-line));
+  --section-header-size: var(--headline-h2-size);
+  --section-header-line: calc(var(--headline-h2-size) * var(--headline-h2-line));
+  --card-title-size: var(--headline-h3-size);
+  --card-title-line: calc(var(--headline-h3-size) * var(--headline-h3-line));
+  --body-text-size: var(--body-medium-size);
+  --body-text-line: calc(var(--body-medium-size) * var(--body-medium-line));
+  --caption-size: var(--body-small-size);
+  --caption-line: calc(var(--body-small-size) * var(--body-small-line));
+  --care-score-size: var(--data-medium-size);
+  --care-score-line: calc(var(--data-medium-size) * var(--data-medium-line));
+  
+  /* MomOps Headlines - Updated to context-aware system */
+  --headline-momops-size: var(--headline-hero-size);
+  --headline-momops-line: calc(var(--headline-hero-size) * var(--headline-hero-line));
+  --headline-large-size: var(--headline-h2-size);
+  --headline-large-line: calc(var(--headline-h2-size) * var(--headline-h2-line));
+  --narrative-label-size: var(--body-content-size);
+  --narrative-label-line: calc(var(--body-content-size) * var(--body-content-line));
+  
+  /* Carefolio Typography Scale - Updated for better balance */
+  --carefolio-company-name-size: var(--headline-h3-size);  /* 24px (was 28px) */
+  --carefolio-hero-nurture-size: 48px;                     /* Large data display (was 64px) */
+  --carefolio-secondary-stat-size: var(--data-medium-size); /* 18px (was 20px) */
+  --carefolio-badge-size: 18px;                            /* Icons (was 20px) */
+  --carefolio-story-text-size: var(--body-medium-size);    /* 18px for readability */
+  
+  /* Material 3 Shape System */
+  --shape-corner-none: 0px;
+  --shape-corner-extra-small: 4px;
+  --shape-corner-small: 8px;
+  --shape-corner-medium: 12px;
+  --shape-corner-large: 16px;
+  --shape-corner-extra-large: 24px;
+  --shape-corner-full: 9999px;
+  
+  /* Legacy mappings for compatibility */
+  --card: var(--bg-card);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface-container);
+  --popover-foreground: var(--text-primary);
+  --muted: var(--bg-secondary);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--secondary-container);
+  --accent-foreground: var(--text-primary);
+  --destructive: var(--error);
+  --destructive-foreground: var(--on-error);
+  --border: var(--outline-variant);
+  --input: var(--bg-secondary);
+  --input-background: var(--bg-card);
+  --ring: var(--primary);
+  --radius: var(--shape-corner-medium);
+}
+
+.dark {
+  --bg-primary: var(--bg-deep-navy);      /* Deep navy primary */
+  --bg-secondary: var(--bg-navy-medium);  /* Medium navy secondary */
+  --bg-card: var(--bg-navy-light);        /* Light navy for cards */
+  --bg-table-alt: #334155;                /* Darker navy for alternating rows */
+  --bg-mint-surface: #1A3A32;             /* Dark mode mint surface */
+  --text-primary: var(--text-on-navy);
+  --text-secondary: var(--text-on-navy-secondary);
+  --text-on-mint: var(--care-vibrant-mint);  /* Vibrant mint text on dark mint surface */
+  
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
+  --surface: var(--bg-card);
+  --surface-dim: var(--bg-secondary);
+  --surface-bright: #3A4F62;
+  --surface-container-lowest: var(--bg-primary);
+  --surface-container-low: var(--bg-card);
+  --surface-container: var(--bg-table-alt);
+  --surface-container-high: #404E61;
+  --surface-container-highest: #4A5E71;
+  --surface-variant: var(--bg-secondary);
+  --on-surface: var(--text-primary);
+  --on-surface-variant: var(--text-secondary);
+  --outline: #475569;
+  --outline-variant: #334155;
+  
+  --primary: var(--care-vibrant-mint);
+  --on-primary: var(--bg-primary);
+  --primary-container: #1A3A32;
+  --on-primary-container: var(--care-vibrant-mint);
+  
+  --secondary: var(--neutral-lilac);
+  --on-secondary: var(--bg-primary);
+  --secondary-container: #2A2532;
+  --on-secondary-container: var(--neutral-lilac);
+  
+  --tertiary: var(--care-emerald);
+  --on-tertiary: var(--bg-primary);
+  --tertiary-container: #1A3A2E;
+  --on-tertiary-container: var(--care-emerald);
+  
+  --error: var(--harm-coral);
+  --on-error: var(--bg-primary);
+  --error-container: #3D2A2A;
+  --on-error-container: var(--harm-coral);
+  
+  /* Update legacy mappings */
+  --card: var(--bg-card);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface-container);
+  --popover-foreground: var(--text-primary);
+  --muted: var(--bg-secondary);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--secondary-container);
+  --accent-foreground: var(--text-primary);
+  --destructive: var(--error);
+  --destructive-foreground: var(--on-error);
+  --border: var(--outline-variant);
+  --input: var(--bg-secondary);
+  --input-background: var(--bg-card);
+  --ring: var(--primary);
+}
+
+@theme inline {
+  /* Enhanced Care Index Color Tokens - NEW GREEN SYSTEM */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-table-alt: var(--bg-table-alt);
+  --color-bg-deep-navy: var(--bg-deep-navy);
+  --color-bg-navy-medium: var(--bg-navy-medium);
+  --color-bg-navy-light: var(--bg-navy-light);
+  --color-bg-mint-surface: var(--bg-mint-surface);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-navy: var(--text-on-navy);
+  --color-text-on-navy-secondary: var(--text-on-navy-secondary);
+  --color-text-on-mint: var(--text-on-mint);
+  
+  /* NEW CAREFOLIO GREEN TOKENS */
+  --color-care-emerald: var(--care-emerald);
+  --color-care-vibrant-mint: var(--care-vibrant-mint);
+  --color-care-teal: var(--care-teal);
+  --color-care-mint: var(--care-mint);
+  --color-care-turquoise: var(--care-turquoise);
+  
+  --color-cta-orange: var(--cta-orange);
+  --color-cta-orange-light: var(--cta-orange-light);
+  --color-cta-orange-dark: var(--cta-orange-dark);
+  --color-highlight-orange: var(--highlight-orange);
+  --color-harm-coral: var(--harm-coral);
+  --color-harm-rose: var(--harm-rose);
+  --color-needs-nurturing: var(--needs-nurturing);
+  --color-neutral-lilac: var(--neutral-lilac);
+  --color-neutral-blush: var(--neutral-blush);  /* CHANGED: no longer pink */
+  --color-neutral-off-white: var(--neutral-off-white);
+  --color-neutral-warm-gray: var(--neutral-warm-gray);
+  
+  /* Maternal System Colors - Updated */
+  --color-maternal-wisdom: var(--maternal-wisdom);
+  --color-maternal-nurture: var(--maternal-nurture);
+  --color-maternal-growth: var(--maternal-growth);
+  --color-maternal-attention: var(--maternal-attention);
+  --color-maternal-connection: var(--maternal-connection);
+  
+  /* Garden Health States - Updated */
+  --color-garden-blooming: var(--garden-blooming);
+  --color-garden-growing: var(--garden-growing);
+  --color-garden-needs-nurturing: var(--garden-needs-nurturing);
+  --color-garden-transforming: var(--garden-transforming);
+  
+  /* Carefolio Band Colors - Updated */
+  --color-carefolio-band-a: var(--carefolio-band-a);
+  --color-carefolio-band-b: var(--carefolio-band-b);
+  --color-carefolio-band-c: var(--carefolio-band-c);
+  --color-carefolio-band-d: var(--carefolio-band-d);
+  --color-carefolio-band-e: var(--carefolio-band-e);
+  --color-carefolio-band-e-accent: var(--carefolio-band-e-accent);
+  --color-carefolio-legendary: var(--carefolio-legendary);
+  
+  /* Fintech-Feminine Palette Tokens */
+  --color-fintech-feminine-purple: var(--fintech-feminine-purple);
+  --color-fintech-feminine-lavender: var(--fintech-feminine-lavender);
+  --color-fintech-feminine-coral: var(--fintech-feminine-coral);
+  --color-fintech-feminine-coral-soft: var(--fintech-feminine-coral-soft);
+  --color-fintech-feminine-bg-lavender: var(--fintech-feminine-bg-lavender);
+  
+  /* Legacy Female Invest tokens for compatibility */
+  --color-female-invest-lavender: var(--fintech-feminine-lavender);
+  --color-female-invest-coral: var(--fintech-feminine-coral);
+  --color-female-invest-soft-pink: var(--fintech-feminine-bg-lavender);
+  --color-female-invest-lavender-light: var(--fintech-feminine-bg-lavender);
+  --color-female-invest-coral-light: var(--fintech-feminine-coral-soft);
+  
+  /* FIFA Colors */
+  --color-fifa-field-green: var(--fifa-field-green);
+  --color-fifa-field-green-light: var(--fifa-field-green-light);
+  --color-fifa-gold: var(--fifa-gold);
+  --color-fifa-silver: var(--fifa-silver);
+  --color-fifa-bronze: var(--fifa-bronze);
+  
+  /* Enhanced MomOps Colors */
+  --color-momops-constellation-dark: var(--momops-constellation-dark);
+  --color-momops-constellation-medium: var(--momops-constellation-medium);
+  --color-momops-constellation-light: var(--momops-constellation-light);
+  --color-momops-care-glow: var(--momops-care-glow);
+  --color-momops-harm-smoke: var(--momops-harm-smoke);
+  --color-momops-low-care-fade: var(--momops-low-care-fade);
+  --color-momops-wisdom-aura: var(--momops-wisdom-aura);
+  --color-momops-emerald-glow: var(--momops-emerald-glow);
+  
+  /* Material 3 Color Tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-on-primary-fixed: var(--on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--on-primary-fixed-variant);
+  
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-secondary-fixed-dim: var(--secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--on-secondary-fixed-variant);
+  
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--on-tertiary-fixed);
+  --color-tertiary-fixed-variant: var(--on-tertiary-fixed-variant);
+  
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+  
+  /* Legacy compatibility */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  
+  /* Shape System */
+  --radius-none: var(--shape-corner-none);
+  --radius-xs: var(--shape-corner-extra-small);
+  --radius-sm: var(--shape-corner-small);
+  --radius-md: var(--shape-corner-medium);
+  --radius-lg: var(--shape-corner-large);
+  --radius-xl: var(--shape-corner-extra-large);
+  --radius-full: var(--shape-corner-full);
+  
+  /* Simplified Elevation System */
+  --shadow-elevation-0: var(--elevation-0);
+  --shadow-elevation-subtle: var(--elevation-subtle);
+  --shadow-elevation-strong: var(--elevation-strong);
+  
+  /* Legacy elevation mappings */
+  --shadow-elevation-1: var(--elevation-subtle);
+  --shadow-elevation-2: var(--elevation-subtle);
+  --shadow-elevation-3: var(--elevation-strong);
+  --shadow-elevation-4: var(--elevation-strong);
+  --shadow-elevation-5: var(--elevation-strong);
+}
+
+@layer base {
+  * {
+    border-color: var(--outline-variant);
+    outline-color: rgba(43, 174, 102, 0.5);
+  }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-medium-size);
+    line-height: var(--body-medium-line);
+  }
+
+  /* 12-Column Grid System */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+
+  /* Responsive Grid Breakpoints */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    
+    .grid {
+      gap: 16px;
+    }
+    
+    /* Mobile: Most columns become full-width */
+    .col-sm-1 { grid-column: span 1; }
+    .col-sm-2 { grid-column: span 2; }
+    .col-sm-3 { grid-column: span 3; }
+    .col-sm-4 { grid-column: span 4; }
+    .col-sm-6 { grid-column: span 6; }
+    .col-sm-12 { grid-column: span 12; }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    /* Tablet adjustments */
+    .col-md-3 { grid-column: span 3; }
+    .col-md-4 { grid-column: span 4; }
+    .col-md-6 { grid-column: span 6; }
+    .col-md-8 { grid-column: span 8; }
+    .col-md-12 { grid-column: span 12; }
+  }
+}
+
+/* CONTEXT-AWARE TYPOGRAPHY SYSTEM - REFINED BALANCE */
+@layer base {
+  
+  /* HEADLINES - Figtree SemiBold - Context-Aware Sizing */
+  
+  /* Hero Headlines - For Landing/About Pages Only */
+  .headline-hero {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-hero-size); /* 56px */
+    font-weight: 600; /* SemiBold */
+    line-height: var(--headline-hero-line);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  
+  /* Subpage Headlines - For Dashboard/Care Index */
+  .headline-subpage {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-subpage-size); /* 48px */
+    font-weight: 600; /* SemiBold */
+    line-height: var(--headline-subpage-line);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  
+  /* H1 - Defaults to hero, use .headline-subpage for data pages */
+  .headline-h1 {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-hero-size);
+    font-weight: 600; /* SemiBold */
+    line-height: var(--headline-hero-line);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+  
+  /* H2 - Section Headers */
+  .headline-h2 {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-h2-size); /* 36px */
+    font-weight: 600; /* SemiBold */
+    line-height: var(--headline-h2-line);
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  
+  /* H3 - Sub-headers */
+  .headline-h3 {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-h3-size); /* 24px */
+    font-weight: 600; /* SemiBold */
+    line-height: var(--headline-h3-line);
+    color: var(--text-primary);
+  }
+  
+  /* BODY TEXT - Context-Aware Sizing */
+  
+  /* Content Body Text - For About/Reports Pages */
+  .body-content {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-content-size); /* 22px */
+    font-weight: 400; /* Regular */
+    line-height: var(--body-content-line); /* 145% */
+    color: var(--text-primary);
+  }
+  
+  .body-content-medium {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-content-size); /* 22px */
+    font-weight: 500; /* Medium */
+    line-height: var(--body-content-line); /* 145% */
+    color: var(--text-primary);
+  }
+  
+  /* Data Body Text - For Dashboard Tables */
+  .body-data {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px */
+    font-weight: 400; /* Regular */
+    line-height: var(--body-data-line); /* 140% */
+    color: var(--text-primary);
+  }
+  
+  .body-data-medium {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px */
+    font-weight: 500; /* Medium */
+    line-height: var(--body-data-line); /* 140% */
+    color: var(--text-primary);
+  }
+  
+  /* Standard Body Text - 18px (unchanged) */
+  .body-medium {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-medium-size);
+    font-weight: 400; /* Regular */
+    line-height: var(--body-medium-line); /* 150% */
+    color: var(--text-primary);
+  }
+  
+  .body-medium-medium {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-medium-size);
+    font-weight: 500; /* Medium */
+    line-height: var(--body-medium-line); /* 150% */
+    color: var(--text-primary);
+  }
+  
+  /* Small Body Text - 16px (unchanged) */
+  .body-small {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-small-size);
+    font-weight: 400; /* Regular */
+    line-height: var(--body-small-line); /* 140% */
+    color: var(--text-secondary);
+  }
+  
+  .body-small-medium {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-small-size);
+    font-weight: 500; /* Medium */
+    line-height: var(--body-small-line); /* 140% */
+    color: var(--text-secondary);
+  }
+  
+  /* DATA & STATS - IBM Plex Mono - Refined Sizing */
+  
+  /* Large Data Display - 20px (reduced from 24px) */
+  .data-large {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--data-large-size); /* 20px */
+    font-weight: 500; /* Medium for better visibility */
+    line-height: var(--data-large-line);
+    color: var(--text-primary); /* Primary text color for contrast */
+    font-feature-settings: 'tnum' 1; /* Tabular numbers */
+  }
+  
+  /* Standard Data/Stats - 18px (reduced from 20px) */
+  .data-medium {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--data-medium-size); /* 18px */
+    font-weight: 500; /* Medium for better visibility */
+    line-height: var(--data-medium-line);
+    color: var(--text-primary); /* Primary text color for contrast */
+    font-feature-settings: 'tnum' 1; /* Tabular numbers */
+  }
+  
+  .data-medium-bold {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--data-medium-size); /* 18px */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: var(--data-medium-line);
+    color: var(--text-primary); /* Primary text color for contrast */
+    font-feature-settings: 'tnum' 1; /* Tabular numbers */
+  }
+  
+  /* Small Data Labels - 14px (reduced from 16px) */
+  .data-small {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--data-small-size); /* 14px */
+    font-weight: 500; /* Medium for better visibility */
+    line-height: var(--data-small-line);
+    color: var(--text-primary); /* Primary text color for contrast */
+    font-feature-settings: 'tnum' 1; /* Tabular numbers */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* LEGACY CLASSES - Updated to match refined system */
+  
+  /* Orange Text Highlights */
+  .text-highlight-orange {
+    color: var(--highlight-orange);
+  }
+
+  /* NEW GREEN TEXT UTILITIES */
+  .text-care-emerald {
+    color: var(--care-emerald);
+  }
+  
+  .text-care-vibrant-mint {
+    color: var(--care-vibrant-mint);
+  }
+  
+  .text-care-teal {  
+    color: var(--care-teal);
+  }
+
+  /* CARE SCORE COLOR CODING UTILITIES */
+  .care-score-legendary {
+    color: var(--care-emerald); /* 80+ = green → strong/legendary */
+  }
+  
+  .care-score-strong {
+    color: var(--care-teal); /* 70–79 = teal → strong */
+  }
+  
+  .care-score-moderate {
+    color: var(--neutral-lilac); /* 60–69 = lilac → moderate */
+  }
+  
+  .care-score-weak {
+    color: var(--harm-coral); /* below 60 = coral → weak */
+  }
+
+  /* MomOps Headlines - Updated to refined system */
+  .headline-momops {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-momops-size);
+    font-weight: 600;
+    line-height: var(--headline-momops-line);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .headline-large {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--headline-large-size);
+    font-weight: 600;
+    line-height: var(--headline-large-line);
+    color: var(--care-emerald); /* Updated to use new Emerald */
+    letter-spacing: -0.01em;
+  }
+
+  /* Narrative Labels - Refined */
+  .narrative-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--narrative-label-size);
+    font-weight: 500; /* Medium */
+    line-height: var(--narrative-label-line);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .narrative-label.needs-nurturing {
+    color: var(--needs-nurturing);
+  }
+
+  .narrative-label.blooming {
+    color: var(--garden-blooming); /* Vibrant Mint */
+  }
+
+  .narrative-label.growing {
+    color: var(--garden-growing); /* Emerald */
+  }
+
+  .narrative-label.transforming {
+    color: var(--garden-transforming);
+  }
+
+  /* Page Title - Figtree 600 (context-aware) */
+  .page-title {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--page-title-size);
+    font-weight: 600;
+    line-height: var(--page-title-line);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  /* Section Header - Figtree 600 with accent color */
+  .section-header {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--section-header-size);
+    font-weight: 600;
+    line-height: var(--section-header-line);
+    color: var(--care-emerald); /* Updated to use new Emerald */
+  }
+
+  /* Card Title - Figtree 600 */
+  .card-title {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: var(--card-title-size);
+    font-weight: 600; /* Updated to SemiBold */
+    line-height: var(--card-title-line);
+    color: var(--text-primary);
+  }
+
+  /* Body Text - Inter 400 with optimal line height */
+  .body-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-text-size);
+    font-weight: 400;
+    line-height: var(--body-text-line);
+    color: var(--text-primary);
+  }
+
+  /* Caption - Inter 400 */
+  .caption {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--caption-size);
+    font-weight: 400;
+    line-height: var(--caption-line);
+    color: var(--text-secondary);
+  }
+
+  /* Care Score - IBM Plex Mono */
+  .care-score {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--care-score-size);
+    font-weight: 500; /* Changed to Medium for better visibility */
+    line-height: var(--care-score-line);
+    color: var(--text-primary); /* Primary text color for contrast */
+    font-feature-settings: 'tnum' 1; /* Tabular numbers */
+  }
+
+  /* Label - Inter 500 */
+  .label-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--caption-size);
+    font-weight: 500;
+    line-height: var(--caption-line);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Data Row - Reduced dominance */
+  .data-row {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-small-size);
+    font-weight: 400;
+    line-height: var(--body-small-line);
+    color: var(--text-secondary);
+  }
+
+  /* Override default typography to match refined system */
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: 'Figtree', system-ui, sans-serif;
+      font-size: var(--headline-hero-size);
+      font-weight: 600;
+      line-height: var(--headline-hero-line);
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: 'Figtree', system-ui, sans-serif;
+      font-size: var(--headline-h2-size);
+      font-weight: 600;
+      line-height: var(--headline-h2-line);
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-family: 'Figtree', system-ui, sans-serif;
+      font-size: var(--headline-h3-size);
+      font-weight: 600;
+      line-height: var(--headline-h3-line);
+      color: var(--text-primary);
+    }
+
+    p {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--body-medium-size);
+      font-weight: 400;
+      line-height: var(--body-medium-line);
+      color: var(--text-primary);
+    }
+
+    label {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--body-small-size);
+      font-weight: 500;
+      line-height: var(--body-small-line);
+      color: var(--text-secondary);
+    }
+
+    button {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--body-small-size);
+      font-weight: 500;
+      line-height: var(--body-small-line);
+    }
+
+    input {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: var(--body-medium-size);
+      font-weight: 400;
+      line-height: var(--body-medium-line);
+    }
+  }
+}
+
+/* Enhanced Fintech Onboarding & Dashboard Components */
+@layer components {
+  /* Onboarding Wizard Styles */
+  .onboarding-wizard {
+    backdrop-filter: blur(8px);
+  }
+
+  .onboarding-step-indicator {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .onboarding-step-indicator.active {
+    transform: scale(1.1);
+  }
+
+  .onboarding-step-indicator.completed {
+    animation: pulse-once 0.5s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  @keyframes pulse-once {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* Global Index Chips - Fintech Style */
+  .global-index-chip {
+    background: #FBF7FE;
+    border: 1px solid var(--fintech-feminine-purple);
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .global-index-chip:hover {
+    box-shadow: 0 4px 8px rgba(107, 63, 160, 0.15);
+    transform: translateY(-1px);
+  }
+
+  .global-index-chip.active {
+    background: white;
+    box-shadow: 0 8px 16px rgba(107, 63, 160, 0.2);
+  }
+
+  /* Orb Icon Gradients */
+  .orb-gradient-global {
+    background: linear-gradient(135deg, var(--care-emerald) 0%, var(--fintech-feminine-purple) 100%);
+  }
+
+  .orb-gradient-personal {
+    background: linear-gradient(135deg, var(--fintech-feminine-purple) 0%, var(--fintech-feminine-coral) 100%);
+  }
+
+  /* Hero Badge with Heartbeat Animation */
+  .hero-badge {
+    background: white;
+    border: 1px solid var(--outline-variant);
+    box-shadow: var(--elevation-strong);
+  }
+
+  .hero-badge-heart {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { 
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% { 
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+  }
+
+  /* Progressive Nudges */
+  .progressive-nudge {
+    backdrop-filter: blur(4px);
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .progressive-nudge:hover {
+    transform: translateY(-1px);
+  }
+
+  .progressive-nudge.export {
+    background: var(--fintech-feminine-bg-lavender);
+    border-color: rgba(107, 63, 160, 0.2);
+  }
+
+  .progressive-nudge.compare {
+    background: rgba(43, 174, 102, 0.05);
+    border-color: rgba(43, 174, 102, 0.2);
+  }
+
+  .progressive-nudge.trend {
+    background: rgba(59, 130, 246, 0.05);
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .progressive-nudge.celebrate {
+    background: linear-gradient(135deg, var(--fintech-feminine-bg-lavender) 0%, rgba(43, 174, 102, 0.05) 100%);
+    border-color: rgba(43, 174, 102, 0.3);
+  }
+
+  /* Empty State Animations */
+  .empty-state-icon {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0) rotate(0deg);
+    }
+    25% { 
+      transform: translateY(-5px) rotate(2deg);
+    }
+    75% { 
+      transform: translateY(5px) rotate(-2deg);
+    }
+  }
+
+  /* Demo Portfolio Cards */
+  .demo-portfolio-card {
+    background: var(--bg-card);
+    border: 1px solid var(--outline-variant);
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .demo-portfolio-card:hover {
+    border-color: var(--care-emerald);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  /* Portfolio Distribution Bar */
+  .portfolio-distribution-bar {
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    display: flex;
+  }
+
+  .distribution-segment {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .distribution-segment.band-a {
+    background: linear-gradient(90deg, var(--care-emerald) 0%, var(--care-vibrant-mint) 100%);
+  }
+
+  .distribution-segment.band-b {
+    background: linear-gradient(90deg, var(--fintech-feminine-purple) 0%, var(--fintech-feminine-lavender) 100%);
+  }
+
+  .distribution-segment.band-c {
+    background: linear-gradient(90deg, var(--fintech-feminine-coral) 0%, var(--fintech-feminine-coral-soft) 100%);
+  }
+
+  /* Fintech Button Enhancements */
+  .btn-fintech-primary {
+    background: var(--fintech-feminine-purple);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 28px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-medium-size);
+    font-weight: 500;
+    min-height: 52px;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: var(--elevation-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-fintech-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn-fintech-primary:hover {
+    background: #5A3188;
+    box-shadow: 0 8px 16px rgba(107, 63, 160, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-fintech-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-fintech-secondary {
+    background: transparent;
+    color: var(--care-emerald);
+    border: 2px solid var(--care-emerald);
+    border-radius: 24px;
+    padding: 10px 24px;
+    min-height: 44px;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .btn-fintech-secondary:hover {
+    background: var(--care-emerald);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  /* Pill-shaped CTAs with Glow */
+  .btn-pill-emerald {
+    background: var(--care-emerald);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 24px;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .btn-pill-emerald:hover {
+    background: var(--care-vibrant-mint);
+    box-shadow: 0 0 12px rgba(43, 174, 102, 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* Generous Fintech Spacing */
+  .fintech-hero-padding {
+    padding: 80px 0;
+  }
+
+  .fintech-card-gutters {
+    gap: 40px;
+  }
+
+  .fintech-section-spacing {
+    margin-bottom: 80px;
+  }
+}
+
+/* Enhanced Care Index Component Styles */
+@layer components {
+  /* Navbar Grid Alignment - UPDATED FOR 64px HEIGHT */
+  .navbar-container {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--outline-variant);
+    height: 64px; /* Fixed height as requested */
+  }
+
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px; /* Updated from min-height: 80px */
+    padding: 0; /* Remove top/bottom padding to maintain exact 64px */
+  }
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Navigation Link Styling - UPDATED WITH EMERALD HOVER UNDERLINES */
+  .nav-link {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    position: relative;
+  }
+
+  /* Emerald hover underline */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: var(--care-emerald);
+    transform: scaleX(0);
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+    transform-origin: left;
+  }
+
+  .nav-link:hover {
+    color: var(--fintech-feminine-lavender);
+  }
+
+  .nav-link:hover::after {
+    background: var(--fintech-feminine-lavender);
+    transform: scaleX(1);
+  }
+
+  /* Active state with emerald underline and bold text */
+  .nav-link.active {
+    color: var(--care-emerald);
+    font-weight: 600; /* Bold text for active state */
+  }
+
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  /* CTA Button Styling - PURPLE PRIMARY, EMERALD SECONDARY */
+  .nav-cta-button {
+    padding: 12px 24px;
+    border-radius: 24px; /* Consistent radius throughout design */
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid var(--care-emerald);
+    color: var(--care-emerald);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px; /* Consistent with design system */
+  }
+
+  .nav-cta-button:hover {
+    background: var(--care-emerald);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  /* Primary CTA (Join Waitlist) gets orange styling via inline styles */
+  /* Secondary CTA (Login/Logout) uses default emerald styling */
+
+  /* Company Cards with refined shadows */
+  .company-card {
+    background: var(--bg-card);
+    border-radius: var(--shape-corner-medium);
+    box-shadow: var(--elevation-subtle);
+    border: 1px solid #F0F0F0;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .company-card:hover {
+    box-shadow: var(--elevation-strong);
+    transform: translateY(-1px);
+  }
+
+  /* CONTEXT-AWARE BUTTON SYSTEM - Refined Sizing - NO PINK */
+  
+  /* Primary CTAs - Purple - Large (52px) */
+  .md3-btn-filled {
+    background: var(--fintech-feminine-purple);
+    color: white;
+    border: none;
+    border-radius: 24px; /* Consistent with nav-cta-button radius */
+    padding: 14px 28px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-medium-size); /* 18px */
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: var(--btn-primary-height); /* 52px */
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: var(--elevation-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .md3-btn-filled::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .md3-btn-filled:hover {
+    background: #5A3188; /* Darker purple on hover */
+    box-shadow: var(--elevation-strong);
+    transform: translateY(-1px);
+  }
+
+  .md3-btn-filled:hover::before {
+    opacity: 1;
+  }
+
+  .md3-btn-filled:active {
+    background: #4A2A76; /* Even darker purple for active */
+    transform: translateY(0);
+  }
+
+  .md3-btn-filled:disabled {
+    background: var(--neutral-warm-gray); /* CHANGED: was pink, now light gray */
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Secondary CTAs - Green System - Medium (44px) */
+  .md3-btn-outlined {
+    background: transparent;
+    color: var(--care-emerald);
+    border: 2px solid var(--care-emerald);
+    border-radius: 24px; /* Consistent with nav-cta-button radius */
+    padding: 10px 24px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px */
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: var(--btn-secondary-height); /* 44px */
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .md3-btn-outlined::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--care-emerald);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .md3-btn-outlined:hover {
+    background: var(--care-emerald);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .md3-btn-outlined:active {
+    background: var(--care-vibrant-mint);
+    border-color: var(--care-vibrant-mint);
+    transform: translateY(0);
+  }
+
+  /* Tertiary/Filter Buttons - Green System - Small (40px) */
+  .md3-btn-text {
+    background: transparent;
+    color: var(--care-emerald);
+    border: none;
+    border-radius: 20px; /* More consistent with other buttons */
+    padding: 10px 16px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px */
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: var(--btn-tertiary-height); /* 40px */
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .md3-btn-text::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--care-emerald);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .md3-btn-text:hover::before {
+    opacity: 0.08;
+  }
+
+  .md3-btn-text:active::before {
+    opacity: 0.12;
+  }
+
+  /* Filter/Utility Button Variant */
+  .btn-filter {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--outline-variant);
+    border-radius: 20px; /* More consistent with other buttons */
+    padding: 8px 16px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px */
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: var(--btn-tertiary-height); /* 40px */
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: none;
+  }
+
+  /* Button Size Utility Classes for Consistent Heights */
+  .btn-size-hero {
+    min-height: var(--btn-hero-height) !important; /* 64px */
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .btn-size-primary {
+    min-height: var(--btn-primary-height) !important; /* 52px */
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+  }
+
+  .btn-size-secondary {
+    min-height: var(--btn-secondary-height) !important; /* 44px */
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .btn-size-tertiary {
+    min-height: var(--btn-tertiary-height) !important; /* 40px */
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .btn-filter:hover {
+    background: var(--bg-card);
+    border-color: var(--care-emerald);
+    transform: translateY(-1px);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .btn-filter.active {
+    background: var(--care-emerald);
+    color: white;
+    border-color: var(--care-emerald);
+  }
+
+  /* Enhanced Pill-shaped buttons with PURPLE PRIMARY */
+  .btn-primary {
+    background: var(--fintech-feminine-purple);
+    border-radius: var(--shape-corner-extra-large); /* 24px consistent radius */
+    padding: 14px 28px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-medium-size); /* 18px */
+    font-weight: 500;
+    color: white;
+    border: none;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    min-height: var(--btn-primary-height); /* 52px */
+  }
+
+  .btn-primary:hover {
+    background: #5A3188; /* Darker purple on hover */
+    box-shadow: 0 0 12px rgba(107, 63, 160, 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Score badges - Using refined data typography */
+  .score-badge {
+    background: var(--bg-secondary);
+    border-radius: var(--shape-corner-small);
+    padding: 10px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--data-large-size); /* 20px */
+    font-weight: 500; /* Medium for better visibility */
+    color: var(--text-primary); /* Primary text for contrast */
+    display: inline-block;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    font-feature-settings: 'tnum' 1; /* Tabular numbers */
+    box-shadow: var(--elevation-subtle);
+  }
+
+  /* Legendary Care Badge - Purple accent */
+  .legendary-care-badge {
+    background: var(--gradient-purple-accent);
+    color: white;
+    border-radius: var(--shape-corner-small);
+    padding: 4px 10px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: var(--elevation-subtle);
+  }
+
+  /* NEW: Portfolio Composition Chip - WCAG Compliant - NO PINK */
+  .portfolio-composition-chip {
+    background: var(--bg-mint-surface);
+    color: var(--text-on-mint);
+    border-radius: var(--shape-corner-full);
+    padding: 14px 18px;
+    margin: 16px 24px;
+    box-shadow: var(--elevation-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    border: 1px solid rgba(43, 174, 102, 0.15);
+  }
+
+  .portfolio-composition-chip:hover {
+    box-shadow: var(--elevation-strong);
+    transform: translateY(-1px);
+  }
+
+  .portfolio-composition-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .portfolio-composition-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--body-medium-size); /* 18px */
+    font-weight: 500;
+    color: var(--text-on-mint);
+  }
+
+  .portfolio-composition-badge .badge-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .portfolio-composition-badge .badge-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--care-emerald);
+    font-feature-settings: 'tnum' 1;
+    font-size: var(--data-medium-size); /* 18px */
+  }
+
+  .portfolio-composition-tracker {
+    font-size: var(--body-data-size); /* 16px */
+    color: var(--text-secondary);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  /* Maternal Narrative Card - Updated with new greens - NO PINK */
+  .maternal-narrative-card {
+    background: var(--neutral-off-white);
+    border-left: 4px solid var(--care-vibrant-mint);
+    border-radius: var(--shape-corner-medium);
+    padding: 20px 24px;
+    margin: 16px 0;
+    box-shadow: var(--elevation-subtle);
+    position: relative;
+  }
+
+  .maternal-narrative-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--momops-wisdom-aura);
+    border-radius: var(--shape-corner-medium);
+    z-index: -1;
+  }
+
+  /* Garden Health Icon System - Updated with new greens */
+  .garden-health-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .garden-health-icon.blooming {
+    background: var(--momops-care-glow); /* Vibrant Mint glow */
+    color: var(--garden-blooming);
+  }
+
+  .garden-health-icon.growing {
+    background: var(--momops-emerald-glow); /* New Emerald glow */
+    color: var(--garden-growing);
+  }
+
+  .garden-health-icon.needs-nurturing {
+    background: var(--momops-harm-smoke);
+    color: var(--garden-needs-nurturing);
+  }
+
+  .garden-health-icon.transforming {
+    background: var(--momops-wisdom-aura);
+    color: var(--garden-transforming);
+  }
+
+  /* MomOps Circular/Spiral Glyphs - Updated with new greens */
+  .momops-glyph {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--momops-care-glow); /* Updated to Vibrant Mint glow */
+    position: relative;
+  }
+
+  .momops-glyph::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    border: 2px solid var(--care-vibrant-mint); /* Updated to Vibrant Mint */
+    border-top-color: transparent;
+    animation: spiral-rotate 3s ease-in-out infinite;
+  }
+
+  @keyframes spiral-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  /* Carefolio Logo - Clean circular logo styling */
+  .carefolio-logo {
+    display: inline-block;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    transform: scale(1.05);
+  }
+
+  .carefolio-logo:hover {
+    transform: scale(1.1);
+  }
+
+  /* Legacy Heart-Leaf Icon - Updated with new greens */
+  .heart-leaf-icon {
+    width: 16px;
+    height: 16px;
+    background: var(--care-vibrant-mint); /* Updated to Vibrant Mint */
+    border-radius: 8px 8px 0 8px;
+    transform: rotate(-45deg);
+    position: relative;
+    display: inline-block;
+  }
+
+  .heart-leaf-icon::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: var(--care-vibrant-mint); /* Updated to Vibrant Mint */
+    border-radius: 8px 8px 8px 0;
+    transform: rotate(90deg);
+    transform-origin: 0 100%;
+  }
+}
+
+/* New Carefolio Clean Professional Design - Enhanced with new green system - NO PINK */
+@layer components {
+  /* Carefolio Background - Deep Navy Option */
+  .carefolio-background {
+    background: var(--bg-primary);
+    position: relative;
+  }
+
+  .carefolio-background.navy {
+    background: var(--bg-deep-navy);
+    color: var(--text-on-navy);
+  }
+
+  /* Carefolio Header - Enhanced */
+  .carefolio-header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--outline-variant);
+    padding: 16px 0;
+  }
+
+  .carefolio-header.navy {
+    background: var(--bg-navy-medium);
+    border-bottom-color: var(--outline);
+  }
+
+  /* Maternal Dashboard Insights - Using updated typography and new greens */
+  .maternal-insights-banner {
+    background: var(--gradient-care-glow); /* Updated to new green gradient */
+    color: white;
+    padding: 20px 28px;
+    border-radius: var(--shape-corner-large);
+    margin: 20px 28px;
+    box-shadow: var(--elevation-strong);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .maternal-insights-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-maternal);
+    opacity: 0.9;
+    z-index: -1;
+  }
+
+  .maternal-insights-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-content-size); /* 22px for content pages */
+    font-weight: 500; /* Medium */
+    line-height: var(--body-content-line); /* 145% */
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  /* Maternal System Sentence Examples */
+  .maternal-sentence {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-content-size); /* 22px for content pages */
+    font-weight: 500; /* Medium */
+    line-height: var(--body-content-line); /* 145% */
+    color: var(--text-primary);
+    margin: 16px 0;
+  }
+
+  /* Carefolio Chemistry Card - Enhanced with new greens */
+  .carefolio-chemistry-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 24px 32px;
+    border: 2px solid var(--care-vibrant-mint);
+    box-shadow: var(--elevation-strong);
+    position: relative;
+  }
+
+  .carefolio-chemistry-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 22px;
+    background: var(--gradient-care-glow);
+    z-index: -1;
+    opacity: 0.1;
+  }
+
+  /* FIFA-Style Card Enhancements */
+  .fifa-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    overflow: hidden;
+    aspect-ratio: 3/4; /* Trading card proportions */
+    min-height: 420px;
+    max-height: 540px;
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .fifa-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--elevation-strong);
+  }
+
+  .fifa-card.selected {
+    box-shadow: 
+      0 0 0 3px var(--care-vibrant-mint),
+      var(--elevation-strong);
+  }
+
+  /* FIFA Card Metric Icons */
+  .fifa-metric-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--care-emerald);
+    color: white;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+    font-size: 18px;
+  }
+
+  .fifa-metric-icon:hover {
+    transform: scale(1.1);
+    background: var(--care-vibrant-mint);
+  }
+
+  /* FIFA Card Story Expansion */
+  .fifa-story-expand {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: var(--elevation-subtle);
+    border: 1px solid var(--outline-variant);
+  }
+
+  /* Care Band Badge Styling */
+  .care-band-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--elevation-strong);
+    position: relative;
+    transition: all 0.2s ease;
+    font-size: 20px;
+  }
+
+  .care-band-badge:hover {
+    transform: scale(1.05);
+  }
+
+  .care-band-badge::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+    z-index: -1;
+  }
+
+  /* Carefolio Filter Bar */
+  .carefolio-filter-bar {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 20px 28px;
+    border: 1px solid var(--outline-variant);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  /* Carefolio Search Input - Updated with new greens */
+  .carefolio-search-input {
+    background: var(--bg-card);
+    border: 1px solid var(--outline-variant);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: var(--body-data-size); /* 16px for data contexts */
+    font-weight: 400;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    padding: 12px 16px;
+    min-height: var(--btn-tertiary-height); /* 40px */
+  }
+
+  .carefolio-search-input::placeholder {
+    color: var(--text-secondary);
+  }
+
+  .carefolio-search-input:focus {
+    border-color: var(--care-emerald); /* Updated to Emerald */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(43, 174, 102, 0.2); /* Updated to Emerald */
+  }
+
+  /* Carefolio Select - Updated with new greens */
+  .carefolio-select {
+    background: var(--bg-card);
+    border: 1px solid var(--outline-variant);
+    border-radius: 12px;
+    color: var(--text-primary);
+    height: var(--btn-tertiary-height); /* 40px */
+    font-size: var(--body-data-size); /* 16px */
+    padding: 0 16px;
+  }
+
+  .carefolio-select:focus {
+    border-color: var(--care-emerald); /* Updated to Emerald */
+  }
+
+  .carefolio-select-content {
+    background: var(--bg-card);
+    border: 1px solid var(--outline-variant);
+    border-radius: 12px;
+    color: var(--text-primary);
+    box-shadow: var(--elevation-strong);
+  }
+
+  /* Enhanced Carefolio Card Grid - FIFA-Style Trading Card Layout */
+  .carefolio-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    padding: 0;
+    width: 100%;
+    align-items: start;
+  }
+
+  @media (min-width: 1600px) {
+    .carefolio-card-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 1200px) and (max-width: 1599px) {
+    .carefolio-card-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 900px) and (max-width: 1199px) {
+    .carefolio-card-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 899px) {
+    .carefolio-card-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .carefolio-card-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 0 16px;
+    }
+  }
+
+  /* New Carefolio Card - Updated with proper typography and new greens */
+  .carefolio-card-clean {
+    width: 100%;
+    min-height: 520px;
+    max-width: 100%;
+    background: var(--bg-card);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: var(--elevation-subtle);
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+    border: 1px solid var(--outline-variant);
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  .carefolio-card-clean:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--elevation-strong);
+  }
+
+  .carefolio-card-clean.selected {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: var(--elevation-strong);
+    z-index: 10;
+  }
+
+  .carefolio-card-clean.chemistry-connection {
+    box-shadow: 
+      var(--elevation-subtle),
+      0 0 0 3px var(--care-vibrant-mint),
+      0 0 28px var(--momops-care-glow);
+  }
+
+  /* Enhanced Dashboard Table Styles - Data-optimized with proper alignment */
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .dashboard-table thead {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--outline-variant);
+  }
+
+  .dashboard-table th {
+    text-align: left;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px for tables */
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--outline-variant);
+    background: var(--bg-secondary);
+  }
+
+  /* Consistent 24px horizontal padding for alignment */
+  .dashboard-table th:first-child,
+  .dashboard-table td:first-child {
+    padding-left: 24px;
+    padding-right: 16px;
+  }
+
+  .dashboard-table th:last-child,
+  .dashboard-table td:last-child {
+    padding-left: 16px;
+    padding-right: 24px;
+  }
+
+  .dashboard-table th:not(:first-child):not(:last-child),
+  .dashboard-table td:not(:first-child):not(:last-child) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .dashboard-table th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .dashboard-table td {
+    border-bottom: 1px solid var(--outline-variant);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px for scannable data */
+    font-weight: 400;
+    color: var(--text-primary);
+    vertical-align: middle;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .dashboard-table tbody tr {
+    transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+  }
+
+  .dashboard-table tbody tr:hover {
+    background: var(--bg-secondary)/50;
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .dashboard-table tbody tr:nth-child(even) {
+    background: var(--bg-table-alt);
+  }
+
+  .dashboard-table tbody tr:nth-child(even):hover {
+    background: var(--bg-secondary)/50;
+  }
+
+  .dashboard-table tbody tr.selected {
+    background: rgba(43, 174, 102, 0.1);
+    border-color: var(--care-emerald);
+  }
+
+  /* Enhanced Action Icons Visibility */
+  .dashboard-table .action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 128px; /* Fixed width for Actions column */
+  }
+
+  .dashboard-table .action-button {
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--bg-secondary)/50;
+    border: 1px solid var(--outline-variant)/50;
+    color: var(--text-primary);
+    opacity: 0.8;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard-table tbody tr:hover .action-button {
+    opacity: 1;
+    background: var(--bg-secondary);
+    border-color: var(--outline-variant);
+    transform: translateY(-1px);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .dashboard-table .action-button:hover {
+    background: var(--care-emerald) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--elevation-strong) !important;
+  }
+
+  .dashboard-table .action-button.favorite-active {
+    color: #ef4444; /* red-500 */
+  }
+
+  /* Leaderboard Table Styles - Data-optimized */
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .leaderboard-table thead {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--outline-variant);
+  }
+
+  .leaderboard-table th {
+    padding: 16px 12px;
+    text-align: left;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px for tables */
+    font-weight: 500;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--outline-variant);
+  }
+
+  .leaderboard-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--outline-variant);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: var(--body-data-size); /* 16px for scannable data */
+    font-weight: 400;
+    color: var(--text-primary);
+    vertical-align: middle;
+  }
+
+  .leaderboard-table tbody tr {
+    transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .leaderboard-table tbody tr:hover {
+    background: var(--bg-secondary);
+    box-shadow: var(--elevation-subtle);
+  }
+
+  .leaderboard-table tbody tr:nth-child(even) {
+    background: var(--bg-table-alt);
+  }
+
+  .leaderboard-table tbody tr.selected {
+    background: rgba(43, 174, 102, 0.1);
+    border-color: var(--care-emerald);
+  }
+
+  /* Spotlight Card Animation */
+  .spotlight-card {
+    background: var(--bg-card);
+    border: 1px solid var(--outline-variant);
+    border-radius: 16px;
+    box-shadow: var(--elevation-strong);
+    overflow: hidden;
+  }
+
+  .spotlight-card-header {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-bottom: 1px solid var(--outline-variant);
+  }
+
+  .spotlight-card-content {
+    padding: 20px;
+  }
+}
+
+/* Simplified Elevation Utilities - Two Levels Only */
+@layer utilities {
+  .elevation-0 {
+    box-shadow: var(--elevation-0);
+  }
+  
+  .elevation-subtle {
+    box-shadow: var(--elevation-subtle);
+  }
+  
+  .elevation-strong {
+    box-shadow: var(--elevation-strong);
+  }
+  
+  /* Legacy mappings for compatibility */
+  .elevation-1 {
+    box-shadow: var(--elevation-subtle);
+  }
+  
+  .elevation-2 {
+    box-shadow: var(--elevation-subtle);
+  }
+  
+  .elevation-3 {
+    box-shadow: var(--elevation-strong);
+  }
+  
+  .elevation-4 {
+    box-shadow: var(--elevation-strong);
+  }
+  
+  .elevation-5 {
+    box-shadow: var(--elevation-strong);
+  }
+}
+
+/* State Layer Utilities - Refined for maternal wisdom tone */
+@layer utilities {
+  .state-layer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .state-layer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
+    pointer-events: none;
+  }
+  
+  .state-layer:hover::before {
+    opacity: 0.06; /* Reduced from 0.08 for subtlety */
+  }
+  
+  .state-layer:focus-visible::before {
+    opacity: 0.10; /* Reduced from 0.12 for subtlety */
+  }
+  
+  .state-layer:active::before {
+    opacity: 0.12; /* Reduced from 0.16 for subtlety */
+  }
+}
+
+/* Micro-interaction utilities for maternal wisdom tone */
+@layer utilities {
+  .micro-lift {
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+  
+  .micro-lift:hover {
+    transform: translateY(-1px);
+  }
+  
+  .micro-glow {
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+  
+  .micro-glow:hover {
+    box-shadow: 0 0 8px var(--momops-care-glow);
+  }
+  
+  .micro-underline {
+    position: relative;
+  }
+  
+  .micro-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--care-emerald);
+    transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+  
+  .micro-underline:hover::after {
+    width: 100%;
+  }
+}
+
+/* Entrance animation utilities - Subtle for maternal wisdom */
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.2, 0, 0, 1) forwards;
+  }
+  
+  .slide-in-up {
+    animation: slideInUp 0.5s cubic-bezier(0.2, 0, 0, 1) forwards;
+  }
+  
+  .slide-in-down {
+    animation: slideInDown 0.5s cubic-bezier(0.2, 0, 0, 1) forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Styling for Data Tables */
+.table-scroll-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neutral-lilac) transparent;
+}
+
+.table-scroll-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--neutral-lilac);
+  border-radius: 3px;
+  transition: background 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--care-emerald);
+}
+
+/* Scroll fade indicators for tables */
+.table-scroll-fade-top,
+.table-scroll-fade-bottom {
+  position: absolute;
+  left: 0;
+  right: 6px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.table-scroll-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--bg-card) 0%, transparent 100%);
+}
+
+.table-scroll-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--bg-card) 0%, transparent 100%);
+}
+
+.table-scroll-fade-top.visible,
+.table-scroll-fade-bottom.visible {
+  opacity: 1;
+}

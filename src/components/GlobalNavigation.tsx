@@ -51,9 +51,9 @@ export function GlobalNavigation({
               whileTap={{ scale: 0.98 }}
             >
               <img src={carefolioLogo} alt="Carefolio" className="w-10 h-10" />
-              <span className="headline-h3">
-                <span style={{ color: '#6B3FA0' }}>Care</span>
-                <span className="text-care-emerald">folio</span>
+              <span className="headline-h3" style={{ color: '#1A1410' }}>
+                <span style={{ fontWeight: 600 }}>Care</span>
+                <span style={{ fontWeight: 400 }}>folio</span>
               </span>
             </motion.div>
           </div>
@@ -108,16 +108,16 @@ export function GlobalNavigation({
             <button 
               className="nav-cta-button"
               onClick={() => window.open('https://carefolio.beehiiv.com/', '_blank')}
-              style={{ 
-                backgroundColor: '#6B3FA0', 
+              style={{
+                backgroundColor: '#1A1410',
                 color: 'white',
-                borderColor: '#6B3FA0'
+                borderColor: '#1A1410'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#5A3188';
+                e.currentTarget.style.backgroundColor = '#000000';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#6B3FA0';
+                e.currentTarget.style.backgroundColor = '#1A1410';
               }}
             >
               <Mail className="w-4 h-4" />
@@ -156,7 +156,7 @@ export function GlobalNavigation({
                 onClick={() => handleNavClick(onNavigateToLanding)}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
                   currentPage === 'landing'
-                    ? 'bg-purple-50 text-[#6B3FA0] font-medium'
+                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}
               >
@@ -166,7 +166,7 @@ export function GlobalNavigation({
                 onClick={() => handleNavClick(onNavigateToAbout)}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
                   currentPage === 'about'
-                    ? 'bg-purple-50 text-[#6B3FA0] font-medium'
+                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}
               >
@@ -176,7 +176,7 @@ export function GlobalNavigation({
                 onClick={() => handleNavClick(onNavigateToInsights)}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
                   currentPage === 'insights'
-                    ? 'bg-purple-50 text-[#6B3FA0] font-medium'
+                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}
               >
@@ -210,7 +210,7 @@ export function GlobalNavigation({
                 onClick={() => handleNavClick(onNavigateToDashboard)}
                 className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
                   currentPage === 'dashboard'
-                    ? 'bg-purple-50 text-[#6B3FA0] font-medium'
+                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
                     : 'text-gray-700 hover:bg-gray-50'
                 }`}
               >
@@ -223,7 +223,7 @@ export function GlobalNavigation({
                   onClick={() => {
                     window.open('https://carefolio.beehiiv.com/', '_blank');
                   }}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#6B3FA0] text-white font-medium hover:bg-[#5A3188] transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#1A1410] text-white font-medium hover:bg-black transition-colors"
                 >
                   <Mail className="w-4 h-4" />
                   Join Waitlist

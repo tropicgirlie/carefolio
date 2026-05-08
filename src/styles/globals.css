@@ -1282,7 +1282,7 @@
     position: relative;
   }
 
-  /* Emerald hover underline */
+  /* Wine hover underline (Carefolio investment brand direction) */
   .nav-link::after {
     content: '';
     position: absolute;
@@ -1290,24 +1290,24 @@
     left: 16px;
     right: 16px;
     height: 2px;
-    background: var(--care-emerald);
+    background: #4A1F30;
     transform: scaleX(0);
     transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
     transform-origin: left;
   }
 
   .nav-link:hover {
-    color: var(--fintech-feminine-lavender);
+    color: #1A1410;
   }
 
   .nav-link:hover::after {
-    background: var(--fintech-feminine-lavender);
+    background: #1A1410;
     transform: scaleX(1);
   }
 
-  /* Active state with emerald underline and bold text */
+  /* Active state with wine underline and bold ink text */
   .nav-link.active {
-    color: var(--care-emerald);
+    color: #1A1410;
     font-weight: 600; /* Bold text for active state */
   }
 

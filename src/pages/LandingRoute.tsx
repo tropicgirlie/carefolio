@@ -1,18 +1,16 @@
-import { LandingPage } from '../components/LandingPage';
-import { useAuth } from '../contexts/AuthContext';
+import { InvestLandingPage } from '../components/InvestLandingPage';
 import { useAppNavigation } from '../hooks/useAppNavigation';
-import { mockCompanies } from '../data/companies';
 
 export function LandingRoute() {
-  const { handleLogin, loginError } = useAuth();
   const nav = useAppNavigation();
 
   return (
-    <LandingPage
-      {...nav.pageProps}
-      onLogin={handleLogin}
-      loginError={loginError}
-      companies={mockCompanies || []}
+    <InvestLandingPage
+      onLogoClick={nav.pageProps.onLogoClick}
+      onNavigateToLogin={nav.pageProps.onNavigateToLogin}
+      onNavigateToInsights={nav.pageProps.onNavigateToInsights}
+      onNavigateToAbout={nav.pageProps.onNavigateToAbout}
+      onNavigateToDashboard={nav.pageProps.onNavigateToDashboard}
     />
   );
 }

@@ -1,12 +1,12 @@
 // Carefolio investment-companion landing page.
 //
-// This is the public marketing surface for the Carefolio simulator. It does
-// not move money, it does not provide investment advice. It explains the
-// product, shows how the Care Score screening works, and routes the user to
-// the simulator.
+// Visual language inspired by Female Invest: warm cream backgrounds, deep
+// wine accents, near-black buttons with white text, editorial typography.
+// Colors are inlined here (Tailwind arbitrary values) so they do not
+// override the global emerald primary used elsewhere in the app.
 //
-// Pure simulation positioning. The disclaimer block near the CTA is doing
-// real legal work: keep it visible and unambiguous.
+// Pure simulation positioning. The amber disclaimer block near the CTA is
+// doing real legal work: keep it visible and unambiguous.
 
 import { motion } from "motion/react";
 import {
@@ -23,9 +23,22 @@ import {
   Wallet,
   CheckCircle2,
 } from "lucide-react";
-import { Button } from "./ui/button";
 import { CareMarketTicker } from "./CareMarketTicker";
 import { GROUPS, MAX_RAW_TOTAL, SIGNALS } from "../lib/careScore";
+
+// ─── Palette (Female Invest inspired) ───────────────────────────────────
+const C = {
+  cream: "#F8F3EA",        // page background
+  creamDeep: "#EFE5D0",    // alt section bg
+  ink: "#1A1410",          // body text and primary buttons
+  inkSoft: "#3F352D",      // softer body
+  muted: "#7A6B5C",         // muted text
+  border: "#E1D5BF",        // subtle borders
+  wine: "#4A1F30",          // deep wine accent
+  wineSoft: "#7A3447",      // gradient partner
+  rose: "#C9988E",          // dusty rose
+  roseSoft: "#E8C9C0",      // chip background
+} as const;
 
 interface InvestLandingPageProps {
   onNavigateToLogin: () => void;
@@ -41,13 +54,21 @@ export function InvestLandingPage({
   onNavigateToDashboard,
 }: InvestLandingPageProps) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: C.cream, color: C.ink }}
+    >
       {/* ─────────────────────────  Live ticker  ───────────────────────── */}
       <CareMarketTicker />
 
       {/* ─────────────────────────  Hero  ──────────────────────────────── */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-background to-background" />
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background: `radial-gradient(ellipse at top, ${C.roseSoft}55 0%, ${C.cream} 60%)`,
+          }}
+        />
         <div className="mx-auto max-w-6xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -55,46 +76,57 @@ export function InvestLandingPage({
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium"
+              style={{
+                backgroundColor: C.roseSoft,
+                color: C.wine,
+              }}
+            >
               <Sparkles className="size-3.5" />
-              AI portfolio simulator, no account required
+              AI portfolio simulator. No account, no money, no email.
             </div>
 
-            <h1 className="mt-6 text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
+            <h1
+              className="mt-7 text-5xl font-semibold tracking-tight sm:text-6xl md:text-[5.5rem] md:leading-[1.02]"
+              style={{ color: C.ink }}
+            >
               Care is{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              <span
+                className="italic"
+                style={{
+                  background: `linear-gradient(120deg, ${C.wine} 0%, ${C.wineSoft} 100%)`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
                 Capital
               </span>
               .
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
+            <p
+              className="mt-6 max-w-2xl text-lg sm:text-xl"
+              style={{ color: C.inkSoft }}
+            >
               Build a long-term portfolio out of companies that actually invest
               in their people. Set a goal, see how it would have performed over
               the last 10 years, and project what the next 20 could look like.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Button
-                size="lg"
-                onClick={onNavigateToDashboard}
-                className="h-12 rounded-full px-7 text-base"
-              >
+              <PrimaryButton onClick={onNavigateToDashboard}>
                 Open the simulator
                 <ArrowRight className="size-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={onNavigateToInsights}
-                className="h-12 rounded-full px-7 text-base"
-              >
+              </PrimaryButton>
+              <SecondaryButton onClick={onNavigateToInsights}>
                 Read the methodology
-              </Button>
+              </SecondaryButton>
             </div>
 
-            <p className="mt-5 text-xs text-muted-foreground">
-              No account, no money, no email. Just the numbers.
+            <p className="mt-5 text-xs" style={{ color: C.muted }}>
+              Simulation only. Past performance does not predict future returns.
             </p>
           </motion.div>
 
@@ -103,7 +135,12 @@ export function InvestLandingPage({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-6 rounded-2xl border bg-card/60 p-6 shadow-sm backdrop-blur-sm sm:grid-cols-4"
+            className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-6 rounded-2xl p-6 sm:grid-cols-4"
+            style={{
+              backgroundColor: "white",
+              border: `1px solid ${C.border}`,
+              boxShadow: `0 1px 0 ${C.border}55`,
+            }}
           >
             <Stat label="Companies screened" value="200+" />
             <Stat label="Signals per company" value="16" />
@@ -114,7 +151,13 @@ export function InvestLandingPage({
       </section>
 
       {/* ─────────────────────────  How it works  ──────────────────────── */}
-      <section className="border-t bg-muted/30">
+      <section
+        className="border-y"
+        style={{
+          backgroundColor: C.creamDeep,
+          borderColor: C.border,
+        }}
+      >
         <div className="mx-auto max-w-6xl px-6 py-24">
           <SectionHeader
             eyebrow="How it works"
@@ -122,7 +165,7 @@ export function InvestLandingPage({
             subtitle="The whole flow runs in your browser. We never see your money because we never touch it."
           />
 
-          <div className="mt-16 grid gap-8 md:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
             <StepCard
               n={1}
               icon={<Target className="size-5" />}
@@ -157,30 +200,37 @@ export function InvestLandingPage({
                 align="left"
               />
 
-              <ul className="mt-8 space-y-3 text-sm">
+              <ul className="mt-8 space-y-3 text-sm" style={{ color: C.inkSoft }}>
                 <Feature>16 signals, 100 raw points, normalized to 0 to 100</Feature>
                 <Feature>4 tiers: Gold, Rising Star, Listed, Not listed</Feature>
                 <Feature>Versioned per SemVer so a 2026 score and a 2030 score are comparable</Feature>
                 <Feature>Editorial override exposed transparently on every audit trail</Feature>
               </ul>
 
-              <Button
-                variant="outline"
-                className="mt-8 rounded-full"
-                onClick={onNavigateToInsights}
-              >
-                Full methodology
-                <ArrowRight className="size-4" />
-              </Button>
+              <div className="mt-8">
+                <SecondaryButton onClick={onNavigateToInsights}>
+                  Full methodology
+                  <ArrowRight className="size-4" />
+                </SecondaryButton>
+              </div>
             </div>
 
             {/* Signals grid */}
-            <div className="rounded-2xl border bg-card p-6 shadow-sm">
+            <div
+              className="rounded-2xl p-6"
+              style={{
+                backgroundColor: "white",
+                border: `1px solid ${C.border}`,
+              }}
+            >
               <div className="mb-4 flex items-center justify-between">
-                <div className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                <div
+                  className="text-xs font-medium uppercase tracking-wider"
+                  style={{ color: C.wine }}
+                >
                   Care Score v1.0
                 </div>
-                <div className="text-xs font-mono text-muted-foreground">
+                <div className="text-xs font-mono" style={{ color: C.muted }}>
                   {SIGNALS.length} signals · {MAX_RAW_TOTAL} pts
                 </div>
               </div>
@@ -196,7 +246,7 @@ export function InvestLandingPage({
                     <div key={group}>
                       <div className="flex items-center justify-between">
                         <div className="text-sm font-medium">{group}</div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-xs" style={{ color: C.muted }}>
                           {groupTotal} pts
                         </div>
                       </div>
@@ -204,13 +254,19 @@ export function InvestLandingPage({
                         {signals.map((s) => (
                           <span
                             key={s.key}
-                            className="inline-flex items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-xs"
+                            className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs"
+                            style={{
+                              backgroundColor: C.cream,
+                              border: `1px solid ${C.border}`,
+                              color: C.ink,
+                            }}
                           >
-                            <span className="size-1.5 rounded-full bg-primary/70" />
+                            <span
+                              className="size-1.5 rounded-full"
+                              style={{ backgroundColor: C.wine }}
+                            />
                             {s.label}
-                            <span className="text-muted-foreground">
-                              {s.weight}
-                            </span>
+                            <span style={{ color: C.muted }}>{s.weight}</span>
                           </span>
                         ))}
                       </div>
@@ -224,7 +280,10 @@ export function InvestLandingPage({
       </section>
 
       {/* ─────────────────────────  Tier preview  ─────────────────────── */}
-      <section className="border-t bg-muted/30">
+      <section
+        className="border-y"
+        style={{ backgroundColor: C.creamDeep, borderColor: C.border }}
+      >
         <div className="mx-auto max-w-6xl px-6 py-24">
           <SectionHeader
             eyebrow="Four tiers, one decision"
@@ -238,42 +297,55 @@ export function InvestLandingPage({
               range="90+"
               icon={<Award className="size-4" />}
               copy="Best in class across nearly every signal. Rare."
-              accent="bg-amber-100 text-amber-900 dark:bg-amber-900/30 dark:text-amber-100"
+              accentBg={C.wine}
+              accentText="white"
             />
             <TierCard
               tier="Rising Star"
               range="75 to 89"
               icon={<Heart className="size-4" />}
               copy="Strong on parental leave plus three other categories."
-              accent="bg-pink-100 text-pink-900 dark:bg-pink-900/30 dark:text-pink-100"
+              accentBg={C.rose}
+              accentText={C.ink}
             />
             <TierCard
               tier="Listed"
               range="60 to 74"
               icon={<BadgeCheck className="size-4" />}
               copy="Above the floor that earns a place in the directory."
-              accent="bg-emerald-100 text-emerald-900 dark:bg-emerald-900/30 dark:text-emerald-100"
+              accentBg={C.creamDeep}
+              accentText={C.inkSoft}
             />
             <TierCard
               tier="Not listed"
               range="below 60"
               icon={<Users className="size-4 opacity-50" />}
               copy="Below the floor. Not surfaced. Signal over noise."
-              accent="bg-muted text-muted-foreground"
+              accentBg="white"
+              accentText={C.muted}
             />
           </div>
         </div>
       </section>
 
       {/* ─────────────────────────  Disclaimer  ────────────────────────── */}
-      <section className="border-y bg-amber-50 dark:bg-amber-950/20">
+      <section
+        className="border-y"
+        style={{
+          backgroundColor: "#FAF1E0",
+          borderColor: "#E8D8B6",
+        }}
+      >
         <div className="mx-auto flex max-w-6xl items-start gap-4 px-6 py-8">
-          <AlertTriangle className="mt-0.5 size-5 shrink-0 text-amber-700 dark:text-amber-400" />
+          <AlertTriangle
+            className="mt-0.5 size-5 shrink-0"
+            style={{ color: "#8A6B23" }}
+          />
           <div className="space-y-1 text-sm">
-            <p className="font-medium text-amber-900 dark:text-amber-100">
+            <p className="font-medium" style={{ color: "#5C4715" }}>
               Carefolio is a simulation tool, not a financial advisor.
             </p>
-            <p className="text-amber-800 dark:text-amber-200/90">
+            <p style={{ color: "#7A5C1F" }}>
               We do not hold or trade money, and we do not provide personalized
               investment advice. Past performance does not predict future
               returns. Backtests use historical price data, projections use
@@ -293,40 +365,48 @@ export function InvestLandingPage({
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <Wallet className="mx-auto size-9 text-primary" />
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
-              See what €250 a month could look like.
+            <Wallet className="mx-auto size-9" style={{ color: C.wine }} />
+            <h2
+              className="mt-6 text-3xl font-semibold tracking-tight sm:text-5xl"
+              style={{ color: C.ink }}
+            >
+              See what{" "}
+              <span className="italic" style={{ color: C.wine }}>
+                €250 a month
+              </span>{" "}
+              could look like.
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="mt-4" style={{ color: C.inkSoft }}>
               Open the simulator and build a portfolio in under five minutes.
               Nothing to install, nothing to sign up for, nothing at stake.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button
-                size="lg"
-                onClick={onNavigateToDashboard}
-                className="h-12 rounded-full px-7 text-base"
-              >
+              <PrimaryButton onClick={onNavigateToDashboard}>
                 Open the simulator
                 <ArrowRight className="size-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="ghost"
+              </PrimaryButton>
+              <button
                 onClick={onNavigateToLogin}
-                className="h-12 rounded-full px-7 text-base"
+                className="inline-flex h-12 items-center gap-2 rounded-full px-7 text-sm font-medium underline-offset-4 hover:underline"
+                style={{ color: C.inkSoft }}
               >
                 Save your scenarios (early access)
-              </Button>
+              </button>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ─────────────────────────  Trust footer strip  ───────────────── */}
-      <section className="border-t">
+      <section
+        className="border-t"
+        style={{ borderColor: C.border, backgroundColor: C.cream }}
+      >
         <div className="mx-auto max-w-6xl px-6 py-10">
-          <div className="flex flex-col items-center justify-between gap-4 text-xs text-muted-foreground sm:flex-row">
+          <div
+            className="flex flex-col items-center justify-between gap-4 text-xs sm:flex-row"
+            style={{ color: C.muted }}
+          >
             <div className="flex items-center gap-2">
               <ShieldCheck className="size-4" />
               Built on the open Care Score methodology, version 1.0.
@@ -334,16 +414,18 @@ export function InvestLandingPage({
             <div className="flex items-center gap-4">
               <a
                 href="https://github.com/tropicgirlie/care-score"
-                className="hover:text-foreground"
                 target="_blank"
                 rel="noreferrer"
+                className="hover:underline"
+                style={{ color: C.inkSoft }}
               >
                 Methodology source
               </a>
-              <span className="text-border">·</span>
+              <span style={{ color: C.border }}>·</span>
               <button
                 onClick={onNavigateToInsights}
-                className="hover:text-foreground"
+                className="hover:underline"
+                style={{ color: C.inkSoft }}
               >
                 Methodology page
               </button>
@@ -357,13 +439,62 @@ export function InvestLandingPage({
 
 /* ────────────────────────  Internal helpers  ──────────────────────────── */
 
+function PrimaryButton({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="inline-flex h-12 items-center gap-2 rounded-full px-7 text-base font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+      style={{
+        backgroundColor: C.ink,
+        color: "white",
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
+function SecondaryButton({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="inline-flex h-12 items-center gap-2 rounded-full px-7 text-base font-medium transition-all hover:opacity-80"
+      style={{
+        backgroundColor: "transparent",
+        color: C.ink,
+        border: `1.5px solid ${C.ink}`,
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="text-center">
-      <div className="text-2xl font-semibold tracking-tight sm:text-3xl">
+      <div
+        className="text-2xl font-semibold tracking-tight sm:text-3xl"
+        style={{ color: C.ink }}
+      >
         {value}
       </div>
-      <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+      <div
+        className="mt-1 text-xs uppercase tracking-wider"
+        style={{ color: C.muted }}
+      >
         {label}
       </div>
     </div>
@@ -381,18 +512,28 @@ function SectionHeader({
   subtitle?: string;
   align?: "center" | "left";
 }) {
-  const wrapperAlign = align === "center" ? "items-center text-center" : "items-start text-left";
+  const wrapperAlign =
+    align === "center" ? "items-center text-center" : "items-start text-left";
   const subtitleWidth = align === "center" ? "max-w-2xl" : "max-w-xl";
   return (
     <div className={`flex flex-col ${wrapperAlign}`}>
-      <div className="text-xs font-medium uppercase tracking-wider text-primary">
+      <div
+        className="text-xs font-medium uppercase tracking-[0.18em]"
+        style={{ color: C.wine }}
+      >
         {eyebrow}
       </div>
-      <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2
+        className="mt-4 text-3xl font-semibold tracking-tight sm:text-5xl"
+        style={{ color: C.ink }}
+      >
         {title}
       </h2>
       {subtitle ? (
-        <p className={`mt-4 text-muted-foreground ${subtitleWidth}`}>
+        <p
+          className={`mt-5 text-base sm:text-lg ${subtitleWidth}`}
+          style={{ color: C.inkSoft }}
+        >
           {subtitle}
         </p>
       ) : null}
@@ -417,16 +558,36 @@ function StepCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, ease: "easeOut", delay: n * 0.05 }}
-      className="relative rounded-2xl border bg-card p-7 shadow-sm"
+      className="relative rounded-2xl p-7"
+      style={{
+        backgroundColor: "white",
+        border: `1px solid ${C.border}`,
+      }}
     >
-      <div className="absolute -top-3 left-7 inline-flex size-7 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+      <div
+        className="absolute -top-3 left-7 inline-flex size-7 items-center justify-center rounded-full text-xs font-semibold"
+        style={{
+          backgroundColor: C.ink,
+          color: "white",
+        }}
+      >
         {n}
       </div>
-      <div className="inline-flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+      <div
+        className="inline-flex size-9 items-center justify-center rounded-lg"
+        style={{
+          backgroundColor: C.roseSoft,
+          color: C.wine,
+        }}
+      >
         {icon}
       </div>
-      <div className="mt-5 text-lg font-medium">{title}</div>
-      <p className="mt-2 text-sm text-muted-foreground">{body}</p>
+      <div className="mt-5 text-lg font-medium" style={{ color: C.ink }}>
+        {title}
+      </div>
+      <p className="mt-2 text-sm" style={{ color: C.inkSoft }}>
+        {body}
+      </p>
     </motion.div>
   );
 }
@@ -434,7 +595,10 @@ function StepCard({
 function Feature({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2">
-      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
+      <CheckCircle2
+        className="mt-0.5 size-4 shrink-0"
+        style={{ color: C.wine }}
+      />
       <span>{children}</span>
     </li>
   );
@@ -445,24 +609,40 @@ function TierCard({
   range,
   icon,
   copy,
-  accent,
+  accentBg,
+  accentText,
 }: {
   tier: string;
   range: string;
   icon: React.ReactNode;
   copy: string;
-  accent: string;
+  accentBg: string;
+  accentText: string;
 }) {
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div
+      className="rounded-2xl p-6"
+      style={{
+        backgroundColor: "white",
+        border: `1px solid ${C.border}`,
+      }}
+    >
       <div
-        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${accent}`}
+        className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium"
+        style={{ backgroundColor: accentBg, color: accentText }}
       >
         {icon}
         {tier}
       </div>
-      <div className="mt-4 text-2xl font-semibold tracking-tight">{range}</div>
-      <p className="mt-2 text-sm text-muted-foreground">{copy}</p>
+      <div
+        className="mt-4 text-2xl font-semibold tracking-tight"
+        style={{ color: C.ink }}
+      >
+        {range}
+      </div>
+      <p className="mt-2 text-sm" style={{ color: C.inkSoft }}>
+        {copy}
+      </p>
     </div>
   );
 }

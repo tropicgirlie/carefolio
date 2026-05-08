@@ -44,7 +44,7 @@ export function CareMarketTicker() {
         className="absolute left-0 top-0 bottom-0 z-20 flex items-center justify-center px-3 flex-shrink-0"
         style={{
           width: `${LABEL_W}px`,
-          background: '#2BAE66',
+          background: '#4A1F30',
           fontFamily: "'IBM Plex Mono', monospace",
           fontSize: '10px',
           fontWeight: 600,

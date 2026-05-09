@@ -1,17 +1,22 @@
-// About page: the personal-journey story.
+// About page.
 //
-// Tone: honest, dry-witty, sources cited inline, no jargon. First-person
-// past tense. The standing 'I am not a regulated financial adviser' line
-// is required on every page that touches money. Keep it visible.
+// Voice: senior product designer in Dublin, documenting her own learning
+// in public. Confident, curious, reads a lot. The site is framed as a lab
+// notebook: journal = field notes, method = screening rules, brokers =
+// methods section, research = literature review. No 'nobody taught me'
+// or self-pity register.
 //
-// EDIT ME markers point at sentences you'll want to swap for your actual
-// biography. Everything else is structural and can stay.
-//
-// Refactored to use shadcn primitives + typography primitives + design
-// tokens. No const C palette, no inline buttons.
+// Refactored to shadcn primitives + typography primitives + design tokens.
 
 import { motion } from "motion/react";
-import { ArrowRight, Mail, BookOpen, Compass, Receipt, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Mail,
+  PenLine,
+  Compass,
+  BookOpen,
+  Beaker,
+} from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import {
@@ -50,141 +55,100 @@ export function AboutPage(_props: AboutPageProps) {
           >
             <Eyebrow>About</Eyebrow>
             <DisplayHeading level={1} size="xl" className="mt-5">
-              I'm{" "}
-              <span className="italic text-wine">Luana</span>
-              . Forty-something, a woman in Dublin, and nobody ever taught me how to invest.
+              I learn by{" "}
+              <span className="italic text-wine">writing</span>{" "}
+              things down.
             </DisplayHeading>
             <ProseLead className="mt-6 max-w-3xl">
-              So I'm learning in public, with receipts. An immigrant's journey
-              to a private portfolio, written as I go. The journal, the
-              research, and the practical guide I wish someone had handed me
-              ten years ago.
+              I'm Luana, a senior product designer in Dublin. This site is my
+              lab notebook for learning to invest. Field notes from one woman
+              doing the homework in public, with sources cited.
             </ProseLead>
           </motion.div>
         </div>
       </section>
 
-      {/* My story */}
+      {/* Why the writing */}
       <section>
         <div className="mx-auto max-w-2xl px-6 py-20">
-          <Eyebrow>The story</Eyebrow>
+          <Eyebrow>Why I write it down</Eyebrow>
           <DisplayHeading level={2} size="md" className="mt-5">
-            How I ended up writing this in my forties.
+            A thing I cannot explain plainly is a thing I do not yet understand.
           </DisplayHeading>
           <Prose className="mt-7">
-            {/* EDIT ME: swap in your real opening line */}
             <p>
-              I came to Ireland for work and stayed for the rain. I built a
-              career in technology, raised a family, paid taxes in two countries,
-              and through all of it never once thought hard about pensions.
-              Pensions were something other people had. People with longer
-              tenure, more stable plans, a different accent.
-            </p>
-            {/* EDIT ME: your specific motherhood / career interruption story */}
-            <p>
-              By the time I started looking, I was forty. I'd missed the easy
-              decade, the one all the books are written for. I'd taken a career
-              break around motherhood, like most women I know. The default
-              workplace pension I had been paying into was charging fees I now
-              know are not normal.
+              I read a lot. Books, primary research, methodology PDFs, the
+              occasional finance Twitter thread. Most of it falls out of my head
+              within a week if I do not write it down. So I am writing it down
+              here, where the discipline of writing for an audience keeps the
+              thinking honest.
             </p>
             <p>
-              Nobody, in any of the rooms I had been in, had ever sat me down
-              and said:{" "}
-              <em className="text-wine">
-                this is how compounding works, this is what a PRSA is, this is
-                what you are paying for, this is what you can do about it
-              </em>
-              . Not a teacher, not a colleague, not a partner, not a friend.
-              The closest I got was a Female Money Diaries article one Sunday
-              morning. Then I went looking for the version of that for an
-              immigrant woman in her forties in Ireland, and I could not find
-              it. So I'm writing it.
+              That is the rule I learned in product design and applied to
+              everything else: <em className="text-wine">writing in public is
+              the cheapest way to find out what you actually understand.</em>{" "}
+              The act of explaining is the act of learning. Carefolio is the
+              long-form version of that practice, applied to a domain I am
+              deliberately new to.
+            </p>
+            <p>
+              I moved to Ireland years ago, and the financial system reads
+              differently in a second language. The site documents that
+              translation work too: PRSAs, AMRFs, BIK, USC, all the local
+              acronyms that nobody bothers to spell out for a working immigrant.
+              That is one bullet of why I write, not the headline.
             </p>
           </Prose>
         </div>
       </section>
 
-      {/* The gap */}
+      {/* The metaphor */}
       <section className="border-y border-border-warm bg-cream-deep">
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <Eyebrow>What the data says</Eyebrow>
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <Eyebrow>How the site is laid out</Eyebrow>
           <DisplayHeading level={2} size="md" className="mt-5">
-            It's not just me.
+            A practitioner's working setup, in four pages.
           </DisplayHeading>
-          <ProseLead className="mt-5">
-            I started writing this from a personal place. The numbers below
-            made it feel like a public one. All three are provisional until I
-            cross-check them against primary sources for the first journal
-            entry.
+          <ProseLead className="mt-5 max-w-3xl">
+            Designers will recognise the structure. I picked it because it
+            works.
           </ProseLead>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <StatCard
-              value="57%"
-              label="of women in Europe invest"
-              foot="vs 71% of men. BlackRock, 2023."
-            />
-            <StatCard
-              value="26%"
-              label="EU gender pension gap"
-              foot="Roughly 28% in Ireland. Eurostat / EIGE, 2022 data."
-            />
-            <StatCard
-              value="4"
-              label="years later, on average"
-              foot="When women start investing, vs men. BlackRock, 2023."
-            />
-          </div>
-
-          <ProseLead className="mt-12">
-            There's no clean published statistic on immigrant women
-            specifically. What does exist: migrant households across the
-            eurozone hold roughly half the median net wealth of native-born
-            households (ECB Household Finance and Consumption Survey, 2021).
-            Nobody is measuring my exact cohort carefully. That's part of why
-            I'm writing this.
-          </ProseLead>
-        </div>
-      </section>
-
-      {/* What this site is */}
-      <section>
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <Eyebrow>What this is</Eyebrow>
-          <DisplayHeading level={2} size="md" className="mt-5">
-            Three things, one place.
-          </DisplayHeading>
-          <ProseLead className="mt-5">
-            Carefolio does three jobs. In this order.
-          </ProseLead>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
             <Pillar
-              icon={<Receipt className="size-5" />}
-              title="A diary"
-              body="What I bought, what I sold, what it cost, what I read this week, what I got wrong. Personal first, useful second."
-            />
-            <Pillar
-              icon={<BookOpen className="size-5" />}
-              title="A research site"
-              body="The gender investing gap, the immigrant women angle, the pension gap, the studies behind why this matters."
+              icon={<PenLine className="size-5" />}
+              label="/journal"
+              title="Field notes"
+              body="One entry a week. What I bought, what I read, what I changed my mind about. The lab notebook. Pulled from blog.luana.systems."
             />
             <Pillar
               icon={<Compass className="size-5" />}
-              title="A practical guide"
-              body="The brokers that work in Ireland and the EU, the wrappers, the taxes, the things I had to figure out the hard way."
+              label="/method"
+              title="Screening rules"
+              body="The 16-signal Care Score, my filter for which companies are eligible to be in the portfolio. Versioned in public on GitHub."
+            />
+            <Pillar
+              icon={<Beaker className="size-5" />}
+              label="/brokers"
+              title="Methods section"
+              body="The specific platforms I would actually open an account with, the trade-offs, the things their marketing does not tell you."
+            />
+            <Pillar
+              icon={<BookOpen className="size-5" />}
+              label="/research"
+              title="Literature review"
+              body="The numbers behind why this matters: the gender investing gap, the pension gap, the data nobody is collecting on immigrant women."
             />
           </div>
         </div>
       </section>
 
       {/* What this is NOT */}
-      <section className="border-y border-border-warm bg-cream-deep">
+      <section>
         <div className="mx-auto max-w-2xl px-6 py-20">
           <Eyebrow>What this is not</Eyebrow>
           <DisplayHeading level={2} size="md" className="mt-5">
-            A few things I want to be clear about.
+            Three things I want to be clear about.
           </DisplayHeading>
           <Prose className="mt-7">
             <p>
@@ -211,7 +175,7 @@ export function AboutPage(_props: AboutPageProps) {
       </section>
 
       {/* Who this is for */}
-      <section>
+      <section className="border-y border-border-warm bg-cream-deep">
         <div className="mx-auto max-w-2xl px-6 py-20">
           <Eyebrow>Who this is for</Eyebrow>
           <DisplayHeading level={2} size="md" className="mt-5">
@@ -219,41 +183,39 @@ export function AboutPage(_props: AboutPageProps) {
           </DisplayHeading>
           <ul className="mt-8 space-y-3 text-base text-ink-soft sm:text-lg">
             <Bullet>
-              You moved here from somewhere else, and the financial system
-              reads like a foreign novel.
+              People who like reading other people's working notes.
             </Bullet>
             <Bullet>
-              You're starting after forty and you're tired of being told you
-              should have started at twenty-two.
+              Late starters with high standards who do not want to be
+              patronised.
             </Bullet>
             <Bullet>
-              You took a career break around children and the pension forecasts
-              all assume you didn't.
+              Designers and PMs who got curious about money and could not find
+              a reading list that respected their time.
             </Bullet>
             <Bullet>
-              Your workplace pension default fund is charging more than 0.5% a
-              year and nobody has ever explained why.
+              Immigrants doing the translation work twice. Once for the
+              language, once for the financial system.
             </Bullet>
             <Bullet>
-              You'd like to read about money in a tone that is neither
-              patronising nor vaguely alarming, with the names of actual
-              regulators in actual sentences.
+              Anyone tired of personal-finance content that assumes the reader
+              is an idiot.
             </Bullet>
           </ul>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="border-t border-border-warm bg-cream-deep">
+      <section>
         <div className="mx-auto max-w-3xl px-6 py-24 text-center">
           <Eyebrow>How to follow along</Eyebrow>
           <DisplayHeading level={2} size="lg" className="mt-5">
             One Sunday a week.
           </DisplayHeading>
           <ProseLead className="mt-5">
-            A short journal entry every Sunday. What I did, what I learned,
-            what I'm reading. No spam, no AI-generated nonsense, no "you
-            should buy" anywhere on it.
+            A short field note every Sunday morning. What I did, what I read,
+            what I changed my mind about. No spam, no AI-generated nonsense,
+            no "you should buy" anywhere on it.
           </ProseLead>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
@@ -271,7 +233,7 @@ export function AboutPage(_props: AboutPageProps) {
               asChild
             >
               <a href="/journal">
-                Read the journal
+                Read the field notes
                 <ArrowRight className="size-4" />
               </a>
             </Button>
@@ -284,49 +246,30 @@ export function AboutPage(_props: AboutPageProps) {
 
 /* ──────────────────────────────  Helpers  ──────────────────────────────── */
 
-function StatCard({
-  value,
-  label,
-  foot,
-}: {
-  value: string;
-  label: string;
-  foot: string;
-}) {
-  return (
-    <Card className="border-border-warm bg-white">
-      <CardContent className="px-6 py-6">
-        <div
-          className="text-5xl text-wine sm:text-6xl"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 500,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          {value}
-        </div>
-        <div className="mt-3 text-sm font-medium text-ink">{label}</div>
-        <div className="mt-1.5 text-xs text-muted-warm">{foot}</div>
-      </CardContent>
-    </Card>
-  );
-}
-
 function Pillar({
   icon,
+  label,
   title,
   body,
 }: {
   icon: React.ReactNode;
+  label: string;
   title: string;
   body: string;
 }) {
   return (
     <Card className="border-border-warm bg-white">
       <CardContent className="px-6 py-6">
-        <div className="inline-flex size-9 items-center justify-center rounded-lg bg-peach-soft text-wine">
-          {icon}
+        <div className="flex items-center gap-3">
+          <div className="inline-flex size-9 items-center justify-center rounded-lg bg-peach-soft text-wine">
+            {icon}
+          </div>
+          <code
+            className="rounded-md bg-cream px-2 py-0.5 text-xs text-wine"
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
+            {label}
+          </code>
         </div>
         <div
           className="mt-4 text-xl text-ink"
@@ -347,7 +290,9 @@ function Pillar({
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <CheckCircle2 className="mt-1 size-4 shrink-0 text-wine" />
+      <span
+        className="mt-2.5 inline-block size-1.5 shrink-0 rounded-full bg-wine"
+      />
       <span>{children}</span>
     </li>
   );

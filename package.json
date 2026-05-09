@@ -58,7 +58,10 @@
     "vite": "6.3.5"
   },
   "scripts": {
+    "predev": "node scripts/sync-journal.mjs",
     "dev": "vite",
-    "build": "vite build"
+    "prebuild": "node scripts/sync-journal.mjs",
+    "build": "vite build",
+    "sync-journal": "node scripts/sync-journal.mjs"
   }
 }

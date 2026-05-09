@@ -53,7 +53,7 @@ export function AboutPage(_props: AboutPageProps) {
           >
             <Eyebrow>About</Eyebrow>
             <h1
-              className="mt-5 text-4xl tracking-tight sm:text-6xl md:text-[5rem] md:leading-[1.02]"
+              className="mt-5 text-3xl tracking-tight sm:text-5xl md:text-[3.5rem] md:leading-[1.05]"
               style={{
                 fontFamily: SERIF,
                 fontWeight: 500,
@@ -64,12 +64,12 @@ export function AboutPage(_props: AboutPageProps) {
               <span className="italic" style={{ color: C.wine }}>
                 Luana
               </span>
-              . I'm forty-something, an immigrant in Dublin, and nobody ever taught me how to invest.
+              . Forty-something, a woman in Dublin, and nobody ever taught me how to invest.
             </h1>
-            <p className="mt-7 text-lg sm:text-xl" style={{ color: C.inkSoft }}>
-              So I'm learning in public, with receipts. This site is the journal,
-              the research, and the practical guide I wish someone had handed me
-              ten years ago.
+            <p className="mt-6 text-base sm:text-lg" style={{ color: C.inkSoft }}>
+              So I'm learning in public, with receipts. An immigrant's journey to a
+              private portfolio, written as I go. The journal, the research, and the
+              practical guide I wish someone had handed me ten years ago.
             </p>
           </motion.div>
         </div>

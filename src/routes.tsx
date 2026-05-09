@@ -16,6 +16,7 @@ import { CompareRoute } from './pages/CompareRoute';
 import { PortfolioScoreRoute } from './pages/PortfolioScoreRoute';
 import { BrokersRoute } from './pages/BrokersRoute';
 import { MethodRoute } from './pages/MethodRoute';
+import { JournalRoute } from './pages/JournalRoute';
 
 // Dashboard - public feature preview
 import { DashboardRoute } from './pages/DashboardRoute';
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
           { path: 'compare', Component: CompareRoute },
           { path: 'portfolio-score', Component: PortfolioScoreRoute },
           { path: 'brokers', Component: BrokersRoute },
+          { path: 'journal', Component: JournalRoute },
 
           // Dashboard - public feature preview
           { path: 'dashboard', Component: DashboardRoute },

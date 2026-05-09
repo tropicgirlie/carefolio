@@ -6,23 +6,22 @@
 //
 // EDIT ME markers point at sentences you'll want to swap for your actual
 // biography. Everything else is structural and can stay.
+//
+// Refactored to use shadcn primitives + typography primitives + design
+// tokens. No const C palette, no inline buttons.
 
 import { motion } from "motion/react";
-import { ArrowRight, Mail, BookOpen, Compass, Receipt } from "lucide-react";
+import { ArrowRight, Mail, BookOpen, Compass, Receipt, CheckCircle2 } from "lucide-react";
+import { Button } from "./ui/button";
+import { Card, CardContent } from "./ui/card";
+import {
+  Eyebrow,
+  DisplayHeading,
+  Prose,
+  ProseLead,
+} from "./branding/typography";
 
-const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
-const C = {
-  cream: "#F8F3EA",
-  creamDeep: "#EFE5D0",
-  ink: "#1A1410",
-  inkSoft: "#3F352D",
-  muted: "#7A6B5C",
-  border: "#E1D5BF",
-  wine: "#4A1F30",
-  wineSoft: "#7A3447",
-  rose: "#E2A48C",
-  roseSoft: "#F5D9C8",
-} as const;
+const NEWSLETTER_URL = "https://carefolio.beehiiv.com/";
 
 interface AboutPageProps {
   onNavigateToLanding: () => void;
@@ -37,14 +36,12 @@ interface AboutPageProps {
 }
 
 export function AboutPage(_props: AboutPageProps) {
-  const handleNewsletter = () => {
-    window.open("https://carefolio.beehiiv.com/", "_blank");
-  };
+  const handleNewsletter = () => window.open(NEWSLETTER_URL, "_blank");
 
   return (
-    <div style={{ backgroundColor: C.cream, color: C.ink }}>
-      {/* ─────────  Hero  ─────────────────────────────────────────────── */}
-      <section className="border-b" style={{ borderColor: C.border }}>
+    <div className="bg-cream text-ink">
+      {/* Hero */}
+      <section className="border-b border-border-warm">
         <div className="mx-auto max-w-3xl px-6 pt-20 pb-20 sm:pt-28">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -52,37 +49,29 @@ export function AboutPage(_props: AboutPageProps) {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>About</Eyebrow>
-            <h1
-              className="mt-5 text-3xl tracking-tight sm:text-5xl md:text-[3.5rem] md:leading-[1.05]"
-              style={{
-                fontFamily: SERIF,
-                fontWeight: 500,
-                letterSpacing: "-0.02em",
-              }}
-            >
+            <DisplayHeading level={1} size="lg" className="mt-5">
               I'm{" "}
-              <span className="italic" style={{ color: C.wine }}>
-                Luana
-              </span>
+              <span className="italic text-wine">Luana</span>
               . Forty-something, a woman in Dublin, and nobody ever taught me how to invest.
-            </h1>
-            <p className="mt-6 text-base sm:text-lg" style={{ color: C.inkSoft }}>
-              So I'm learning in public, with receipts. An immigrant's journey to a
-              private portfolio, written as I go. The journal, the research, and the
-              practical guide I wish someone had handed me ten years ago.
-            </p>
+            </DisplayHeading>
+            <ProseLead className="mt-6">
+              So I'm learning in public, with receipts. An immigrant's journey
+              to a private portfolio, written as I go. The journal, the
+              research, and the practical guide I wish someone had handed me
+              ten years ago.
+            </ProseLead>
           </motion.div>
         </div>
       </section>
 
-      {/* ─────────  My story  ────────────────────────────────────────── */}
+      {/* My story */}
       <section>
         <div className="mx-auto max-w-2xl px-6 py-20">
           <Eyebrow>The story</Eyebrow>
-          <h2 className="mt-5 text-3xl sm:text-4xl tracking-tight" style={headingStyle()}>
+          <DisplayHeading level={2} size="md" className="mt-5">
             How I ended up writing this in my forties.
-          </h2>
-          <Prose>
+          </DisplayHeading>
+          <Prose className="mt-7">
             {/* EDIT ME: swap in your real opening line */}
             <p>
               I came to Ireland for work and stayed for the rain. I built a
@@ -100,73 +89,75 @@ export function AboutPage(_props: AboutPageProps) {
               know are not normal.
             </p>
             <p>
-              Nobody, in any of the rooms I had been in, had ever sat me down and
-              said: <em style={{ color: C.wine }}>this is how compounding works,
-              this is what a PRSA is, this is what you are paying for, this is
-              what you can do about it</em>. Not a teacher, not a colleague, not
-              a partner, not a friend. The closest I got was a Female Money
-              Diaries article one Sunday morning. Then I went looking for the
-              version of that for an immigrant woman in her forties in Ireland,
-              and I could not find it. So I'm writing it.
+              Nobody, in any of the rooms I had been in, had ever sat me down
+              and said:{" "}
+              <em className="text-wine">
+                this is how compounding works, this is what a PRSA is, this is
+                what you are paying for, this is what you can do about it
+              </em>
+              . Not a teacher, not a colleague, not a partner, not a friend.
+              The closest I got was a Female Money Diaries article one Sunday
+              morning. Then I went looking for the version of that for an
+              immigrant woman in her forties in Ireland, and I could not find
+              it. So I'm writing it.
             </p>
           </Prose>
         </div>
       </section>
 
-      {/* ─────────  The gap  ─────────────────────────────────────────── */}
-      <section
-        className="border-y"
-        style={{ backgroundColor: C.creamDeep, borderColor: C.border }}
-      >
+      {/* The gap */}
+      <section className="border-y border-border-warm bg-cream-deep">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <Eyebrow>What the data says</Eyebrow>
-          <h2 className="mt-5 text-3xl sm:text-4xl tracking-tight" style={headingStyle()}>
+          <DisplayHeading level={2} size="md" className="mt-5">
             It's not just me.
-          </h2>
-          <p className="mt-5 text-base sm:text-lg" style={{ color: C.inkSoft }}>
-            I started writing this from a personal place. The numbers below made
-            it feel like a public one. All three are provisional until I cross-check
-            them against primary sources for the first journal entry.
-          </p>
+          </DisplayHeading>
+          <ProseLead className="mt-5">
+            I started writing this from a personal place. The numbers below
+            made it feel like a public one. All three are provisional until I
+            cross-check them against primary sources for the first journal
+            entry.
+          </ProseLead>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <Stat
+            <StatCard
               value="57%"
               label="of women in Europe invest"
               foot="vs 71% of men. BlackRock, 2023."
             />
-            <Stat
+            <StatCard
               value="26%"
               label="EU gender pension gap"
               foot="Roughly 28% in Ireland. Eurostat / EIGE, 2022 data."
             />
-            <Stat
+            <StatCard
               value="4"
               label="years later, on average"
               foot="When women start investing, vs men. BlackRock, 2023."
             />
           </div>
 
-          <p className="mt-12 text-base sm:text-lg" style={{ color: C.inkSoft }}>
-            There's no clean published statistic on immigrant women specifically.
-            What does exist: migrant households across the eurozone hold roughly
-            half the median net wealth of native-born households (ECB Household
-            Finance and Consumption Survey, 2021). Nobody is measuring my exact
-            cohort carefully. That's part of why I'm writing this.
-          </p>
+          <ProseLead className="mt-12">
+            There's no clean published statistic on immigrant women
+            specifically. What does exist: migrant households across the
+            eurozone hold roughly half the median net wealth of native-born
+            households (ECB Household Finance and Consumption Survey, 2021).
+            Nobody is measuring my exact cohort carefully. That's part of why
+            I'm writing this.
+          </ProseLead>
         </div>
       </section>
 
-      {/* ─────────  What this site is  ──────────────────────────────── */}
+      {/* What this site is */}
       <section>
         <div className="mx-auto max-w-3xl px-6 py-20">
           <Eyebrow>What this is</Eyebrow>
-          <h2 className="mt-5 text-3xl sm:text-4xl tracking-tight" style={headingStyle()}>
+          <DisplayHeading level={2} size="md" className="mt-5">
             Three things, one place.
-          </h2>
-          <p className="mt-5 text-base sm:text-lg" style={{ color: C.inkSoft }}>
+          </DisplayHeading>
+          <ProseLead className="mt-5">
             Carefolio does three jobs. In this order.
-          </p>
+          </ProseLead>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             <Pillar
@@ -188,31 +179,28 @@ export function AboutPage(_props: AboutPageProps) {
         </div>
       </section>
 
-      {/* ─────────  What this is NOT  ───────────────────────────────── */}
-      <section
-        className="border-y"
-        style={{ backgroundColor: C.creamDeep, borderColor: C.border }}
-      >
+      {/* What this is NOT */}
+      <section className="border-y border-border-warm bg-cream-deep">
         <div className="mx-auto max-w-2xl px-6 py-20">
           <Eyebrow>What this is not</Eyebrow>
-          <h2 className="mt-5 text-3xl sm:text-4xl tracking-tight" style={headingStyle()}>
+          <DisplayHeading level={2} size="md" className="mt-5">
             A few things I want to be clear about.
-          </h2>
-          <Prose>
+          </DisplayHeading>
+          <Prose className="mt-7">
             <p>
-              <strong style={{ color: C.ink }}>I am not a regulated financial adviser.</strong>{" "}
+              <strong className="text-ink">I am not a regulated financial adviser.</strong>{" "}
               Nothing on this site is investment advice for you. I am writing
               about what I do. You are not me, your tax situation is not mine,
               and I do not know what you should buy.
             </p>
             <p>
-              <strong style={{ color: C.ink }}>Carefolio is not a robo-advisor or a brokerage.</strong>{" "}
+              <strong className="text-ink">Carefolio is not a robo-advisor or a brokerage.</strong>{" "}
               I do not hold money. I do not move money. I do not place trades on
               behalf of anyone. If you want a regulated firm to actually invest
               for you, the brokers page lists places that do exactly that.
             </p>
             <p>
-              <strong style={{ color: C.ink }}>Past performance does not predict future returns.</strong>{" "}
+              <strong className="text-ink">Past performance does not predict future returns.</strong>{" "}
               When I show what a portfolio would have done historically, that is
               a backtest. It is not a promise. It is barely an estimate. Markets
               are markets, and they are perfectly capable of doing the opposite
@@ -222,17 +210,17 @@ export function AboutPage(_props: AboutPageProps) {
         </div>
       </section>
 
-      {/* ─────────  Who this is for  ────────────────────────────────── */}
+      {/* Who this is for */}
       <section>
         <div className="mx-auto max-w-2xl px-6 py-20">
           <Eyebrow>Who this is for</Eyebrow>
-          <h2 className="mt-5 text-3xl sm:text-4xl tracking-tight" style={headingStyle()}>
+          <DisplayHeading level={2} size="md" className="mt-5">
             If any of these sound like you.
-          </h2>
-          <ul className="mt-8 space-y-3 text-base sm:text-lg" style={{ color: C.inkSoft }}>
+          </DisplayHeading>
+          <ul className="mt-8 space-y-3 text-base text-ink-soft sm:text-lg">
             <Bullet>
-              You moved here from somewhere else, and the financial system reads
-              like a foreign novel.
+              You moved here from somewhere else, and the financial system
+              reads like a foreign novel.
             </Bullet>
             <Bullet>
               You're starting after forty and you're tired of being told you
@@ -255,44 +243,38 @@ export function AboutPage(_props: AboutPageProps) {
         </div>
       </section>
 
-      {/* ─────────  CTA  ────────────────────────────────────────────── */}
-      <section
-        className="border-t"
-        style={{ backgroundColor: C.creamDeep, borderColor: C.border }}
-      >
+      {/* CTA */}
+      <section className="border-t border-border-warm bg-cream-deep">
         <div className="mx-auto max-w-3xl px-6 py-24 text-center">
           <Eyebrow>How to follow along</Eyebrow>
-          <h2
-            className="mt-5 text-3xl sm:text-5xl tracking-tight"
-            style={headingStyle()}
-          >
+          <DisplayHeading level={2} size="lg" className="mt-5">
             One Sunday a week.
-          </h2>
-          <p className="mt-5 text-base sm:text-lg" style={{ color: C.inkSoft }}>
-            A short journal entry every Sunday. What I did, what I learned, what
-            I'm reading. No spam, no AI-generated nonsense, no "you should buy"
-            anywhere on it.
-          </p>
+          </DisplayHeading>
+          <ProseLead className="mt-5">
+            A short journal entry every Sunday. What I did, what I learned,
+            what I'm reading. No spam, no AI-generated nonsense, no "you
+            should buy" anywhere on it.
+          </ProseLead>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <button
+            <Button
+              size="lg"
+              className="h-12 rounded-full bg-ink px-7 text-base font-medium text-white hover:bg-black"
               onClick={handleNewsletter}
-              className="inline-flex h-12 items-center gap-2 rounded-full px-7 text-base font-medium transition-opacity hover:opacity-90"
-              style={{ backgroundColor: C.ink, color: "white" }}
             >
               <Mail className="size-4" />
               Join the Sunday letter
-            </button>
-            <a
-              href="/journal"
-              className="inline-flex h-12 items-center gap-2 rounded-full px-7 text-base font-medium transition-opacity hover:opacity-80"
-              style={{
-                color: C.ink,
-                border: `1.5px solid ${C.ink}`,
-              }}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-full border-2 border-ink bg-transparent px-7 text-base font-medium text-ink hover:bg-cream"
+              asChild
             >
-              Read the journal
-              <ArrowRight className="size-4" />
-            </a>
+              <a href="/journal">
+                Read the journal
+                <ArrowRight className="size-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -300,40 +282,9 @@ export function AboutPage(_props: AboutPageProps) {
   );
 }
 
-/* ────────────────────────  Internal helpers  ─────────────────────────── */
+/* ──────────────────────────────  Helpers  ──────────────────────────────── */
 
-function headingStyle() {
-  return {
-    fontFamily: SERIF,
-    fontWeight: 500,
-    letterSpacing: "-0.02em",
-    color: C.ink,
-  } as const;
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="text-xs font-medium uppercase"
-      style={{ color: C.wine, letterSpacing: "0.18em" }}
-    >
-      {children}
-    </div>
-  );
-}
-
-function Prose({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      className="mt-7 space-y-5 text-base leading-[1.7] sm:text-lg"
-      style={{ color: C.inkSoft }}
-    >
-      {children}
-    </div>
-  );
-}
-
-function Stat({
+function StatCard({
   value,
   label,
   foot,
@@ -343,23 +294,22 @@ function Stat({
   foot: string;
 }) {
   return (
-    <div
-      className="rounded-2xl p-6"
-      style={{ backgroundColor: "white", border: `1px solid ${C.border}` }}
-    >
-      <div
-        className="text-5xl tracking-tight sm:text-6xl"
-        style={{ fontFamily: SERIF, fontWeight: 500, color: C.wine }}
-      >
-        {value}
-      </div>
-      <div className="mt-3 text-sm font-medium" style={{ color: C.ink }}>
-        {label}
-      </div>
-      <div className="mt-1.5 text-xs" style={{ color: C.muted }}>
-        {foot}
-      </div>
-    </div>
+    <Card className="border-border-warm bg-white">
+      <CardContent className="px-6 py-6">
+        <div
+          className="text-5xl text-wine sm:text-6xl"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 500,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {value}
+        </div>
+        <div className="mt-3 text-sm font-medium text-ink">{label}</div>
+        <div className="mt-1.5 text-xs text-muted-warm">{foot}</div>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -373,41 +323,31 @@ function Pillar({
   body: string;
 }) {
   return (
-    <div
-      className="rounded-2xl p-6"
-      style={{ backgroundColor: "white", border: `1px solid ${C.border}` }}
-    >
-      <div
-        className="inline-flex size-9 items-center justify-center rounded-lg"
-        style={{ backgroundColor: C.roseSoft, color: C.wine }}
-      >
-        {icon}
-      </div>
-      <div
-        className="mt-4 text-xl"
-        style={{
-          fontFamily: SERIF,
-          fontWeight: 600,
-          letterSpacing: "-0.01em",
-          color: C.ink,
-        }}
-      >
-        {title}
-      </div>
-      <p className="mt-2 text-sm leading-relaxed" style={{ color: C.inkSoft }}>
-        {body}
-      </p>
-    </div>
+    <Card className="border-border-warm bg-white">
+      <CardContent className="px-6 py-6">
+        <div className="inline-flex size-9 items-center justify-center rounded-lg bg-peach-soft text-wine">
+          {icon}
+        </div>
+        <div
+          className="mt-4 text-xl text-ink"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {title}
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{body}</p>
+      </CardContent>
+    </Card>
   );
 }
 
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-3">
-      <span
-        className="mt-2 inline-block size-1.5 shrink-0 rounded-full"
-        style={{ backgroundColor: C.wine }}
-      />
+      <CheckCircle2 className="mt-1 size-4 shrink-0 text-wine" />
       <span>{children}</span>
     </li>
   );

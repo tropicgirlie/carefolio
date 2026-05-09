@@ -1,4 +1,18 @@
-import { motion } from 'motion/react';
+// Privacy policy.
+//
+// The journey site holds almost no personal data. The Sunday letter list runs
+// on Beehiiv (separate processor). Affiliate clicks are tracked at the
+// destination, not here. This page just states that plainly.
+//
+// Last reviewed: 2026-05-09. Update on any material change to data flows.
+
+import { motion } from "motion/react";
+import {
+  Eyebrow,
+  DisplayHeading,
+  Prose,
+  ProseLead,
+} from "./branding/typography";
 
 interface PrivacyPolicyPageProps {
   onNavigateToLanding: () => void;
@@ -11,70 +25,155 @@ interface PrivacyPolicyPageProps {
   isAuthenticated: boolean;
 }
 
-export function PrivacyPolicyPage({
-  onNavigateToLanding,
-  onNavigateToAbout,
-  onNavigateToInsights,
-  onNavigateToDashboard,
-  onNavigateToLogin,
-  onLogoClick,
-  onLogout,
-  isAuthenticated
-}: PrivacyPolicyPageProps) {
+export function PrivacyPolicyPage(_props: PrivacyPolicyPageProps) {
   return (
-    <div className="min-h-screen bg-white">
-      <main className="container py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          {/* Header */}
+    <div className="bg-cream text-ink">
+      <section className="border-b border-border-warm">
+        <div className="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-12"
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h1 className="headline-h1 text-[var(--text-primary)] mb-6">
-              Privacy Policy
-            </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-[var(--fintech-feminine-purple)] to-[var(--care-emerald)] mx-auto rounded-full"></div>
-          </motion.div>
-
-          {/* Body Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="prose prose-lg mx-auto text-left"
-          >
-            <p className="body-content text-[var(--text-primary)] leading-relaxed mb-8">
-              Carefolio does not sell or share your personal information.
-            </p>
-            
-            <p className="body-content text-[var(--text-primary)] leading-relaxed mb-8">
-              We aggregate public and institutional datasets only. If you choose to create an account, we collect your email solely to enable login and to send important updates. We use cookies and analytics tools to understand site usage, never to track individuals across the web.
+            <Eyebrow>Privacy</Eyebrow>
+            <DisplayHeading level={1} size="md" className="mt-5">
+              Short version: I do not want your data.
+            </DisplayHeading>
+            <ProseLead className="mt-5">
+              Carefolio holds the absolute minimum personal information it can
+              get away with. The Sunday letter list is on Beehiiv, not on this
+              site. Anything I add later will be listed below with a date.
+            </ProseLead>
+            <p className="mt-4 text-xs text-muted-warm">
+              Last reviewed 9 May 2026.
             </p>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Back to Home Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12"
-          >
-            <button
-              onClick={onNavigateToLanding}
-              className="md3-btn-outlined"
+      <section>
+        <div className="mx-auto max-w-3xl px-6 py-16">
+          <Prose>
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+              }}
             >
-              Back to Home
-            </button>
-          </motion.div>
-        </motion.div>
-      </main>
+              What this site collects
+            </h2>
+            <p>
+              Carefolio is a static publishing site. It does not require an
+              account. It does not have a database of users. When you read a
+              page, basic anonymised analytics may be collected (page path,
+              referrer, country) via the hosting platform's standard logs.
+              Nothing about you personally.
+            </p>
+
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              The Sunday letter
+            </h2>
+            <p>
+              The newsletter list runs on{" "}
+              <a
+                href="https://www.beehiiv.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-wine underline-offset-2 hover:underline"
+              >
+                Beehiiv
+              </a>
+              . When you subscribe, your email address is processed by Beehiiv
+              under their privacy policy. I see anonymised aggregate stats
+              (open rate, click rate). I never sell, share, or hand over the
+              list to third parties. You can unsubscribe with one click in any
+              email. I will not chase you.
+            </p>
+
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              Outbound and affiliate links
+            </h2>
+            <p>
+              Some pages link to external brokers or platforms. Where a link is
+              an affiliate link, it is labelled as such on the page where it
+              appears, per the Central Bank of Ireland Consumer Protection
+              Code 2025 and the CCPC 2023 influencer guidelines. Once you
+              click, you are on the broker's site and their privacy policy
+              applies. Carefolio does not receive any personally identifying
+              information about your activity on that site.
+            </p>
+
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              Cookies
+            </h2>
+            <p>
+              Carefolio itself does not set tracking cookies. Embedded third
+              parties (Beehiiv signup forms, the Vercel analytics layer if
+              enabled) may set their own cookies under their respective
+              policies.
+            </p>
+
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              Your rights
+            </h2>
+            <p>
+              Under GDPR you have the right to access, correct, and delete any
+              personal data held about you. Because Carefolio holds almost
+              nothing, the practical answer is usually "ask Beehiiv." If you
+              want to confirm whether I hold anything else, email me at the
+              address listed on the About page and I will respond within 30
+              days, which is the GDPR window.
+            </p>
+
+            <h2
+              className="text-2xl text-ink sm:text-3xl"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              Changes to this policy
+            </h2>
+            <p>
+              I will date any changes at the top of this page. If I ever start
+              processing more data (say, adding a comment system or a tools
+              section that needs accounts), I will say so here clearly before
+              switching it on.
+            </p>
+          </Prose>
+        </div>
+      </section>
     </div>
   );
 }

@@ -15,6 +15,7 @@ import { DataGovernanceRoute } from './pages/DataGovernanceRoute';
 import { ComplianceRoute } from './pages/ComplianceRoute';
 import { CompareRoute } from './pages/CompareRoute';
 import { PortfolioScoreRoute } from './pages/PortfolioScoreRoute';
+import { BrokersRoute } from './pages/BrokersRoute';
 
 // Dashboard - public feature preview
 import { DashboardRoute } from './pages/DashboardRoute';
@@ -48,6 +49,7 @@ export const router = createBrowserRouter([
           { path: 'compliance', Component: ComplianceRoute },
           { path: 'compare', Component: CompareRoute },
           { path: 'portfolio-score', Component: PortfolioScoreRoute },
+          { path: 'brokers', Component: BrokersRoute },
 
           // Dashboard - public feature preview
           { path: 'dashboard', Component: DashboardRoute },

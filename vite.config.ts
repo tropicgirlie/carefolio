@@ -60,7 +60,9 @@
       outDir: 'build',
     },
     server: {
+      host: true,        // Listen on both IPv4 (0.0.0.0) and IPv6 (::), not just [::1].
       port: 3000,
+      strictPort: true,
       open: true,
     },
   });

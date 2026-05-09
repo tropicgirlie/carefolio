@@ -44,19 +44,19 @@ export function JournalPage() {
     <div className="bg-cream text-ink">
       {/* Hero */}
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>The journal</Eyebrow>
-            <DisplayHeading level={1} size="lg" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               Receipts, in{" "}
               <span className="italic text-wine">public</span>
               .
             </DisplayHeading>
-            <ProseLead className="mt-6">
+            <ProseLead className="mt-6 max-w-3xl">
               One Sunday a week. What I bought, what I read, what I changed my
               mind about. Each entry lives on the blog; the cards below take you
               there directly.

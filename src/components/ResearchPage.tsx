@@ -38,19 +38,19 @@ export function ResearchPage() {
     <div className="bg-cream text-ink">
       {/* Hero */}
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>Research</Eyebrow>
-            <DisplayHeading level={1} size="lg" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               What the{" "}
               <span className="italic text-wine">data</span> says, and what it
               does not.
             </DisplayHeading>
-            <ProseLead className="mt-6">
+            <ProseLead className="mt-6 max-w-3xl">
               The gender investing gap is real, the pension gap is wider, and
               the data on immigrant women specifically is mostly missing. Here
               is what is published, with sources, and where the holes still are.

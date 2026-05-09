@@ -42,19 +42,19 @@ export function AboutPage(_props: AboutPageProps) {
     <div className="bg-cream text-ink">
       {/* Hero */}
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-20 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>About</Eyebrow>
-            <DisplayHeading level={1} size="lg" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               I'm{" "}
               <span className="italic text-wine">Luana</span>
               . Forty-something, a woman in Dublin, and nobody ever taught me how to invest.
             </DisplayHeading>
-            <ProseLead className="mt-6">
+            <ProseLead className="mt-6 max-w-3xl">
               So I'm learning in public, with receipts. An immigrant's journey
               to a private portfolio, written as I go. The journal, the
               research, and the practical guide I wish someone had handed me

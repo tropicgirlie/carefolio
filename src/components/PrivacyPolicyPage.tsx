@@ -29,17 +29,17 @@ export function PrivacyPolicyPage(_props: PrivacyPolicyPageProps) {
   return (
     <div className="bg-cream text-ink">
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>Privacy</Eyebrow>
-            <DisplayHeading level={1} size="md" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               Short version: I do not want your data.
             </DisplayHeading>
-            <ProseLead className="mt-5">
+            <ProseLead className="mt-6 max-w-3xl">
               Carefolio holds the absolute minimum personal information it can
               get away with. The Sunday letter list is on Beehiiv, not on this
               site. Anything I add later will be listed below with a date.

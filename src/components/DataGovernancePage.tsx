@@ -26,17 +26,17 @@ export function DataGovernancePage(_props: DataGovernancePageProps) {
   return (
     <div className="bg-cream text-ink">
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>Data governance</Eyebrow>
-            <DisplayHeading level={1} size="md" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               How the numbers on this site are produced.
             </DisplayHeading>
-            <ProseLead className="mt-5">
+            <ProseLead className="mt-6 max-w-3xl">
               Every figure on Carefolio is sourced. Every methodology is
               versioned. Every change has a date. This page is the rulebook.
             </ProseLead>

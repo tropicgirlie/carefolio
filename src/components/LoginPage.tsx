@@ -35,21 +35,20 @@ export function LoginPage(_props: LoginPageProps) {
   return (
     <div className="bg-cream text-ink">
       {/* Hero */}
-      <section>
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
+      <section className="border-b border-border-warm">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center"
           >
             <Eyebrow>The Sunday letter</Eyebrow>
-            <DisplayHeading level={1} size="lg" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               One{" "}
               <span className="italic text-wine">Sunday</span>{" "}
               a week. Receipts included.
             </DisplayHeading>
-            <ProseLead className="mt-6">
+            <ProseLead className="mt-6 max-w-3xl">
               A short journal entry every Sunday morning. What I bought, what I
               read, what I changed my mind about. No spam, no AI-generated
               nonsense, no "you should buy" anywhere on it.

@@ -26,17 +26,17 @@ export function CompliancePage(_props: CompliancePageProps) {
   return (
     <div className="bg-cream text-ink">
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>Compliance</Eyebrow>
-            <DisplayHeading level={1} size="md" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               What this site is, and what it is not.
             </DisplayHeading>
-            <ProseLead className="mt-5">
+            <ProseLead className="mt-6 max-w-3xl">
               Carefolio is a documented personal journey, an editorial
               publication, and a practical guide. It is not a regulated
               financial product, an investment adviser, or a custodian of

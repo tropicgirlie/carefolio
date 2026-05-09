@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
-import { CareMarketTicker } from "./CareMarketTicker";
 import { GROUPS, MAX_RAW_TOTAL, SIGNALS } from "../lib/careScore";
 import {
   Eyebrow,
@@ -46,9 +45,6 @@ export function InvestLandingPage(_props: InvestLandingPageProps) {
 
   return (
     <div className="min-h-screen bg-cream text-ink">
-      {/* Live ticker */}
-      <CareMarketTicker />
-
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div
@@ -230,21 +226,30 @@ export function InvestLandingPage(_props: InvestLandingPageProps) {
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {GROUPS.map((group) => {
                     const signals = SIGNALS.filter((s) => s.group === group);
                     const groupTotal = signals.reduce((acc, s) => acc + s.weight, 0);
                     return (
                       <div key={group}>
                         <div className="flex items-center justify-between">
-                          <div className="text-sm font-medium text-ink">{group}</div>
+                          <div
+                            className="text-sm font-medium text-ink"
+                            style={{
+                              fontFamily: "var(--font-display)",
+                              fontWeight: 600,
+                              letterSpacing: "-0.01em",
+                            }}
+                          >
+                            {group}
+                          </div>
                           <div className="text-xs text-muted-warm">{groupTotal} pts</div>
                         </div>
-                        <div className="mt-2 flex flex-wrap gap-1.5">
+                        <div className="mt-3 flex flex-wrap gap-2">
                           {signals.map((s) => (
                             <span
                               key={s.key}
-                              className="inline-flex items-center gap-1 rounded-full border border-border-warm bg-cream px-2.5 py-1 text-xs text-ink"
+                              className="inline-flex items-center gap-2 rounded-full border border-border-warm bg-cream px-3 py-1.5 text-sm text-ink"
                             >
                               <span className="size-1.5 rounded-full bg-wine/70" />
                               {s.label}

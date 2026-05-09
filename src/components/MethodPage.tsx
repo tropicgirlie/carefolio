@@ -52,19 +52,19 @@ export function MethodPage() {
     <div className="bg-cream text-ink">
       {/* Hero */}
       <section className="border-b border-border-warm">
-        <div className="mx-auto max-w-3xl px-6 pt-20 pb-20 sm:pt-28">
+        <div className="mx-auto max-w-5xl px-6 pt-20 pb-16">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <Eyebrow>The method</Eyebrow>
-            <DisplayHeading level={1} size="lg" className="mt-5">
+            <DisplayHeading level={1} size="xl" className="mt-5">
               How I{" "}
               <span className="italic text-wine">screen</span>{" "}
               the companies I'd actually own.
             </DisplayHeading>
-            <ProseLead className="mt-7">
+            <ProseLead className="mt-7 max-w-3xl">
               Sixteen signals, five categories, one hundred raw points,
               normalised to a number between zero and one hundred. Public
               evidence required for every signal. Conservative by design. Not

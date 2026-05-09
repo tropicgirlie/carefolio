@@ -107,6 +107,9 @@ export function InvestLandingPage({
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                   fontWeight: 500,
+                  display: "inline-block",
+                  paddingRight: "0.12em",   // italic glyph tail extends past bounding box
+                  marginRight: "-0.04em",   // pull the period back so the spacing reads natural
                 }}
               >
                 Capital

@@ -1,27 +1,9 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { CarefolioMark } from './branding/CarefolioMark';
 
 const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
-
-// Inline mark replaces the legacy emerald leaf PNG. A simple
-// "target / portfolio core" glyph in wine — reads as both care
-// (round, soft) and investment (precise, focused).
-function CarefolioMark({ size = 36 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <circle cx="20" cy="20" r="18.25" stroke="#4A1F30" strokeWidth="1.5" />
-      <circle cx="20" cy="20" r="6.5" fill="#4A1F30" />
-    </svg>
-  );
-}
 
 interface GlobalNavigationProps {
   currentPage: 'landing' | 'about' | 'insights' | 'dashboard' | 'work-that-works';

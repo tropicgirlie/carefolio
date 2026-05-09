@@ -1,7 +1,27 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import carefolioLogo from 'figma:asset/ea19f9c0b622ef8fcaa387fdcfcc67bc3454a661.png';
+
+const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
+
+// Inline mark replaces the legacy emerald leaf PNG. A simple
+// "target / portfolio core" glyph in wine — reads as both care
+// (round, soft) and investment (precise, focused).
+function CarefolioMark({ size = 36 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <circle cx="20" cy="20" r="18.25" stroke="#4A1F30" strokeWidth="1.5" />
+      <circle cx="20" cy="20" r="6.5" fill="#4A1F30" />
+    </svg>
+  );
+}
 
 interface GlobalNavigationProps {
   currentPage: 'landing' | 'about' | 'insights' | 'dashboard' | 'work-that-works';
@@ -50,8 +70,16 @@ export function GlobalNavigation({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <img src={carefolioLogo} alt="Carefolio" className="w-10 h-10" />
-              <span className="headline-h3" style={{ color: '#1A1410' }}>
+              <CarefolioMark size={36} />
+              <span
+                style={{
+                  color: '#1A1410',
+                  fontFamily: SERIF,
+                  fontSize: '24px',
+                  letterSpacing: '-0.015em',
+                  lineHeight: 1,
+                }}
+              >
                 <span style={{ fontWeight: 600 }}>Care</span>
                 <span style={{ fontWeight: 400 }}>folio</span>
               </span>

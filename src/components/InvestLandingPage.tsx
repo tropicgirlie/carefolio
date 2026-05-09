@@ -36,9 +36,11 @@ const C = {
   border: "#E1D5BF",        // subtle borders
   wine: "#4A1F30",          // deep wine accent
   wineSoft: "#7A3447",      // gradient partner
-  rose: "#C9988E",          // dusty rose
-  roseSoft: "#E8C9C0",      // chip background
+  rose: "#E2A48C",          // warm peach (Daye warmth)
+  roseSoft: "#F5D9C8",      // peach cream (chip / soft accent bg)
 } as const;
+
+const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
 
 interface InvestLandingPageProps {
   onNavigateToLogin: () => void;
@@ -88,8 +90,13 @@ export function InvestLandingPage({
             </div>
 
             <h1
-              className="mt-7 text-5xl font-semibold tracking-tight sm:text-6xl md:text-[5.5rem] md:leading-[1.02]"
-              style={{ color: C.ink }}
+              className="mt-7 text-5xl tracking-tight sm:text-6xl md:text-[5.75rem] md:leading-[0.98]"
+              style={{
+                color: C.ink,
+                fontFamily: SERIF,
+                fontWeight: 500,
+                letterSpacing: "-0.02em",
+              }}
             >
               Care is{" "}
               <span
@@ -99,6 +106,7 @@ export function InvestLandingPage({
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
+                  fontWeight: 500,
                 }}
               >
                 Capital
@@ -367,11 +375,16 @@ export function InvestLandingPage({
           >
             <Wallet className="mx-auto size-9" style={{ color: C.wine }} />
             <h2
-              className="mt-6 text-3xl font-semibold tracking-tight sm:text-5xl"
-              style={{ color: C.ink }}
+              className="mt-6 text-3xl tracking-tight sm:text-5xl"
+              style={{
+                color: C.ink,
+                fontFamily: SERIF,
+                fontWeight: 500,
+                letterSpacing: "-0.02em",
+              }}
             >
               See what{" "}
-              <span className="italic" style={{ color: C.wine }}>
+              <span className="italic" style={{ color: C.wine, fontWeight: 500 }}>
                 €250 a month
               </span>{" "}
               could look like.
@@ -524,8 +537,13 @@ function SectionHeader({
         {eyebrow}
       </div>
       <h2
-        className="mt-4 text-3xl font-semibold tracking-tight sm:text-5xl"
-        style={{ color: C.ink }}
+        className="mt-4 text-3xl tracking-tight sm:text-5xl"
+        style={{
+          color: C.ink,
+          fontFamily: SERIF,
+          fontWeight: 500,
+          letterSpacing: "-0.02em",
+        }}
       >
         {title}
       </h2>

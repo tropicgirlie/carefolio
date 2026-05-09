@@ -364,6 +364,27 @@
 }
 
 @theme inline {
+  /* ─── Carefolio Journey palette (Female Invest meets Daye) ──────────
+   * These map our hand-picked hex tokens onto Tailwind utilities so
+   * `bg-cream`, `text-wine`, `font-display` etc work everywhere.
+   * Source of truth for the values is :root in this same file.
+   */
+  --color-cream: var(--carefolio-cream);
+  --color-cream-deep: var(--carefolio-cream-deep);
+  --color-ink: var(--carefolio-ink);
+  --color-ink-soft: var(--carefolio-ink-soft);
+  --color-muted-warm: #7A6B5C;
+  --color-border-warm: var(--carefolio-border);
+  --color-wine: var(--carefolio-wine);
+  --color-wine-soft: var(--carefolio-wine-soft);
+  --color-peach: var(--carefolio-peach);
+  --color-peach-soft: var(--carefolio-peach-soft);
+
+  /* Typography axis */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
   /* Enhanced Care Index Color Tokens - NEW GREEN SYSTEM */
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);

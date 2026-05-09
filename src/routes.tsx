@@ -8,7 +8,6 @@ import { LandingRoute } from './pages/LandingRoute';
 import { LoginRoute } from './pages/LoginRoute';
 import { InsightsRoute } from './pages/InsightsRoute';
 import { AboutRoute } from './pages/AboutRoute';
-import { CareIndexRoute } from './pages/CareIndexRoute';
 import { PrivacyRoute } from './pages/PrivacyRoute';
 import { WorkThatWorksRoute } from './pages/WorkThatWorksRoute';
 import { DataGovernanceRoute } from './pages/DataGovernanceRoute';
@@ -16,6 +15,7 @@ import { ComplianceRoute } from './pages/ComplianceRoute';
 import { CompareRoute } from './pages/CompareRoute';
 import { PortfolioScoreRoute } from './pages/PortfolioScoreRoute';
 import { BrokersRoute } from './pages/BrokersRoute';
+import { MethodRoute } from './pages/MethodRoute';
 
 // Dashboard - public feature preview
 import { DashboardRoute } from './pages/DashboardRoute';
@@ -42,7 +42,8 @@ export const router = createBrowserRouter([
           { path: 'early-access', Component: LoginRoute },
           { path: 'insights', Component: InsightsRoute },
           { path: 'about', Component: AboutRoute },
-          { path: 'care-index', Component: CareIndexRoute },
+          { path: 'method', Component: MethodRoute },
+          { path: 'care-index', Component: MethodRoute }, // Legacy URL → new method page
           { path: 'privacy', Component: PrivacyRoute },
           { path: 'work-that-works', Component: WorkThatWorksRoute },
           { path: 'data-governance', Component: DataGovernanceRoute },

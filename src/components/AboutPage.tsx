@@ -2,7 +2,7 @@
 //
 // Tone: honest, dry-witty, sources cited inline, no jargon. First-person
 // past tense. The standing 'I am not a regulated financial adviser' line
-// is required on every page that touches money — keep it visible.
+// is required on every page that touches money. Keep it visible.
 //
 // EDIT ME markers point at sentences you'll want to swap for your actual
 // biography. Everything else is structural and can stay.
@@ -83,15 +83,15 @@ export function AboutPage(_props: AboutPageProps) {
             How I ended up writing this in my forties.
           </h2>
           <Prose>
-            {/* EDIT ME — swap in your real opening line */}
+            {/* EDIT ME: swap in your real opening line */}
             <p>
               I came to Ireland for work and stayed for the rain. I built a
               career in technology, raised a family, paid taxes in two countries,
               and through all of it never once thought hard about pensions.
-              Pensions were something other people had — people with longer
+              Pensions were something other people had. People with longer
               tenure, more stable plans, a different accent.
             </p>
-            {/* EDIT ME — your specific motherhood / career interruption story */}
+            {/* EDIT ME: your specific motherhood / career interruption story */}
             <p>
               By the time I started looking, I was forty. I'd missed the easy
               decade, the one all the books are written for. I'd taken a career

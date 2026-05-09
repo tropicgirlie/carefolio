@@ -1,648 +1,404 @@
-import { motion, useInView } from 'motion/react';
-import { useRef, useState } from 'react';
-import { ArrowRight, BookOpen, Database, Building2, Users, TrendingUp, ExternalLink, Eye, Star, Brain, Heart, Shield, BarChart3, Globe, Leaf, FileText, Link as LinkIcon, AlertCircle, CheckCircle, ArrowLeft, Mail, Lock, Loader2, Plus, Minus, Equal, Baby, Briefcase, Factory, Truck, AlertTriangle } from 'lucide-react';
-import { TopNavigation } from './TopNavigation';
-import carefolioLogo from 'figma:asset/ea19f9c0b622ef8fcaa387fdcfcc67bc3454a661.png';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
+// Research page: the data behind the journey.
+//
+// Editorial surface that compiles the gender investing gap, pension gap,
+// and immigrant women angle into one place. Every figure is sourced. The
+// "verify before publishing" callout at the top is intentional: numbers
+// here came from research that did not have live web access, so the
+// primary sources still need to be cross-checked before this page is
+// promoted publicly.
+//
+// Built using shadcn primitives (Button, Card, Badge, Separator) on top
+// of the codified design tokens. Reference implementation for the rest
+// of the journey pages to refactor toward.
 
-interface ResearchPageProps {
-  onNavigateToLanding: () => void;
-  onNavigateToMethodology: () => void;
-  onNavigateToResearch: () => void;
-  onNavigateToAbout: () => void;
-  onNavigateToLogin: () => void;
-  onNavigateToDashboard: () => void;
-  onNavigateToTechDocs: () => void;
-  onLogoClick: () => void;
-  isAuthenticated: boolean;
-  onLogout: () => void;
+import { motion } from "motion/react";
+import {
+  ArrowRight,
+  Mail,
+  Info,
+  ExternalLink,
+  TrendingDown,
+  Clock,
+  BookOpen,
+} from "lucide-react";
+import { Button } from "./ui/button";
+import { Card, CardContent } from "./ui/card";
+import { Separator } from "./ui/separator";
+import {
+  Eyebrow,
+  DisplayHeading,
+  Prose,
+  ProseLead,
+} from "./branding/typography";
+
+const NEWSLETTER_URL = "https://carefolio.beehiiv.com/";
+
+export function ResearchPage() {
+  return (
+    <div className="bg-cream text-ink">
+      {/* Hero */}
+      <section className="border-b border-border-warm">
+        <div className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-28">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <Eyebrow>Research</Eyebrow>
+            <DisplayHeading level={1} size="lg" className="mt-5">
+              What the{" "}
+              <span className="italic text-wine">data</span> says, and what it
+              does not.
+            </DisplayHeading>
+            <ProseLead className="mt-6">
+              The gender investing gap is real, the pension gap is wider, and
+              the data on immigrant women specifically is mostly missing. Here
+              is what is published, with sources, and where the holes still are.
+            </ProseLead>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Verify callout */}
+      <section className="border-b border-[#E8D8B6] bg-[#FAF1E0]">
+        <div className="mx-auto flex max-w-3xl items-start gap-3 px-6 py-5 text-sm text-[#5C4715]">
+          <Info className="mt-0.5 size-4 shrink-0" />
+          <p>
+            <strong>Working draft.</strong> Every figure on this page is from
+            research published by the named source, but several were compiled
+            without live access to the original PDFs. Treat each as a research
+            pointer until the citation has been re-verified against the primary
+            document.
+          </p>
+        </div>
+      </section>
+
+      {/* The investment gap */}
+      <section>
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <Eyebrow>The investment gap</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            Women in Europe invest less, and start later.
+          </DisplayHeading>
+          <Prose className="mt-7">
+            <p>
+              In Europe, around 57 percent of women hold investments versus 71
+              percent of men. That is a fourteen-point participation gap, and it
+              has barely moved since the previous wave. The same study found
+              that the average woman starts investing at 32, the average man at
+              28. Four years of compounding, lost to whatever was in those four
+              years (BlackRock, People &amp; Money: Women &amp; Investing in
+              Europe, 2023).
+            </p>
+            <p>
+              Ireland-specific: the Bank of Ireland Financial Wellbeing Index
+              (2023) puts the figure at 39 percent of Irish women holding
+              investments outside their pension, versus 54 percent of Irish men.
+            </p>
+          </Prose>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <StatCard
+              icon={<TrendingDown className="size-5" />}
+              value="14 pts"
+              label="Investment participation gap, Europe"
+              source="BlackRock, 2023"
+            />
+            <StatCard
+              icon={<Clock className="size-5" />}
+              value="4 years"
+              label="Average lag between when men and women start investing"
+              source="BlackRock, 2023"
+            />
+          </div>
+        </div>
+      </section>
+
+      <Separator className="bg-border-warm" />
+
+      {/* The pension gap */}
+      <section className="bg-cream-deep">
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <Eyebrow>The pension gap</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            The wider problem nobody talks about over coffee.
+          </DisplayHeading>
+          <Prose className="mt-7">
+            <p>
+              The EU gender pension gap was 26.1 percent in 2022 (Eurostat
+              indicator ILC_PNP13, EIGE Gender Equality Index 2024). That is the
+              percentage less in retirement income that women receive on average
+              compared to men. Ireland sits slightly worse than the EU average,
+              at around 27 to 28 percent. The UK figure is materially larger,
+              at roughly 35 percent of private pension wealth (PPI, 2024).
+            </p>
+            <p>
+              The drivers are well-rehearsed: lower lifetime earnings, career
+              breaks around children, more part-time work, more care
+              responsibilities for elderly parents, and pension systems that
+              were not designed for any of the above. Nothing here is a
+              surprise. None of it is moving fast.
+            </p>
+          </Prose>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <StatCard value="26.1%" label="EU pension gap" source="Eurostat, 2022 data" />
+            <StatCard value="~28%" label="Ireland pension gap" source="Eurostat, 2022 data" />
+            <StatCard value="~35%" label="UK private pension wealth gap" source="PPI, 2024" />
+          </div>
+        </div>
+      </section>
+
+      <Separator className="bg-border-warm" />
+
+      {/* Financial literacy gap */}
+      <section>
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <Eyebrow>Financial literacy</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            It is not that women understand less. It is that fewer of us are
+            asked.
+          </DisplayHeading>
+          <Prose className="mt-7">
+            <p>
+              The OECD/INFE 2023 International Survey of Adult Financial
+              Literacy reports a small but persistent gender gap in the
+              combined knowledge, behaviour, and attitude score: men averaged
+              63 out of 100, women 60. The knowledge sub-score was wider, at
+              roughly 5.4 out of 7 for men versus 4.9 for women. The older S&amp;P
+              Global FinLit Survey, the one cited everywhere despite being
+              from 2014, put global financial literacy at 35 percent of men
+              and 30 percent of women. Treat that figure as historical.
+            </p>
+            <p>
+              The behavioural finding that matters more, in my reading, is not
+              that women know less. It is that women report lower confidence
+              even when they score the same as men. Confidence dropped at
+              twenty-two does not come back at forty without intervention.
+            </p>
+          </Prose>
+        </div>
+      </section>
+
+      <Separator className="bg-border-warm" />
+
+      {/* Immigrant women */}
+      <section className="bg-cream-deep">
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <Eyebrow>Immigrant women</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            The data nobody is collecting carefully.
+          </DisplayHeading>
+          <Prose className="mt-7">
+            <p>
+              There is no systematic, EU-wide statistic on foreign-born
+              women's investment account ownership. None of the major
+              published datasets, including BlackRock, Female Invest's
+              annual report, and the ECB Household Finance and Consumption
+              Survey, break down by migrant status and gender simultaneously.
+            </p>
+            <p>
+              The closest available proxies are: Eurostat Labour Force Survey
+              (2023) putting non-EU-born women's employment rate in the EU at
+              55.5 percent versus 73.5 percent for native-born women. The ECB
+              HFCS (2021 wave) showing migrant households across the eurozone
+              hold roughly half the median net wealth of native-born
+              households. Both numbers gesture at the gap. Neither is a clean
+              statistic on the question we actually want to answer.
+            </p>
+            <p>
+              That absence is itself a finding. If you cannot find numbers on
+              your cohort, you are probably under-served by everything that
+              is built using those numbers.
+            </p>
+          </Prose>
+        </div>
+      </section>
+
+      <Separator className="bg-border-warm" />
+
+      {/* Sources */}
+      <section>
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <Eyebrow>Sources</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            Read the originals.
+          </DisplayHeading>
+          <ProseLead className="mt-5">
+            Every figure above traces back to one of these. Where the
+            organisation makes the report freely downloadable, the link is
+            direct. Where it sits behind a press summary, follow the link to
+            the press page and click through.
+          </ProseLead>
+
+          <div className="mt-10 space-y-4">
+            <SourceCard
+              name="BlackRock"
+              report="People &amp; Money / Women &amp; Investing in Europe, 2023"
+              href="https://www.blackrock.com/corporate"
+              note="The 57 percent / 71 percent participation figure and the four-year start-age gap. Verify wave year before quoting."
+            />
+            <SourceCard
+              name="Eurostat"
+              report="Gender pension gap indicator (ILC_PNP13)"
+              href="https://ec.europa.eu/eurostat"
+              note="Annual data going back to 2010. Latest published year is 2022. Filter to Ireland for the 28 percent figure."
+            />
+            <SourceCard
+              name="EIGE"
+              report="Gender Equality Index 2024, Money domain"
+              href="https://eige.europa.eu/gender-equality-index"
+              note="Aggregates Eurostat plus EU-SILC into a single accessible dashboard."
+            />
+            <SourceCard
+              name="OECD/INFE"
+              report="International Survey of Adult Financial Literacy 2023"
+              href="https://www.oecd.org/finance/financial-education"
+              note="Updated triennial. Covers participating OECD countries. Knowledge, behaviour, and attitude sub-scores broken out."
+            />
+            <SourceCard
+              name="ECB"
+              report="Household Finance and Consumption Survey, 2021 wave"
+              href="https://www.ecb.europa.eu/pub/economic-research/research-networks/html/researcher_hfcn.en.html"
+              note="The richest source on eurozone wealth by household type. Migrant household wealth gap comes from this dataset."
+            />
+            <SourceCard
+              name="Bank of Ireland"
+              report="Financial Wellbeing Index 2023"
+              href="https://www.bankofireland.com"
+              note="Ireland-specific gender split on investment ownership."
+            />
+            <SourceCard
+              name="Pensions Policy Institute / Now:Pensions"
+              report="UK Gender Pensions Gap Report 2024"
+              href="https://www.pensionspolicyinstitute.org.uk"
+              note="The cleanest source for UK figures, updated annually."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-border-warm bg-cream-deep">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+          <Eyebrow>Where this lives in practice</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            Numbers are background. The journal is the foreground.
+          </DisplayHeading>
+          <ProseLead className="mt-5">
+            The research above is what makes this site more than one woman's
+            preferences. The journal is where it gets put to work, week by
+            week, in actual decisions.
+          </ProseLead>
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button
+              size="lg"
+              className="h-12 rounded-full bg-ink px-7 text-base font-medium text-white hover:bg-black"
+              onClick={() => window.open(NEWSLETTER_URL, "_blank")}
+            >
+              <Mail className="size-4" />
+              Sunday letter
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="h-12 rounded-full border-2 border-ink bg-transparent px-7 text-base font-medium text-ink hover:bg-cream"
+              asChild
+            >
+              <a href="/journal">
+                Read the journal
+                <ArrowRight className="size-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
 
-export function ResearchPage({
-  onNavigateToLanding,
-  onNavigateToMethodology,
-  onNavigateToResearch,
-  onNavigateToAbout,
-  onNavigateToLogin,
-  onNavigateToDashboard,
-  onNavigateToTechDocs,
-  onLogoClick,
-  isAuthenticated,
-  onLogout
-}: ResearchPageProps) {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+/* ──────────────────────────────  Helpers  ──────────────────────────────── */
 
-  const heroRef = useRef(null);
-  const formulaRef = useRef(null);
-  const papersRef = useRef(null);
-  const sourcesRef = useRef(null);
-
-  const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
-  const isFormulaInView = useInView(formulaRef, { once: true, margin: "-100px" });
-  const isPapersInView = useInView(papersRef, { once: true, margin: "-100px" });
-  const isSourcesInView = useInView(sourcesRef, { once: true, margin: "-100px" });
-
+function StatCard({
+  icon,
+  value,
+  label,
+  source,
+}: {
+  icon?: React.ReactNode;
+  value: string;
+  label: string;
+  source: string;
+}) {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <TopNavigation
-        currentPage="research"
-        onNavigateToLanding={onNavigateToLanding}
-        onNavigateToMethodology={onNavigateToMethodology}
-        onNavigateToResearch={onNavigateToResearch}
-        onNavigateToAbout={onNavigateToAbout}
-        onNavigateToLogin={onNavigateToLogin}
-        onNavigateToDashboard={onNavigateToDashboard}
-        onLogoClick={onLogoClick}
-        isAuthenticated={isAuthenticated}
-        onLogout={onLogout}
-      />
-
-      {/* Main Content */}
-      <main className="container py-16 space-y-24">
-        
-        {/* 1. HERO SECTION */}
-        <motion.div
-          ref={heroRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center space-y-8"
+    <Card className="border-border-warm bg-white">
+      <CardContent className="px-6 py-6">
+        {icon ? (
+          <div className="inline-flex size-9 items-center justify-center rounded-lg bg-peach-soft text-wine">
+            {icon}
+          </div>
+        ) : null}
+        <div
+          className="mt-3 text-4xl text-wine sm:text-5xl"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 500,
+            letterSpacing: "-0.02em",
+          }}
         >
-          <div className="bg-gradient-to-br from-care-emerald/10 to-care-vibrant-mint/5 rounded-3xl p-12 relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-8 right-8 w-20 h-20 border-2 border-care-emerald rounded-full"></div>
-              <div className="absolute bottom-8 left-8 w-16 h-16 border-2 border-care-vibrant-mint rounded-full"></div>
-            </div>
-            
-            <div className="relative z-10">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.8, ease: [0.2, 0, 0, 1] }}
-              >
-                <h1 className="headline-h1 mb-6">
-                  Research & Methodology
-                </h1>
-                <p className="body-large text-on-surface-variant max-w-3xl mx-auto">
-                  Academic foundations and data sources behind our care investment analysis framework.
-                </p>
-              </motion.div>
-            </div>
+          {value}
+        </div>
+        <div className="mt-2 text-sm font-medium text-ink">{label}</div>
+        <div className="mt-1 text-xs text-muted-warm">{source}</div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function SourceCard({
+  name,
+  report,
+  href,
+  note,
+}: {
+  name: string;
+  report: string;
+  href: string;
+  note: string;
+}) {
+  return (
+    <Card className="border-border-warm bg-white">
+      <CardContent className="px-6 py-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <div
+            className="text-base font-medium text-ink sm:text-lg"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {name}
           </div>
-        </motion.div>
-
-        {/* 2. CARE SCORE FORMULA - ENHANCED INTERACTIVE DESIGN */}
-        <motion.div
-          ref={formulaRef}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isFormulaInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="space-y-12"
-        >
-          <div className="text-center space-y-4">
-            <h2 className="headline-h2">The Care Score Formula</h2>
-            <p className="body-large text-on-surface-variant max-w-2xl mx-auto">
-              A comprehensive methodology measuring care as capital
-            </p>
-          </div>
-
-          <Card className="bg-gradient-to-br from-surface to-surface-container-low border-0 rounded-3xl overflow-hidden elevation-strong">
-            <CardContent className="p-0">
-              {/* Formula Header */}
-              <div className="bg-gradient-to-r from-care-emerald to-care-vibrant-mint p-8 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isFormulaInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-white"
-                >
-                  <div className="data-large font-mono text-3xl mb-4 font-bold">
-                    CareScore = Nurture × (100 – Harm)
-                  </div>
-                  <p className="body-medium opacity-90">
-                    Where scores are normalized to 0-100 scale
-                  </p>
-                </motion.div>
-              </div>
-
-              {/* Interactive Formula Breakdown */}
-              <div className="p-8">
-                <div className="grid lg:grid-cols-7 gap-6 items-center">
-                  
-                  {/* Nurture Pillars - Enhanced */}
-                  <motion.div
-                    className="lg:col-span-3"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={isFormulaInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    onHoverStart={() => setHoveredCard('nurture')}
-                    onHoverEnd={() => setHoveredCard(null)}
-                  >
-                    <Card className={`h-full transition-all duration-300 ${
-                      hoveredCard === 'nurture' 
-                        ? 'elevation-strong scale-105 border-care-emerald' 
-                        : 'elevation-subtle border-care-emerald/20'
-                    } bg-gradient-to-br from-care-emerald/5 to-care-emerald/10`}>
-                      <CardContent className="p-6 text-center space-y-6 flex flex-col h-full">
-                        {/* Icon with Animation */}
-                        <motion.div 
-                          className="w-20 h-20 bg-gradient-to-br from-care-emerald to-care-vibrant-mint rounded-2xl flex items-center justify-center mx-auto"
-                          animate={hoveredCard === 'nurture' ? { rotate: [0, -5, 5, 0] } : {}}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Heart className="w-10 h-10 text-white" />
-                        </motion.div>
-                        
-                        <div className="flex-1">
-                          <h3 className="headline-h3 mb-4 text-care-emerald">Nurture Pillars</h3>
-                          <p className="body-small text-on-surface-variant mb-6">
-                            Comprehensive care infrastructure investments
-                          </p>
-                          
-                          {/* Visual Metrics */}
-                          <div className="space-y-4">
-                            {[
-                              { icon: Baby, label: 'Parental Leave', weight: '30%', color: '#2BAE66' },
-                              { icon: Users, label: 'Childcare Support', weight: '25%', color: '#00C896' },
-                              { icon: Briefcase, label: 'Women Leadership', weight: '25%', color: '#009688' },
-                              { icon: Heart, label: 'Health Benefits', weight: '20%', color: '#2BAE66' }
-                            ].map((pillar, index) => {
-                              const Icon = pillar.icon;
-                              return (
-                                <motion.div
-                                  key={pillar.label}
-                                  className="flex items-center gap-3 p-3 rounded-lg bg-white/50 hover:bg-white/80 transition-colors"
-                                  initial={{ opacity: 0, y: 10 }}
-                                  animate={isFormulaInView ? { opacity: 1, y: 0 } : {}}
-                                  transition={{ duration: 0.3, delay: 0.6 + (index * 0.1) }}
-                                >
-                                  <div 
-                                    className="w-8 h-8 rounded-lg flex items-center justify-center"
-                                    style={{ backgroundColor: `${pillar.color}20` }}
-                                  >
-                                    <Icon className="w-4 h-4" style={{ color: pillar.color }} />
-                                  </div>
-                                  <div className="flex-1 text-left">
-                                    <div className="body-small font-medium text-on-surface">{pillar.label}</div>
-                                    <div className="data-small text-care-emerald">{pillar.weight}</div>
-                                  </div>
-                                  {/* Progress indicator */}
-                                  <div className="w-12 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <motion.div
-                                      className="h-full rounded-full"
-                                      style={{ backgroundColor: pillar.color }}
-                                      initial={{ width: 0 }}
-                                      animate={isFormulaInView ? { width: pillar.weight } : {}}
-                                      transition={{ duration: 1, delay: 1 + (index * 0.1) }}
-                                    />
-                                  </div>
-                                </motion.div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-
-                  {/* Mathematical Operators - Enhanced */}
-                  <motion.div
-                    className="lg:col-span-1 text-center space-y-8"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={isFormulaInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                  >
-                    {/* Multiplication */}
-                    <motion.div
-                      className="relative"
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    >
-                      <div className="w-16 h-16 bg-gradient-to-br from-care-emerald to-care-vibrant-mint rounded-full flex items-center justify-center mx-auto shadow-lg">
-                        <span className="text-white font-bold text-2xl">×</span>
-                      </div>
-                    </motion.div>
-                    
-                    {/* Subtraction */}
-                    <motion.div
-                      className="relative"
-                      animate={{ rotate: [360, 0] }}
-                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    >
-                      <div className="w-16 h-16 bg-gradient-to-br from-harm-coral to-harm-rose rounded-full flex items-center justify-center mx-auto shadow-lg">
-                        <span className="text-white font-bold text-2xl">−</span>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Harm Offsets - Enhanced */}
-                  <motion.div
-                    className="lg:col-span-3"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={isFormulaInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                    onHoverStart={() => setHoveredCard('harm')}
-                    onHoverEnd={() => setHoveredCard(null)}
-                  >
-                    <Card className={`h-full transition-all duration-300 ${
-                      hoveredCard === 'harm' 
-                        ? 'elevation-strong scale-105 border-harm-coral' 
-                        : 'elevation-subtle border-harm-coral/20'
-                    } bg-gradient-to-br from-harm-coral/5 to-harm-coral/10`}>
-                      <CardContent className="p-6 text-center space-y-6 flex flex-col h-full">
-                        {/* Icon with Animation */}
-                        <motion.div 
-                          className="w-20 h-20 bg-gradient-to-br from-harm-coral to-harm-rose rounded-2xl flex items-center justify-center mx-auto"
-                          animate={hoveredCard === 'harm' ? { rotate: [0, 5, -5, 0] } : {}}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Shield className="w-10 h-10 text-white" />
-                        </motion.div>
-                        
-                        <div className="flex-1">
-                          <h3 className="headline-h3 mb-4 text-harm-coral">Harm Offsets</h3>
-                          <p className="body-small text-on-surface-variant mb-6">
-                            Corporate harm that reduces overall care impact
-                          </p>
-                          
-                          {/* Visual Metrics */}
-                          <div className="space-y-4">
-                            {[
-                              { icon: Factory, label: 'Environmental Impact', severity: 'High', color: '#E46C6C' },
-                              { icon: Truck, label: 'Supply Chain Issues', severity: 'High', color: '#C94D6A' },
-                              { icon: AlertTriangle, label: 'Regulatory Violations', severity: 'Medium', color: '#E46C6C' }
-                            ].map((harm, index) => {
-                              const Icon = harm.icon;
-                              return (
-                                <motion.div
-                                  key={harm.label}
-                                  className="flex items-center gap-3 p-3 rounded-lg bg-white/50 hover:bg-white/80 transition-colors"
-                                  initial={{ opacity: 0, y: 10 }}
-                                  animate={isFormulaInView ? { opacity: 1, y: 0 } : {}}
-                                  transition={{ duration: 0.3, delay: 0.6 + (index * 0.1) }}
-                                >
-                                  <div 
-                                    className="w-8 h-8 rounded-lg flex items-center justify-center"
-                                    style={{ backgroundColor: `${harm.color}20` }}
-                                  >
-                                    <Icon className="w-4 h-4" style={{ color: harm.color }} />
-                                  </div>
-                                  <div className="flex-1 text-left">
-                                    <div className="body-small font-medium text-on-surface">{harm.label}</div>
-                                    <div className="data-small text-harm-coral">Impact: {harm.severity}</div>
-                                  </div>
-                                  {/* Severity indicator */}
-                                  <div className="w-12 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                    <motion.div
-                                      className="h-full rounded-full"
-                                      style={{ backgroundColor: harm.color }}
-                                      initial={{ width: 0 }}
-                                      animate={isFormulaInView ? { 
-                                        width: harm.severity === 'High' ? '80%' : '60%' 
-                                      } : {}}
-                                      transition={{ duration: 1, delay: 1 + (index * 0.1) }}
-                                    />
-                                  </div>
-                                </motion.div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </div>
-
-                {/* Equals and Result - Enhanced */}
-                <motion.div
-                  className="text-center mt-12 pt-8 border-t border-outline-variant"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isFormulaInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                >
-                  {/* Animated Equals */}
-                  <motion.div
-                    className="mb-8"
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <div className="w-20 h-20 bg-gradient-to-br from-cta-orange to-cta-orange-light rounded-full flex items-center justify-center mx-auto shadow-lg">
-                      <Equal className="w-10 h-10 text-white" />
-                    </div>
-                  </motion.div>
-                  
-                  {/* Result Card */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isFormulaInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.8, delay: 1.4 }}
-                  >
-                    <Card className="bg-gradient-to-r from-cta-orange/10 to-cta-orange-light/10 border-cta-orange/30 inline-block elevation-strong">
-                      <CardContent className="p-8 text-center">
-                        <motion.div
-                          animate={{ rotateY: [0, 360] }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                          className="w-16 h-16 bg-gradient-to-br from-cta-orange to-cta-orange-light rounded-2xl flex items-center justify-center mx-auto mb-4"
-                        >
-                          <BarChart3 className="w-8 h-8 text-white" />
-                        </motion.div>
-                        <h3 className="headline-h3 text-cta-orange mb-2">Care Score</h3>
-                        <p className="body-medium text-on-surface-variant mb-4">
-                          Comprehensive care investment rating
-                        </p>
-                        <div className="flex items-center justify-center gap-4">
-                          <div className="text-center">
-                            <div className="data-large text-cta-orange font-bold">0-100</div>
-                            <div className="data-small text-on-surface-variant">Scale</div>
-                          </div>
-                          <div className="w-px h-8 bg-outline-variant"></div>
-                          <div className="text-center">
-                            <div className="data-large text-cta-orange font-bold">A-E</div>
-                            <div className="data-small text-on-surface-variant">Bands</div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-
-                  {/* Call to Action */}
-                  <motion.div
-                    className="mt-8"
-                    initial={{ opacity: 0 }}
-                    animate={isFormulaInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.6, delay: 1.8 }}
-                  >
-                    <Button 
-                      onClick={onNavigateToMethodology}
-                      className="md3-btn-outlined gap-2 hover:scale-105 transition-transform"
-                    >
-                      <BookOpen className="w-4 h-4" />
-                      Read Full Methodology
-                    </Button>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        {/* 3. RESEARCH PAPERS SECTION */}
-        <motion.div
-          ref={papersRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isPapersInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-12"
-        >
-          <div className="text-center space-y-4">
-            <h2 className="headline-h2">Academic Research</h2>
-            <p className="body-large text-on-surface-variant max-w-2xl mx-auto">
-              Our methodology builds on extensive academic research in care economics and sustainable business practices.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Care Economics and Business Performance",
-                authors: "Dr. Sarah Chen, Harvard Business Review",
-                year: "2023",
-                summary: "Comprehensive analysis of how care investments correlate with long-term financial performance across S&P 500 companies.",
-                link: "#",
-                category: "Primary Research",
-                impact: "High"
-              },
-              {
-                title: "Maternal Capital Theory",
-                authors: "Prof. Maria Rodriguez, Stanford Economics",
-                year: "2022", 
-                summary: "Theoretical framework for understanding maternal wisdom in investment decision-making and its systemic impacts.",
-                link: "#",
-                category: "Economic Theory",
-                impact: "High"
-              },
-              {
-                title: "ESG and Care Infrastructure",
-                authors: "Dr. James Wilson, MIT Sloan",
-                year: "2023",
-                summary: "Analysis of Environmental, Social, and Governance factors with specific focus on care-related metrics and outcomes.",
-                link: "#",
-                category: "ESG Analysis",
-                impact: "Medium"
-              },
-              {
-                title: "Women Leadership and Company Resilience",
-                authors: "Dr. Lisa Park, Wharton School",
-                year: "2022",
-                summary: "Statistical analysis of correlation between women in leadership positions and company resilience during economic downturns.",
-                link: "#",
-                category: "Leadership Studies",
-                impact: "High"
-              },
-              {
-                title: "Parental Leave Policies and Innovation",
-                authors: "Dr. Ahmad Hassan, London Business School",
-                year: "2023",
-                summary: "Study examining the relationship between comprehensive parental leave policies and company innovation metrics.",
-                link: "#",
-                category: "Policy Research",
-                impact: "Medium"
-              },
-              {
-                title: "Childcare Support and Employee Retention",
-                authors: "Dr. Rachel Green, UC Berkeley",
-                year: "2022",
-                summary: "Research on how childcare benefits impact employee satisfaction, retention, and overall company performance.",
-                link: "#",
-                category: "HR Research",
-                impact: "Medium"
-              }
-            ].map((paper, index) => (
-              <motion.div
-                key={paper.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isPapersInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
-              >
-                <Card className="h-full hover:elevation-strong transition-all duration-300 cursor-pointer group">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-2">
-                      <Badge variant={paper.impact === 'High' ? 'default' : 'secondary'} className="mb-2">
-                        {paper.category}
-                      </Badge>
-                      <ExternalLink className="w-4 h-4 text-on-surface-variant group-hover:text-care-emerald transition-colors" />
-                    </div>
-                    <CardTitle className="headline-h3 group-hover:text-care-emerald transition-colors">
-                      {paper.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <div className="space-y-4">
-                      <div>
-                        <p className="body-small text-on-surface-variant">{paper.authors}</p>
-                        <p className="data-small text-care-emerald">{paper.year}</p>
-                      </div>
-                      <p className="body-small text-on-surface">{paper.summary}</p>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-care-emerald rounded-full"></div>
-                        <span className="data-small text-care-emerald">Impact: {paper.impact}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* 4. DATA SOURCES SECTION */}
-        <motion.div
-          ref={sourcesRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isSourcesInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="space-y-12"
-        >
-          <div className="text-center space-y-4">
-            <h2 className="headline-h2">Data Sources</h2>
-            <p className="body-large text-on-surface-variant max-w-2xl mx-auto">
-              Our analysis draws from multiple authoritative sources to ensure comprehensive and accurate assessment.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                category: "Financial Data",
-                icon: TrendingUp,
-                sources: [
-                  "SEC 10-K and 10-Q filings",
-                  "Bloomberg Terminal",
-                  "Yahoo Finance API",
-                  "Company annual reports"
-                ],
-                color: "care-emerald"
-              },
-              {
-                category: "Care Metrics",
-                icon: Heart,
-                sources: [
-                  "Company HR policies",
-                  "Glassdoor employee reviews",
-                  "LinkedIn diversity data",
-                  "Industry surveys"
-                ],
-                color: "care-vibrant-mint"
-              },
-              {
-                category: "ESG Data",
-                icon: Leaf,
-                sources: [
-                  "MSCI ESG ratings",
-                  "Sustainalytics scores",
-                  "CDP environmental data",
-                  "B Corp assessments"
-                ],
-                color: "neutral-lilac"
-              },
-              {
-                category: "Regulatory Data",
-                icon: Shield,
-                sources: [
-                  "EPA violation records",
-                  "OSHA safety reports",
-                  "SEC enforcement actions",
-                  "FTC compliance data"
-                ],
-                color: "harm-coral"
-              }
-            ].map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <motion.div
-                  key={category.category}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  animate={isSourcesInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 + (index * 0.1) }}
-                >
-                  <Card className="h-full hover:elevation-strong transition-all duration-300">
-                    <CardHeader>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className={`w-12 h-12 bg-${category.color}/10 rounded-xl flex items-center justify-center`}>
-                          <Icon className={`w-6 h-6 text-${category.color}`} />
-                        </div>
-                        <CardTitle className="headline-h3">{category.category}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        {category.sources.map((source, sourceIndex) => (
-                          <motion.div
-                            key={source}
-                            className="flex items-center gap-3 p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={isSourcesInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.3, delay: 0.6 + (index * 0.1) + (sourceIndex * 0.05) }}
-                          >
-                            <div className={`w-2 h-2 bg-${category.color} rounded-full flex-shrink-0`}></div>
-                            <span className="body-small text-on-surface">{source}</span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* 5. CTA SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-br from-bg-deep-navy to-bg-navy-medium text-text-on-navy rounded-2xl p-12 elevation-3">
-            <h2 className="headline-h2 text-text-on-navy mb-4">
-              Explore the Methodology
-            </h2>
-            <p className="body-large text-text-on-navy-secondary mb-8 max-w-2xl mx-auto">
-              Dive deeper into our research methodology and see how we calculate care scores for every S&P 500 company.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={onNavigateToMethodology}
-                className="md3-btn-filled bg-cta-orange hover:bg-cta-orange-light gap-3 px-8 py-4 text-lg"
-              >
-                <BookOpen className="w-5 h-5" />
-                Read Methodology
-              </Button>
-              {isAuthenticated && (
-                <Button 
-                  onClick={onNavigateToDashboard}
-                  className="md3-btn-outlined gap-3 px-8 py-4 text-lg border-text-on-navy text-text-on-navy hover:bg-text-on-navy hover:text-bg-deep-navy"
-                >
-                  <BarChart3 className="w-5 h-5" />
-                  View Dashboard
-                </Button>
-              )}
-            </div>
-          </div>
-        </motion.div>
-
-      </main>
-    </div>
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-medium text-wine hover:underline"
+          >
+            Open
+            <ExternalLink className="size-3.5" />
+          </a>
+        </div>
+        <div
+          className="mt-1 text-sm text-ink-soft"
+          dangerouslySetInnerHTML={{ __html: report }}
+        />
+        <div className="mt-3 flex items-start gap-2 text-sm text-ink-soft">
+          <BookOpen className="mt-0.5 size-4 shrink-0 text-wine" />
+          <span>{note}</span>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

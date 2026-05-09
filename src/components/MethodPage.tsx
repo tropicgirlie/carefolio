@@ -258,7 +258,7 @@ export function MethodPage() {
             <p>
               I run the screen across the S&amp;P 500, the FTSE 350, and the
               EuroStoxx universe. Anything scoring 75 or above goes onto the
-              shortlist. Anything between 60 and 74 goes on the watchlist —
+              shortlist. Anything between 60 and 74 goes on the watchlist,
               checked twice a year, not bought today. Anything below 60 I do not
               think about.
             </p>

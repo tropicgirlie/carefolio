@@ -2,7 +2,7 @@
 //
 // Built on TanStack Table v8 (sorting, filtering) + shadcn Table primitives.
 // The page wraps this with editorial copy; the table itself is the working
-// comparison tool — sort by name or tier, filter by tier and account-type
+// comparison tool: sort by name or tier, filter by tier and account-type
 // chips, search by name. Each row expands to show "Best for" and "Watch out".
 //
 // The visual language uses the codified tokens (font-display, text-wine,

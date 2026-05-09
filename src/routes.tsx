@@ -10,8 +10,8 @@ import { MethodRoute } from './pages/MethodRoute';
 import { BrokersRoute } from './pages/BrokersRoute';
 import { AboutRoute } from './pages/AboutRoute';
 
-// Editorial / research surface (still using the old InsightsRoute component
-// until /research gets its bespoke rewrite)
+// Editorial / research surface
+import { ResearchPage } from './components/ResearchPage';
 import { InsightsRoute } from './pages/InsightsRoute';
 
 // Universe + comparison pages (kept; restyle pending)
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
           { path: 'journal', Component: JournalRoute },
           { path: 'method', Component: MethodRoute },
           { path: 'brokers', Component: BrokersRoute },
-          { path: 'research', Component: InsightsRoute }, // canonical route for editorial
+          { path: 'research', Component: ResearchPage }, // canonical route for editorial
           { path: 'about', Component: AboutRoute },
 
           // Legacy URLs preserved so inbound links still resolve

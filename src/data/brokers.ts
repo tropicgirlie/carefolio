@@ -204,7 +204,7 @@ export const BROKERS: Broker[] = [
     tier: "avoid",
     regulator: "Plus500CY (CySEC), Plus500UK (FCA)",
     passport: "EU and UK",
-    accountTypes: ["CFDs only — not stock ownership"],
+    accountTypes: ["CFDs only, not stock ownership"],
     pricing: "Spread-based",
     bestFor:
       "Speculative short-term trading, NOT long-term portfolio building. Listed here so readers don't confuse it with a stockbroker.",

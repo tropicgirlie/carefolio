@@ -5,7 +5,7 @@
 // "carefolio" category at blog.luana.systems and redeploy.
 //
 // Cards link out to the canonical post on the blog. We deliberately
-// don't render WordPress HTML inside Carefolio — the blog already has
+// don't render WordPress HTML inside Carefolio. The blog already has
 // good UX, and rendering foreign HTML safely is a fragile commitment.
 
 import { motion } from "motion/react";

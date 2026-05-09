@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": 359,
+    "slug": "entry-001-from-dashboard-to-field-notes",
+    "title": "Entry 001: From dashboard to field notes",
+    "date": "2026-05-09T23:26:38",
+    "dateGmt": "2026-05-09T23:26:38",
+    "excerpt": "How a Care Index dashboard became a working notebook for learning to invest in public. A short version, for anyone who lands here cold: Carefolio is now my public…",
+    "image": "https://blog.luana.systems/wp-content/uploads/2026/05/picblogcarefolio.png",
+    "link": "https://blog.luana.systems/entry-001-from-dashboard-to-field-notes/",
+    "author": "Lua",
+    "readingTimeMinutes": 6
+  }
+]

@@ -5,59 +5,83 @@ import { CarefolioMark } from './branding/CarefolioMark';
 
 const SERIF = "'Fraunces', Georgia, 'Times New Roman', serif";
 
+export type NavCurrentPage =
+  | 'landing'
+  | 'journal'
+  | 'method'
+  | 'brokers'
+  | 'research'
+  | 'about'
+  | 'other';
+
+interface NavItem {
+  key: NavCurrentPage;
+  label: string;
+  onClick: () => void;
+  show: boolean;
+}
+
 interface GlobalNavigationProps {
-  currentPage: 'landing' | 'about' | 'insights' | 'dashboard' | 'work-that-works';
-  isAuthenticated: boolean;
+  currentPage: NavCurrentPage;
   onNavigateToLanding: () => void;
+  onNavigateToJournal: () => void;
+  onNavigateToMethod: () => void;
+  onNavigateToBrokers: () => void;
+  onNavigateToResearch: () => void;
   onNavigateToAbout: () => void;
-  onNavigateToInsights: () => void;
-  onNavigateToDashboard: () => void;
-  onNavigateToLogin: () => void;
-  onLogout: () => void;
   onLogoClick: () => void;
-  onNavigateToCarePortfolio?: () => void;
-  onNavigateToWorkThatWorks?: () => void;
 }
 
 export function GlobalNavigation({
   currentPage,
-  isAuthenticated,
   onNavigateToLanding,
+  onNavigateToJournal,
+  onNavigateToMethod,
+  onNavigateToBrokers,
+  onNavigateToResearch,
   onNavigateToAbout,
-  onNavigateToInsights,
-  onNavigateToDashboard,
-  onNavigateToLogin,
-  onLogout,
   onLogoClick,
-  onNavigateToCarePortfolio,
-  onNavigateToWorkThatWorks
 }: GlobalNavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const items: NavItem[] = [
+    { key: 'landing', label: 'Home', onClick: onNavigateToLanding, show: true },
+    { key: 'journal', label: 'Journal', onClick: onNavigateToJournal, show: true },
+    { key: 'method', label: 'Method', onClick: onNavigateToMethod, show: true },
+    { key: 'brokers', label: 'Brokers', onClick: onNavigateToBrokers, show: true },
+    { key: 'research', label: 'Research', onClick: onNavigateToResearch, show: true },
+    { key: 'about', label: 'About', onClick: onNavigateToAbout, show: true },
+  ];
 
   const handleNavClick = (action: () => void) => {
     action();
     setIsMobileMenuOpen(false);
   };
 
+  const handleNewsletter = () => {
+    window.open('https://carefolio.beehiiv.com/', '_blank');
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <header className="navbar-container relative">
+    <header className="navbar-container relative" style={{ borderBottom: '1px solid #E1D5BF', backgroundColor: '#F8F3EA' }}>
       <div className="container">
         <div className="navbar-content" style={{ minHeight: '64px' }}>
           {/* Left: Logo */}
           <div className="navbar-left">
-            <motion.div 
-              className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity"
+            <motion.div
+              className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
               onClick={onLogoClick}
               title="Triple-click for developer access"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <CarefolioMark size={36} />
+              <CarefolioMark size={32} />
               <span
                 style={{
                   color: '#1A1410',
                   fontFamily: SERIF,
-                  fontSize: '24px',
+                  fontSize: '22px',
                   letterSpacing: '-0.015em',
                   lineHeight: 1,
                 }}
@@ -70,58 +94,26 @@ export function GlobalNavigation({
 
           {/* Center: Navigation Links */}
           <nav className="navbar-center hidden md:flex">
-            <button 
-              onClick={onNavigateToLanding} 
-              className={`nav-link ${currentPage === 'landing' ? 'active' : ''}`}
-            >
-              Home
-            </button>
-            <button 
-              onClick={onNavigateToAbout} 
-              className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
-            >
-              About
-            </button>
-            <button 
-              onClick={onNavigateToInsights} 
-              className={`nav-link ${currentPage === 'insights' ? 'active' : ''}`}
-            >
-              Insights
-            </button>
-            {onNavigateToWorkThatWorks && (
-              <button 
-                onClick={onNavigateToWorkThatWorks} 
-                className={`nav-link ${currentPage === 'work-that-works' ? 'active' : ''}`}
+            {items.filter(i => i.show).map(item => (
+              <button
+                key={item.key}
+                onClick={item.onClick}
+                className={`nav-link ${currentPage === item.key ? 'active' : ''}`}
               >
-                Work That Works
+                {item.label}
               </button>
-            )}
-            {onNavigateToCarePortfolio && (
-              <button 
-                onClick={onNavigateToCarePortfolio} 
-                className="nav-link"
-              >
-                Care Index
-              </button>
-            )}
-            <button 
-              onClick={onNavigateToDashboard} 
-              className={`nav-link ${currentPage === 'dashboard' ? 'active' : ''}`}
-            >
-              Dashboard
-            </button>
+            ))}
           </nav>
 
-          {/* Right: CTA Actions */}
+          {/* Right: Newsletter CTA */}
           <div className="navbar-right hidden md:flex">
-            {/* Join Waitlist Button - Primary CTA */}
-            <button 
+            <button
+              onClick={handleNewsletter}
               className="nav-cta-button"
-              onClick={() => window.open('https://carefolio.beehiiv.com/', '_blank')}
               style={{
                 backgroundColor: '#1A1410',
                 color: 'white',
-                borderColor: '#1A1410'
+                borderColor: '#1A1410',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#000000';
@@ -131,22 +123,19 @@ export function GlobalNavigation({
               }}
             >
               <Mail className="w-4 h-4" />
-              <span className="hidden lg:inline">Join Waitlist</span>
-              <span className="lg:hidden">Join</span>
+              <span className="hidden lg:inline">Sunday letter</span>
+              <span className="lg:hidden">Subscribe</span>
             </button>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-lg transition-colors"
+            style={{ color: '#1A1410' }}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
-            )}
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
@@ -159,84 +148,34 @@ export function GlobalNavigation({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-gray-200 bg-white overflow-hidden"
+            className="md:hidden overflow-hidden"
+            style={{ borderTop: '1px solid #E1D5BF', backgroundColor: '#F8F3EA' }}
           >
-            <nav className="container py-4 space-y-2">
-              <button
-                onClick={() => handleNavClick(onNavigateToLanding)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                  currentPage === 'landing'
-                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Home
-              </button>
-              <button
-                onClick={() => handleNavClick(onNavigateToAbout)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                  currentPage === 'about'
-                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                About
-              </button>
-              <button
-                onClick={() => handleNavClick(onNavigateToInsights)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                  currentPage === 'insights'
-                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Insights
-              </button>
-              {onNavigateToWorkThatWorks && (
+            <nav className="container py-4 space-y-1">
+              {items.filter(i => i.show).map(item => (
                 <button
-                  onClick={() => handleNavClick(onNavigateToWorkThatWorks)}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                    currentPage === 'work-that-works'
-                      ? 'bg-purple-50 text-[#6B3FA0] font-medium'
-                      : 'text-gray-700 hover:bg-gray-50'
-                  }`}
-                >
-                  Work That Works
-                </button>
-              )}
-              {onNavigateToCarePortfolio && (
-                <button
-                  onClick={() => handleNavClick(onNavigateToCarePortfolio)}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                    currentPage === 'carePortfolio'
-                      ? 'bg-purple-50 text-[#6B3FA0] font-medium'
-                      : 'text-gray-700 hover:bg-gray-50'
-                  }`}
-                >
-                  Care Index
-                </button>
-              )}
-              <button
-                onClick={() => handleNavClick(onNavigateToDashboard)}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                  currentPage === 'dashboard'
-                    ? 'bg-[#F2EBDB] text-[#1A1410] font-semibold'
-                    : 'text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                Dashboard
-              </button>
-              
-              {/* Mobile CTAs */}
-              <div className="pt-4 space-y-2 border-t border-gray-200">
-                <button
-                  onClick={() => {
-                    window.open('https://carefolio.beehiiv.com/', '_blank');
+                  key={item.key}
+                  onClick={() => handleNavClick(item.onClick)}
+                  className="w-full text-left px-4 py-3 rounded-lg transition-colors"
+                  style={{
+                    backgroundColor: currentPage === item.key ? '#EFE5D0' : 'transparent',
+                    color: '#1A1410',
+                    fontWeight: currentPage === item.key ? 600 : 400,
                   }}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#1A1410] text-white font-medium hover:bg-black transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+
+              {/* Mobile CTA */}
+              <div className="pt-3 mt-2" style={{ borderTop: '1px solid #E1D5BF' }}>
+                <button
+                  onClick={handleNewsletter}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full font-medium transition-opacity hover:opacity-90"
+                  style={{ backgroundColor: '#1A1410', color: 'white' }}
                 >
                   <Mail className="w-4 h-4" />
-                  Join Waitlist
+                  Sunday letter
                 </button>
               </div>
             </nav>

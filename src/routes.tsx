@@ -3,65 +3,75 @@ import { RootProviders } from './components/layouts/RootProviders';
 import { MainLayout } from './components/layouts/MainLayout';
 import { ProtectedRoute } from './components/layouts/ProtectedRoute';
 
-// Public page routes
+// New journey-pivot pages
 import { LandingRoute } from './pages/LandingRoute';
-import { LoginRoute } from './pages/LoginRoute';
-import { InsightsRoute } from './pages/InsightsRoute';
-import { AboutRoute } from './pages/AboutRoute';
-import { PrivacyRoute } from './pages/PrivacyRoute';
-import { WorkThatWorksRoute } from './pages/WorkThatWorksRoute';
-import { DataGovernanceRoute } from './pages/DataGovernanceRoute';
-import { ComplianceRoute } from './pages/ComplianceRoute';
-import { CompareRoute } from './pages/CompareRoute';
-import { PortfolioScoreRoute } from './pages/PortfolioScoreRoute';
-import { BrokersRoute } from './pages/BrokersRoute';
-import { MethodRoute } from './pages/MethodRoute';
 import { JournalRoute } from './pages/JournalRoute';
+import { MethodRoute } from './pages/MethodRoute';
+import { BrokersRoute } from './pages/BrokersRoute';
+import { AboutRoute } from './pages/AboutRoute';
 
-// Dashboard - public feature preview
+// Editorial / research surface (still using the old InsightsRoute component
+// until /research gets its bespoke rewrite)
+import { InsightsRoute } from './pages/InsightsRoute';
+
+// Universe + comparison pages (kept; restyle pending)
+import { LeaderboardRoute } from './pages/LeaderboardRoute';
+import { CompareRoute } from './pages/CompareRoute';
+import { CompanyProfileRoute } from './pages/CompanyProfileRoute';
 import { DashboardRoute } from './pages/DashboardRoute';
 
-// Protected page routes
-import { LeaderboardRoute } from './pages/LeaderboardRoute';
-import { CompanyProfileRoute } from './pages/CompanyProfileRoute';
+// Newsletter signup / waitlist (formerly /login)
+import { LoginRoute } from './pages/LoginRoute';
+
+// Legal / compliance (kept; restyle pending)
+import { PrivacyRoute } from './pages/PrivacyRoute';
+import { DataGovernanceRoute } from './pages/DataGovernanceRoute';
+import { ComplianceRoute } from './pages/ComplianceRoute';
+
+// Admin-only
 import { DataQualityRoute } from './pages/DataQualityRoute';
 import { DataValidationRoute } from './pages/DataValidationRoute';
 
+// Retired:
+//   /work-that-works   - off-brief for the journey pivot, components kept in repo
+//   /portfolio-score   - subsumed into /method, components kept in repo
+
 export const router = createBrowserRouter([
   {
-    // Root: provides AuthContext, TooltipProvider, Toaster
     Component: RootProviders,
     children: [
       {
-        // Main layout: GlobalNavigation, Footer, TechDocs modal
         path: '/',
         Component: MainLayout,
         children: [
-          // Public pages
+          // Journey pivot — primary nav surface
           { index: true, Component: LandingRoute },
+          { path: 'journal', Component: JournalRoute },
+          { path: 'method', Component: MethodRoute },
+          { path: 'brokers', Component: BrokersRoute },
+          { path: 'research', Component: InsightsRoute }, // canonical route for editorial
+          { path: 'about', Component: AboutRoute },
+
+          // Legacy URLs preserved so inbound links still resolve
+          { path: 'care-index', Component: MethodRoute },
+          { path: 'insights', Component: InsightsRoute },
+
+          // Newsletter signup / waitlist
           { path: 'login', Component: LoginRoute },
           { path: 'early-access', Component: LoginRoute },
-          { path: 'insights', Component: InsightsRoute },
-          { path: 'about', Component: AboutRoute },
-          { path: 'method', Component: MethodRoute },
-          { path: 'care-index', Component: MethodRoute }, // Legacy URL → new method page
-          { path: 'privacy', Component: PrivacyRoute },
-          { path: 'work-that-works', Component: WorkThatWorksRoute },
-          { path: 'data-governance', Component: DataGovernanceRoute },
-          { path: 'compliance', Component: ComplianceRoute },
-          { path: 'compare', Component: CompareRoute },
-          { path: 'portfolio-score', Component: PortfolioScoreRoute },
-          { path: 'brokers', Component: BrokersRoute },
-          { path: 'journal', Component: JournalRoute },
 
-          // Dashboard - public feature preview
+          // Universe + comparisons + dashboard preview (restyle pending)
+          { path: 'leaderboard', Component: LeaderboardRoute },
+          { path: 'compare', Component: CompareRoute },
+          { path: 'company/:symbol', Component: CompanyProfileRoute },
           { path: 'dashboard', Component: DashboardRoute },
 
-          // Public showcase pages (formerly protected)
-          { path: 'leaderboard', Component: LeaderboardRoute },
-          { path: 'company/:symbol', Component: CompanyProfileRoute },
+          // Legal pages (restyle pending)
+          { path: 'privacy', Component: PrivacyRoute },
+          { path: 'data-governance', Component: DataGovernanceRoute },
+          { path: 'compliance', Component: ComplianceRoute },
 
-          // Admin-only (accessed via triple-click logo system)
+          // Admin
           {
             path: 'data-quality',
             element: (
@@ -80,10 +90,7 @@ export const router = createBrowserRouter([
           },
 
           // Catch-all
-          {
-            path: '*',
-            Component: LandingRoute,
-          },
+          { path: '*', Component: LandingRoute },
         ],
       },
     ],

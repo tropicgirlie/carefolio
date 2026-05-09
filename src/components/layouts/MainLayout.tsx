@@ -7,26 +7,29 @@ import { TechDocs } from '../TechDocs';
 import { useAuth } from '../../contexts/AuthContext';
 import { useAppNavigation } from '../../hooks/useAppNavigation';
 
+import type { NavCurrentPage } from '../GlobalNavigation';
+
 // Pages that get the GlobalNavigation bar
-const NAV_PAGES = ['/', '/insights', '/about', '/dashboard', '/leaderboard', '/care-index', '/work-that-works'];
+const NAV_PAGES = [
+  '/', '/about', '/journal', '/method', '/brokers', '/research', '/insights',
+  '/care-index', '/leaderboard', '/dashboard',
+];
 const NAV_PAGE_PREFIXES = ['/company/'];
 
 // Pages that get the Footer
-const FOOTER_PAGES = ['/', '/insights', '/about', '/dashboard', '/leaderboard', '/care-index', '/work-that-works'];
+const FOOTER_PAGES = [
+  '/', '/about', '/journal', '/method', '/brokers', '/research', '/insights',
+  '/care-index', '/leaderboard', '/dashboard',
+];
 
-function getNavCurrentPage(pathname: string): 'landing' | 'about' | 'insights' | 'dashboard' | 'work-that-works' {
+function getNavCurrentPage(pathname: string): NavCurrentPage {
   if (pathname === '/') return 'landing';
   if (pathname === '/about') return 'about';
-  if (pathname === '/insights') return 'insights';
-  if (pathname === '/work-that-works') return 'work-that-works';
-  if (
-    pathname === '/dashboard' ||
-    pathname === '/leaderboard' ||
-    pathname.startsWith('/company/')
-  ) {
-    return 'dashboard';
-  }
-  return 'landing';
+  if (pathname === '/journal') return 'journal';
+  if (pathname === '/method' || pathname === '/care-index') return 'method';
+  if (pathname === '/brokers') return 'brokers';
+  if (pathname === '/research' || pathname === '/insights') return 'research';
+  return 'other';
 }
 
 export function MainLayout() {
@@ -79,11 +82,9 @@ export function MainLayout() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nav.isAuthenticated, showTechDocs, setShowTechDocs, nav]);
 
-  // Determine background based on route
-  const getBg = () => {
-    if (location.pathname === '/' || location.pathname === '/care-index' || location.pathname === '/work-that-works') return 'bg-white';
-    return 'bg-gray-50';
-  };
+  // Page background. New journey pages set their own cream backgrounds inline,
+  // so we just give the rest of the app a light neutral that won't fight them.
+  const getBg = () => 'bg-[#F8F3EA]';
 
   // TechDocs modal overlay - rendered as overlay instead of early return to preserve hook order
   if (showTechDocs) {
@@ -107,16 +108,13 @@ export function MainLayout() {
         {showNav && (
           <GlobalNavigation
             currentPage={currentPageForNav}
-            isAuthenticated={nav.isAuthenticated}
             onNavigateToLanding={nav.onNavigateToLanding}
+            onNavigateToJournal={nav.onNavigateToJournal}
+            onNavigateToMethod={nav.onNavigateToMethod}
+            onNavigateToBrokers={nav.onNavigateToBrokers}
+            onNavigateToResearch={nav.onNavigateToResearch}
             onNavigateToAbout={nav.onNavigateToAbout}
-            onNavigateToInsights={nav.onNavigateToInsights}
-            onNavigateToDashboard={nav.onNavigateToDashboard}
-            onNavigateToLogin={nav.onNavigateToLogin}
-            onLogout={nav.onLogout}
             onLogoClick={nav.onLogoClick}
-            onNavigateToCarePortfolio={nav.onNavigateToCarePortfolio}
-            onNavigateToWorkThatWorks={nav.onNavigateToWorkThatWorks}
           />
         )}
 

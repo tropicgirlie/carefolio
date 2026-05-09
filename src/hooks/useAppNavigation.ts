@@ -33,6 +33,11 @@ export function useAppNavigation() {
   const onNavigateToDataGovernance = useCallback(() => navigate('/data-governance'), [navigate]);
   const onNavigateToCompliance = useCallback(() => navigate('/compliance'), [navigate]);
   const onNavigateToWorkThatWorks = useCallback(() => navigate('/work-that-works'), [navigate]);
+  // Journey-pivot routes
+  const onNavigateToJournal = useCallback(() => navigate('/journal'), [navigate]);
+  const onNavigateToMethod = useCallback(() => navigate('/method'), [navigate]);
+  const onNavigateToBrokers = useCallback(() => navigate('/brokers'), [navigate]);
+  const onNavigateToResearch = useCallback(() => navigate('/research'), [navigate]);
 
   const onLogout = useCallback(async () => {
     await handleLogout();
@@ -68,6 +73,10 @@ export function useAppNavigation() {
     onNavigateToDataGovernance,
     onNavigateToCompliance,
     onNavigateToWorkThatWorks,
+    onNavigateToJournal,
+    onNavigateToMethod,
+    onNavigateToBrokers,
+    onNavigateToResearch,
     pageProps,
   };
 }

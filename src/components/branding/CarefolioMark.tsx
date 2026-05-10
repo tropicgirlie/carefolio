@@ -20,7 +20,7 @@ interface CarefolioMarkProps {
 
 export function CarefolioMark({
   size = 36,
-  src = "/logo.png",
+  src = "/carefolio.jpg",
   color = "#4A1F30",
   className,
 }: CarefolioMarkProps) {

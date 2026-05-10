@@ -25,6 +25,7 @@ import {
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import journalEntries from "../data/journal.json";
+import { CarefolioMark } from "./branding/CarefolioMark";
 import {
   Eyebrow,
   DisplayHeading,
@@ -77,11 +78,14 @@ export function JournalPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <div
-              className="text-xs uppercase text-wine"
-              style={{ ...MONO, letterSpacing: "0.22em" }}
-            >
-              Field notes · Vol. I · Carefolio
+            <div className="flex items-center gap-3">
+              <CarefolioMark size={28} />
+              <div
+                className="text-xs uppercase text-wine"
+                style={{ ...MONO, letterSpacing: "0.22em" }}
+              >
+                Field notes · Vol. I · Carefolio
+              </div>
             </div>
             <DisplayHeading level={1} size="xl" className="mt-5">
               A working notebook for{" "}

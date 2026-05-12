@@ -30,7 +30,7 @@ import {
   Search,
   AlertTriangle,
 } from "lucide-react";
-import { BROKERS, type Broker, type BrokerTier } from "../data/brokers";
+import { BROKERS, type Broker, type BrokerTier, type BrokerRegion } from "../data/brokers";
 import { BrokerLink } from "./branding/BrokerLink";
 import {
   Table,
@@ -58,6 +58,18 @@ const TIER_BG: Record<BrokerTier, string> = {
 };
 
 const TIER_ORDER: BrokerTier[] = ["primary", "ireland", "uk", "honourable", "avoid"];
+
+const REGION_LABEL: Record<BrokerRegion, string> = {
+  eu: "EU passported",
+  ireland: "Ireland-only",
+  uk: "UK-only",
+};
+
+const REGION_CLASS: Record<BrokerRegion, string> = {
+  eu: "border-border-warm bg-cream text-ink-soft",
+  ireland: "border-transparent bg-peach-soft text-wine",
+  uk: "border-transparent bg-peach-soft text-wine",
+};
 
 export function BrokersTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -106,14 +118,23 @@ export function BrokersTable() {
           <SortableHeader column={column}>Broker</SortableHeader>
         ),
         cell: ({ row }) => (
-          <div className="flex flex-col">
-            <span
-              className="font-medium text-ink"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-            >
-              {row.original.name}
-            </span>
-            <span className="mt-0.5 text-xs text-muted-warm">
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className="font-medium text-ink"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+              >
+                {row.original.name}
+              </span>
+              <span
+                className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider whitespace-nowrap ${REGION_CLASS[row.original.region]}`}
+                style={{ letterSpacing: "0.08em" }}
+                title={`Availability: ${REGION_LABEL[row.original.region]}`}
+              >
+                {REGION_LABEL[row.original.region]}
+              </span>
+            </div>
+            <span className="text-xs text-muted-warm">
               {row.original.regulator}
             </span>
           </div>

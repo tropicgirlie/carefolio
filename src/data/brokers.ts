@@ -12,10 +12,19 @@
 
 export type BrokerTier = "primary" | "ireland" | "uk" | "honourable" | "avoid";
 
+/**
+ * Where this broker is available to retail investors.
+ *  - "eu"      = MiFID-passported across EU/EEA. Available to Irish residents and most EU readers.
+ *  - "ireland" = Ireland-only (typically because of a pension wrapper that requires CBI authorisation).
+ *  - "uk"      = UK-only (FCA-regulated entity, not available to EU residents post-Brexit).
+ */
+export type BrokerRegion = "eu" | "ireland" | "uk";
+
 export interface Broker {
   id: string;
   name: string;
   tier: BrokerTier;
+  region: BrokerRegion;
   regulator: string;            // who licenses them, e.g. "BaFin (Germany)"
   passport: string;             // jurisdictional reach
   accountTypes: string[];       // ["General investment", "ISA", "PRSA"]
@@ -32,6 +41,7 @@ export const BROKERS: Broker[] = [
     id: "degiro",
     name: "DEGIRO",
     tier: "primary",
+    region: "eu",
     regulator: "flatexDEGIRO Bank, BaFin (Germany)",
     passport: "MiFID II passported across EU including Ireland",
     accountTypes: ["General investment"],
@@ -45,6 +55,7 @@ export const BROKERS: Broker[] = [
     id: "lightyear",
     name: "Lightyear",
     tier: "primary",
+    region: "eu",
     regulator: "Lightyear Europe AS, Estonian FSA",
     passport: "MiFID II passported across EU",
     accountTypes: ["General investment"],
@@ -57,6 +68,7 @@ export const BROKERS: Broker[] = [
     id: "trading212",
     name: "Trading 212",
     tier: "primary",
+    region: "eu",
     regulator: "Trading 212 Markets Ltd (CySEC) for EU clients; Trading 212 UK Ltd (FCA) for UK",
     passport: "Available to Irish residents via the CySEC entity",
     accountTypes: ["Invest", "ISA (UK only)"],
@@ -70,6 +82,7 @@ export const BROKERS: Broker[] = [
     id: "ibkr",
     name: "Interactive Brokers (IBIE)",
     tier: "primary",
+    region: "eu",
     regulator: "Interactive Brokers Ireland Ltd (IBIE), Central Bank of Ireland",
     passport: "Native Irish authorisation",
     accountTypes: ["General", "Margin", "Multi-currency cash"],
@@ -83,6 +96,7 @@ export const BROKERS: Broker[] = [
     id: "davy",
     name: "Davy Select",
     tier: "ireland",
+    region: "ireland",
     regulator: "J&E Davy (Bank of Ireland group), Central Bank of Ireland",
     passport: "Ireland",
     accountTypes: ["General", "PRSA", "Self-Directed Pension", "ARF"],
@@ -97,6 +111,7 @@ export const BROKERS: Broker[] = [
     id: "irish-life-prsa",
     name: "Zurich Life / Irish Life",
     tier: "ireland",
+    region: "ireland",
     regulator: "Central Bank of Ireland",
     passport: "Ireland",
     accountTypes: ["PRSA (Personal Retirement Savings Account)"],
@@ -113,6 +128,7 @@ export const BROKERS: Broker[] = [
     id: "vanguard-uk",
     name: "Vanguard UK",
     tier: "uk",
+    region: "uk",
     regulator: "Vanguard Asset Management Ltd, FCA (UK)",
     passport: "UK residents only",
     accountTypes: ["General", "Stocks & Shares ISA", "Junior ISA", "SIPP"],
@@ -125,6 +141,7 @@ export const BROKERS: Broker[] = [
     id: "pensionbee",
     name: "PensionBee",
     tier: "uk",
+    region: "uk",
     regulator: "PensionBee Ltd, FCA (UK)",
     passport: "UK residents only",
     accountTypes: ["UK personal pension only"],
@@ -137,6 +154,7 @@ export const BROKERS: Broker[] = [
     id: "moneybox",
     name: "Moneybox",
     tier: "uk",
+    region: "uk",
     regulator: "Moneybox Ltd, FCA (UK)",
     passport: "UK residents only",
     accountTypes: ["S&S ISA", "LISA", "Junior ISA", "SIPP", "GIA"],
@@ -151,6 +169,7 @@ export const BROKERS: Broker[] = [
     id: "saxo",
     name: "Saxo Bank",
     tier: "honourable",
+    region: "eu",
     regulator: "Saxo Bank A/S, Danish FSA",
     passport: "MiFID II passported across EU",
     accountTypes: ["General", "ISA (UK)", "SIPP via partners (UK)"],
@@ -163,6 +182,7 @@ export const BROKERS: Broker[] = [
     id: "etoro",
     name: "eToro",
     tier: "honourable",
+    region: "eu",
     regulator: "eToro (Europe) Ltd, CySEC; eToro UK, FCA",
     passport: "EU and UK",
     accountTypes: ["General investment", "Copy trading"],
@@ -176,6 +196,7 @@ export const BROKERS: Broker[] = [
     id: "xtb",
     name: "XTB",
     tier: "honourable",
+    region: "eu",
     regulator: "XTB SA, KNF (Poland)",
     passport: "MiFID II passported",
     accountTypes: ["General investment"],
@@ -188,6 +209,7 @@ export const BROKERS: Broker[] = [
     id: "revolut-invest",
     name: "Revolut Invest",
     tier: "honourable",
+    region: "eu",
     regulator: "Revolut Securities Europe UAB, Bank of Lithuania",
     passport: "EU; separate UK entity for UK clients",
     accountTypes: ["General investment"],
@@ -202,6 +224,7 @@ export const BROKERS: Broker[] = [
     id: "plus500",
     name: "Plus500",
     tier: "avoid",
+    region: "eu",
     regulator: "Plus500CY (CySEC), Plus500UK (FCA)",
     passport: "EU and UK",
     accountTypes: ["CFDs only, not stock ownership"],

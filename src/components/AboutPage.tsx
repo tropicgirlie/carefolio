@@ -99,6 +99,29 @@ export function AboutPage(_props: AboutPageProps) {
               That is one bullet of why I write, not the headline.
             </p>
           </Prose>
+
+          {/* Where I write from: explicit position so readers know which bits
+              are local to Ireland and which are transferable. */}
+          <div
+            className="mt-10 rounded-2xl border border-border-warm bg-white px-6 py-5 text-sm leading-relaxed sm:text-base"
+            style={{ color: "#3F352D" }}
+          >
+            <div
+              className="text-xs font-medium uppercase text-wine"
+              style={{ letterSpacing: "0.18em" }}
+            >
+              Where I write from
+            </div>
+            <p className="mt-3">
+              <strong className="text-ink">I write from Ireland.</strong> The
+              pension wrappers, tax rates, and providers on this site (PRSA,
+              AVC, Davy, Zurich Life) are Irish unless I say otherwise. The
+              methodology, the broker comparison logic, the research, and the
+              investing fundamentals are broadly transferable. If you are
+              reading from elsewhere in the EU, the badges on the brokers page
+              tell you what is available to you.
+            </p>
+          </div>
         </div>
       </section>
 

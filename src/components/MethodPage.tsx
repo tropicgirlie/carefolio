@@ -244,11 +244,16 @@ export function MethodPage() {
           </DisplayHeading>
           <Prose className="mt-7">
             <p>
-              <strong className="text-ink">This is a values screen, not a return signal.</strong>{" "}
-              A company with a great Care Score may underperform the market.
-              ESG and values-aligned funds have a well-documented history of
-              trade-offs against pure index returns. I accept that. The point
-              is to own things I want to own.
+              <strong className="text-ink">This is a values screen first. The returns case is real but secondary.</strong>{" "}
+              The Care Score filters for companies I would want to own. It does
+              not predict that they will outperform the market in any given
+              year. The honest read of the literature is that values-aligned
+              investing does not systematically cost you returns and may help
+              on the margin (see <a href="/research#values-and-returns" className="text-wine underline-offset-2 hover:underline">the research page</a>{" "}
+              for the studies and their caveats). I accept that asymmetry on
+              purpose: I would rather own companies I would want to work for,
+              and the data says I am not paying much, if anything, for the
+              preference.
             </p>
             <p>
               <strong className="text-ink">The methodology is versioned, not perfect.</strong>{" "}

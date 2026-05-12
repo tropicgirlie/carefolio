@@ -217,6 +217,141 @@ export function ResearchPage() {
 
       <Separator className="bg-border-warm" />
 
+      {/* Values and returns */}
+      <section id="values-and-returns">
+        <div className="mx-auto max-w-3xl px-6 py-20">
+          <Eyebrow>Values and returns</Eyebrow>
+          <DisplayHeading level={2} size="md" className="mt-5">
+            Does caring about diversity cost you returns?
+          </DisplayHeading>
+          <ProseLead className="mt-5">
+            The short answer is no, mostly, with caveats. Six bodies of work
+            below. Effect sizes are modest, the causal direction is debated,
+            but the case that values-aligned investing systematically loses
+            money is not supported by the evidence.
+          </ProseLead>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <StatCard
+              value="+25%"
+              label="more likely to outperform peers on EBIT"
+              source="McKinsey, Diversity Matters Even More, 2023. Top-quartile gender diversity vs bottom quartile, 1,265 companies, 23 countries."
+            />
+            <StatCard
+              value="+3.1 pts"
+              label="annual stock returns, 20%+ women in management"
+              source="Credit Suisse Gender 3000, 2021. ~3,000 companies tracked globally."
+            />
+            <StatCard
+              value="+15%"
+              label="higher net margin, 30%+ female executives"
+              source="Peterson Institute for International Economics, Noland et al., 2016. 21,980 firms, 91 countries."
+            />
+            <StatCard
+              value="+19%"
+              label="higher innovation revenue, above-average leadership diversity"
+              source="BCG, How Diverse Leadership Teams Boost Innovation, 2018."
+            />
+          </div>
+
+          <Prose className="mt-12">
+            <H3>The full evidence base</H3>
+            <p>
+              <strong className="text-ink">McKinsey, Diversity Matters series (2015, 2018, 2020, 2023).</strong>{" "}
+              Across four waves over a decade, top-quartile gender diversity on
+              executive teams has correlated with EBIT outperformance against
+              bottom-quartile peers. The 2023 wave found the gap had widened.
+              The series is the most-cited in this literature, and the one with
+              the most replication scrutiny.
+            </p>
+            <p>
+              <strong className="text-ink">Credit Suisse, Gender 3000 (annual since 2014).</strong>{" "}
+              Tracks roughly 3,000 listed companies globally. Companies with
+              20%+ women in management have outperformed their lower-diversity
+              peers on average return on equity and average annual share price
+              return. The 2021 edition reported a 3.1 percentage point
+              annualised stock return premium.
+            </p>
+            <p>
+              <strong className="text-ink">Peterson Institute, Noland and Moran (2016).</strong>{" "}
+              The largest single-paper sample in this literature: 21,980
+              companies across 91 countries. Firms with 30%+ female executives
+              showed 15% higher net margin compared to firms with no women in
+              senior leadership.
+            </p>
+            <p>
+              <strong className="text-ink">Goldman Sachs, Womenomics (2005 onwards).</strong>{" "}
+              Original 2005 paper plus several updates. Notable finding: US
+              IPOs with all-male boards have systematically underperformed
+              those with at least one woman, over rolling 3-year windows. The
+              effect has persisted across updates.
+            </p>
+            <p>
+              <strong className="text-ink">BCG, How Diverse Leadership Teams Boost Innovation (2018).</strong>{" "}
+              Companies with above-average diversity in leadership reported 19%
+              higher innovation revenue. The mechanism is plausible (more
+              perspectives in the room produce more product ideas) but harder
+              to attribute cleanly than headline financials.
+            </p>
+            <p>
+              <strong className="text-ink">Bloomberg Gender-Equality Index (GEI).</strong>{" "}
+              An index of 400+ public companies that pass criteria on pay,
+              leadership representation, recruiting, retention, and sexual
+              harassment policy. Over its lifetime the GEI has approximately
+              tracked the MSCI ACWI: no systematic return penalty for the
+              inclusion screen, no dramatic outperformance either.
+            </p>
+
+            <H3>What the literature does not say</H3>
+            <p>
+              Three caveats that any honest reading has to include.
+            </p>
+            <p>
+              <strong className="text-ink">The McKinsey series has been challenged on replication.</strong>{" "}
+              Green and Hand (Tel Aviv University, 2021) attempted to reproduce
+              the findings on the same dataset and could not. Their critique
+              focuses on methodology around the EBIT outperformance metric.
+              Treat the 25% figure as suggestive rather than definitive.
+            </p>
+            <p>
+              <strong className="text-ink">Correlation is not causation.</strong>{" "}
+              The most plausible alternative explanation is that companies
+              that already perform well (better governance, more resources,
+              better culture) both attract more diverse leadership and produce
+              better financials. Diversity might be a marker of those
+              underlying qualities rather than the engine.
+            </p>
+            <p>
+              <strong className="text-ink">Effect sizes are bigger for innovation, retention, and recruiting than for stock returns.</strong>{" "}
+              The financial-returns channel is real but modest, and harder to
+              attribute. The operational channels (lower turnover, faster
+              recruiting, more innovation) are better-documented and matter
+              more to the long-term health of the business than to next year's
+              share price.
+            </p>
+
+            <H3>The honest synthesis</H3>
+            <p>
+              Values-aligned investing does not appear to cost you on average,
+              and may help on the margin. The effect sizes are modest. The
+              causal direction is debated. The case for the Care Score is
+              primarily about owning what you would want to own, with the
+              additional finding that the data does not punish you for the
+              preference.
+            </p>
+            <p>
+              That asymmetry is why I run the screen. If the evidence said
+              "values investing reliably costs you two percentage points a
+              year," that would be a more interesting trade-off to argue with
+              yourself about. It does not say that. The penalty story is
+              mostly wrong.
+            </p>
+          </Prose>
+        </div>
+      </section>
+
+      <Separator className="bg-border-warm" />
+
       {/* Sources */}
       <section>
         <div className="mx-auto max-w-3xl px-6 py-20">
@@ -318,6 +453,21 @@ export function ResearchPage() {
 }
 
 /* ──────────────────────────────  Helpers  ──────────────────────────────── */
+
+function H3({ children }: { children: React.ReactNode }) {
+  return (
+    <h3
+      className="mt-10 text-xl text-ink sm:text-2xl"
+      style={{
+        fontFamily: "var(--font-display)",
+        fontWeight: 600,
+        letterSpacing: "-0.015em",
+      }}
+    >
+      {children}
+    </h3>
+  );
+}
 
 function StatCard({
   icon,

@@ -459,13 +459,13 @@ function formatDate(iso: string): string {
  */
 
 const CURRENTLY_READING: string[] = [
-  "Common Sense on Mutual Funds — John C. Bogle",
-  "The Psychology of Money — Morgan Housel",
+  "Girls Just Wanna Have Funds, by the Female Invest founders",
+  "The Psychology of Money, by Morgan Housel",
   "Pensions Authority Trustee Handbook (Ireland)",
 ];
 
 const OPEN_QUESTIONS: string[] = [
+  "How do I optimise my pension. AVCs vs PRSA top-up vs a separate broker.",
   "Is the Davy PRSA fee differential worth the wrapper, or should I unbundle?",
-  "How do I size positions when the screened universe is only ~200 names?",
-  "What is the realistic gap between a Care Score backtest and live performance?",
+  "How do I size positions when the screened universe is only around 200 names?",
 ];

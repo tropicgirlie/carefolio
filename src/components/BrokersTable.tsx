@@ -134,6 +134,7 @@ export function BrokersTable() {
         sortingFn: (a, b) =>
           TIER_ORDER.indexOf(a.original.tier) -
           TIER_ORDER.indexOf(b.original.tier),
+        meta: { hideOnMobile: true },
       },
       {
         accessorKey: "accountTypes",
@@ -151,6 +152,7 @@ export function BrokersTable() {
           </div>
         ),
         enableSorting: false,
+        meta: { hideBelowLg: true },
       },
       {
         accessorKey: "pricing",
@@ -159,6 +161,7 @@ export function BrokersTable() {
           <span className="text-sm text-ink-soft">{row.original.pricing}</span>
         ),
         enableSorting: false,
+        meta: { hideBelowLg: true },
       },
       {
         id: "visit",
@@ -255,25 +258,34 @@ export function BrokersTable() {
       </div>
 
       {/* ─── Table ───────────────────────────────────────────────── */}
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-border-warm bg-white">
-        <Table>
+      <div className="mt-6 rounded-2xl border border-border-warm bg-white">
+        <Table className="w-full">
           <TableHeader className="bg-cream-deep">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="border-border-warm hover:bg-cream-deep">
-                {headerGroup.headers.map((header) => (
-                  <TableHead
-                    key={header.id}
-                    className="text-ink-soft"
-                    style={{ width: header.getSize() }}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                ))}
+                {headerGroup.headers.map((header) => {
+                  const meta = header.column.columnDef.meta as
+                    | { hideOnMobile?: boolean; hideBelowLg?: boolean }
+                    | undefined;
+                  const hideClass = meta?.hideBelowLg
+                    ? "hidden lg:table-cell"
+                    : meta?.hideOnMobile
+                      ? "hidden sm:table-cell"
+                      : "";
+                  return (
+                    <TableHead
+                      key={header.id}
+                      className={`text-ink-soft ${hideClass}`}
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
             ))}
           </TableHeader>
@@ -294,14 +306,27 @@ export function BrokersTable() {
                       onClick={() => toggleRow(row.original.id)}
                       className="cursor-pointer border-border-warm hover:bg-cream"
                     >
-                      {row.getVisibleCells().map((cell) => (
-                        <TableCell key={cell.id} className="align-top">
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </TableCell>
-                      ))}
+                      {row.getVisibleCells().map((cell) => {
+                        const meta = cell.column.columnDef.meta as
+                          | { hideOnMobile?: boolean; hideBelowLg?: boolean }
+                          | undefined;
+                        const hideClass = meta?.hideBelowLg
+                          ? "hidden lg:table-cell"
+                          : meta?.hideOnMobile
+                            ? "hidden sm:table-cell"
+                            : "";
+                        return (
+                          <TableCell
+                            key={cell.id}
+                            className={`align-top ${hideClass}`}
+                          >
+                            {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )}
+                          </TableCell>
+                        );
+                      })}
                     </TableRow>
                     {expanded && (
                       <TableRow

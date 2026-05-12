@@ -10,7 +10,6 @@ import { motion } from "motion/react";
 import {
   ArrowRight,
   Receipt,
-  Sparkles,
   Compass,
   ShieldCheck,
   BadgeCheck,
@@ -61,12 +60,7 @@ export function InvestLandingPage(_props: InvestLandingPageProps) {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex flex-col items-center text-center"
           >
-            <div className="inline-flex items-center gap-2 rounded-full bg-peach-soft px-4 py-1.5 text-xs font-medium text-wine">
-              <Sparkles className="size-3.5" />
-              A documented journey, in public, with receipts
-            </div>
-
-            <DisplayHeading level={1} size="xl" className="mt-7">
+            <DisplayHeading level={1} size="xl">
               Care is{" "}
               <span
                 className="italic"
@@ -88,10 +82,9 @@ export function InvestLandingPage(_props: InvestLandingPageProps) {
             </DisplayHeading>
 
             <ProseLead className="mt-6 max-w-2xl">
-              An immigrant journey to a private portfolio, written week by
-              week. The journal, the research, and the brokers that actually
-              work in Europe. From a forty-something woman in Dublin who was
-              never taught any of this.
+              A senior product designer in Dublin, learning to invest in public.
+              Weekly field notes, the methods I use, the brokers worth your
+              time, and the research behind why this matters.
             </ProseLead>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">

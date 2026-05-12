@@ -64,7 +64,7 @@ export function GlobalNavigation({
   };
 
   return (
-    <header className="navbar-container relative" style={{ borderBottom: '1px solid #E1D5BF', backgroundColor: '#F8F3EA' }}>
+    <header className="navbar-container sticky top-0 z-50" style={{ borderBottom: '1px solid #E1D5BF', backgroundColor: 'rgba(248, 243, 234, 0.92)', backdropFilter: 'saturate(180%) blur(8px)', WebkitBackdropFilter: 'saturate(180%) blur(8px)' }}>
       <div className="container">
         <div className="navbar-content" style={{ minHeight: '64px' }}>
           {/* Left: Logo */}

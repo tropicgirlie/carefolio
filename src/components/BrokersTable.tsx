@@ -126,7 +126,7 @@ export function BrokersTable() {
         ),
         cell: ({ row }) => (
           <span
-            className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${TIER_BG[row.original.tier]}`}
+            className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium whitespace-nowrap ${TIER_BG[row.original.tier]}`}
           >
             {TIER_LABELS[row.original.tier]}
           </span>
@@ -134,34 +134,6 @@ export function BrokersTable() {
         sortingFn: (a, b) =>
           TIER_ORDER.indexOf(a.original.tier) -
           TIER_ORDER.indexOf(b.original.tier),
-        meta: { hideOnMobile: true },
-      },
-      {
-        accessorKey: "accountTypes",
-        header: "Accounts",
-        cell: ({ row }) => (
-          <div className="flex flex-wrap gap-1">
-            {row.original.accountTypes.map((t) => (
-              <span
-                key={t}
-                className="inline-flex items-center rounded-md border border-border-warm bg-cream px-1.5 py-0.5 text-xs text-ink-soft"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        ),
-        enableSorting: false,
-        meta: { hideBelowLg: true },
-      },
-      {
-        accessorKey: "pricing",
-        header: "Pricing",
-        cell: ({ row }) => (
-          <span className="text-sm text-ink-soft">{row.original.pricing}</span>
-        ),
-        enableSorting: false,
-        meta: { hideBelowLg: true },
       },
       {
         id: "visit",
@@ -170,14 +142,13 @@ export function BrokersTable() {
           <BrokerLink
             href={row.original.url}
             affiliateHref={row.original.affiliateUrl}
-            className="inline-flex items-center gap-1 text-sm font-medium text-wine hover:underline"
+            className="inline-flex items-center gap-1 text-sm font-medium text-wine hover:underline whitespace-nowrap"
           >
             Visit
             <ArrowUpRight className="size-3.5" />
           </BrokerLink>
         ),
         enableSorting: false,
-        size: 80,
       },
     ],
     [expandedRows]
@@ -257,35 +228,31 @@ export function BrokersTable() {
         </div>
       </div>
 
-      {/* ─── Table ───────────────────────────────────────────────── */}
+      {/* ─── Table ───────────────────────────────────────────────────
+            Four visible columns only: Expand, Broker, Tier, Visit. All
+            fit at every viewport. Accounts, Pricing, Best for, Watch
+            out, and Available to live in the expanded row detail. */}
       <div className="mt-6 rounded-2xl border border-border-warm bg-white">
-        <Table className="w-full">
+        <Table className="w-full table-fixed">
+          <colgroup>
+            <col style={{ width: "3rem" }} />
+            <col />
+            <col style={{ width: "9rem" }} />
+            <col style={{ width: "5rem" }} />
+          </colgroup>
           <TableHeader className="bg-cream-deep">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="border-border-warm hover:bg-cream-deep">
-                {headerGroup.headers.map((header) => {
-                  const meta = header.column.columnDef.meta as
-                    | { hideOnMobile?: boolean; hideBelowLg?: boolean }
-                    | undefined;
-                  const hideClass = meta?.hideBelowLg
-                    ? "hidden lg:table-cell"
-                    : meta?.hideOnMobile
-                      ? "hidden sm:table-cell"
-                      : "";
-                  return (
-                    <TableHead
-                      key={header.id}
-                      className={`text-ink-soft ${hideClass}`}
-                    >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id} className="text-ink-soft">
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                ))}
               </TableRow>
             ))}
           </TableHeader>
@@ -306,27 +273,14 @@ export function BrokersTable() {
                       onClick={() => toggleRow(row.original.id)}
                       className="cursor-pointer border-border-warm hover:bg-cream"
                     >
-                      {row.getVisibleCells().map((cell) => {
-                        const meta = cell.column.columnDef.meta as
-                          | { hideOnMobile?: boolean; hideBelowLg?: boolean }
-                          | undefined;
-                        const hideClass = meta?.hideBelowLg
-                          ? "hidden lg:table-cell"
-                          : meta?.hideOnMobile
-                            ? "hidden sm:table-cell"
-                            : "";
-                        return (
-                          <TableCell
-                            key={cell.id}
-                            className={`align-top ${hideClass}`}
-                          >
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
-                          </TableCell>
-                        );
-                      })}
+                      {row.getVisibleCells().map((cell) => (
+                        <TableCell key={cell.id} className="align-top">
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </TableCell>
+                      ))}
                     </TableRow>
                     {expanded && (
                       <TableRow
@@ -334,7 +288,15 @@ export function BrokersTable() {
                         className="border-border-warm bg-cream/60 hover:bg-cream/60"
                       >
                         <TableCell colSpan={columns.length} className="py-5">
-                          <div className="grid gap-3 sm:grid-cols-2">
+                          <div className="grid gap-4 sm:grid-cols-2">
+                            <Detail
+                              label="Accounts"
+                              text={row.original.accountTypes.join(", ")}
+                            />
+                            <Detail
+                              label="Pricing"
+                              text={row.original.pricing}
+                            />
                             <Detail
                               label="Best for"
                               text={row.original.bestFor}
@@ -362,7 +324,7 @@ export function BrokersTable() {
 
       <p className="mt-3 text-xs text-muted-warm">
         Showing {table.getRowModel().rows.length} of {BROKERS.length} brokers ·
-        Click a row to expand · Sortable columns marked with arrows
+        Click a row to expand for accounts, pricing, and the rest of the detail
       </p>
     </div>
   );

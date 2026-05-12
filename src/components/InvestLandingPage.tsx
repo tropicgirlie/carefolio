@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
+import { JourneyTicker } from "./JourneyTicker";
 import { GROUPS, MAX_RAW_TOTAL, SIGNALS } from "../lib/careScore";
 import {
   Eyebrow,
@@ -44,6 +45,10 @@ export function InvestLandingPage(_props: InvestLandingPageProps) {
 
   return (
     <div className="min-h-screen bg-cream text-ink">
+      {/* Journey ticker: editorial montage of personas / situations.
+          Replaces the old stocks ticker. Pauses on hover. */}
+      <JourneyTicker />
+
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div

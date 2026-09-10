@@ -32,10 +32,6 @@ export interface CareScoreInput {
   // Growth
   learning_budget?: boolean;
 
-  // Optional editorially-assigned displayed score (overrides computed in
-  // breakdown output). Use this when a human auditor has reviewed the
-  // company and assigned a final score that differs from the raw computed.
-  carefolio_score?: number;
 }
 
 export type SignalGroup =
@@ -59,8 +55,8 @@ export interface ScoreBreakdown {
   rawTotal: number;       // sum of `earned`, capped at maxTotal
   maxTotal: number;       // sum of weights (the perfect score in raw points)
   computed: number;       // 0–100 normalized from raw
-  displayed: number;      // editorially set Carefolio Score, or `computed` if none provided
-  delta: number;          // displayed - computed (positive = editorial bump)
+  displayed: number;      // always equals `computed`; manual overrides are not permitted
+  delta: number;          // always zero; retained for consumer compatibility
 }
 
 export type Tier = {

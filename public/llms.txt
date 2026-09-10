@@ -1,0 +1,16 @@
+# Carefolio Index
+
+> Carefolio Index is an independent research framework for comparing the employer policies that shape life around work.
+
+Care Scores are calculated from a versioned 16-signal methodology. Scores use publicly available employer information and company-submitted evidence, are reviewed monthly, and are a research aid rather than an endorsement or guarantee of individual employee experience.
+
+## Core pages
+
+- [Company directory](https://www.carefolio.io/directory): Ranked employer records with Care Scores, evidence status and review dates.
+- [Care Score methodology](https://www.carefolio.io/methodology): The complete versioned 16-signal calculation and review rules.
+- [Corrections process](https://www.carefolio.io/corrections): How employers can submit evidence or request a correction.
+
+## Related products
+
+- [RemoteShe](https://www.remoteshe.co): A separate job board that uses Carefolio score and company-benefit information.
+- [MomOps](https://www.momops.org): Supplies the care lens framework.

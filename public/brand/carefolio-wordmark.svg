@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 112" role="img" aria-labelledby="title">
+  <title id="title">Carefolio</title>
+  <g transform="translate(4 8)">
+    <path d="M70 16A36 36 0 1 0 70 80" fill="none" stroke="#DED8F5" stroke-linecap="round" stroke-width="2"/>
+    <g transform="translate(48 48)">
+      <g transform="rotate(-42) translate(0 -36)"><rect x="-4.5" y="-2.5" width="9" height="5" rx="2.5" fill="#5635BD"/></g><g transform="rotate(-22) translate(0 -36)"><circle r="3.5" fill="#E4A522"/></g><g transform="rotate(18) translate(0 -36)"><path d="M0-5 5 0 0 5-5 0Z" fill="#E66A5C"/></g><g transform="rotate(40) translate(0 -36)"><rect x="-4.5" y="-2.5" width="9" height="5" rx="2.5" fill="#2A8C7B"/></g>
+      <g transform="rotate(68) translate(0 -36)"><circle r="3.5" fill="#5635BD"/></g><g transform="rotate(90) translate(0 -36)"><path d="M0-5 5 0 0 5-5 0Z" fill="#E4A522"/></g><g transform="rotate(112) translate(0 -36)"><rect x="-4.5" y="-2.5" width="9" height="5" rx="2.5" fill="#E66A5C"/></g><g transform="rotate(134) translate(0 -36)"><circle r="3.5" fill="#A997E8"/></g>
+      <g transform="rotate(156) translate(0 -36)"><path d="M0-5 5 0 0 5-5 0Z" fill="#2A8C7B"/></g><g transform="rotate(178) translate(0 -36)"><rect x="-4.5" y="-2.5" width="9" height="5" rx="2.5" fill="#5635BD"/></g><g transform="rotate(200) translate(0 -36)"><circle r="3.5" fill="#E4A522"/></g><g transform="rotate(222) translate(0 -36)"><path d="M0-5 5 0 0 5-5 0Z" fill="#E66A5C"/></g>
+      <g transform="rotate(244) translate(0 -36)"><rect x="-4.5" y="-2.5" width="9" height="5" rx="2.5" fill="#2A8C7B"/></g><g transform="rotate(266) translate(0 -36)"><circle r="3.5" fill="#5635BD"/></g><g transform="rotate(288) translate(0 -36)"><path d="M0-5 5 0 0 5-5 0Z" fill="#A997E8"/></g><g transform="rotate(310) translate(0 -36)"><rect x="-4.5" y="-2.5" width="9" height="5" rx="2.5" fill="#E4A522"/></g>
+    </g>
+    <circle cx="48" cy="48" r="17" fill="#FAFAF7" stroke="#5635BD" stroke-width="2.5"/><path d="M56 39a12 12 0 1 0 0 18" fill="none" stroke="#17142B" stroke-linecap="round" stroke-width="4"/>
+  </g>
+  <text x="126" y="76" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="500" fill="#17142B">Care<tspan fill="#5635BD">folio</tspan></text>
+</svg>

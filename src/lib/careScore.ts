@@ -1,4 +1,4 @@
-// Care Score is vendored from @luana/care-score@1.0.0 into ./care-score/.
+// Care Score is vendored from @luana/care-score@1.1.0 into ./care-score/.
 // This file is the public import surface so consumers don't need to know
 // whether the spec lives locally or in a published package.
 //

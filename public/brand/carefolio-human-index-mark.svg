@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112" role="img" aria-labelledby="title">
+  <title id="title">Carefolio Human Index mark</title>
+  <path d="M17 65A44 44 0 0 1 94 33" fill="none" stroke="#5635BD" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="69" cy="23" r="7" fill="#E4A522"/>
+  <circle cx="43" cy="45" r="8" fill="#5635BD"/>
+  <circle cx="77" cy="56" r="7" fill="#B94F73"/>
+  <g fill="none" stroke="#17142B" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 91c17-15 28-23 39-25 9-2 15 1 25 2 7 1 14-3 21-8 4-3 8 0 5 4-5 7-14 13-23 17"/>
+    <path d="M41 76c12 1 20 5 28 6 8 2 13 0 18-4M75 68l12-10c4-3 8 0 5 4M66 67l12-12c4-4 8-1 6 3"/>
+  </g>
+</svg>

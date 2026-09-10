@@ -27,56 +27,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState('');
-  const [loginAttempts, setLoginAttempts] = useState(0);
-  const [lastLoginAttempt, setLastLoginAttempt] = useState(0);
   const [showTechDocs, setShowTechDocs] = useState(false);
   const [logoClickCount, setLogoClickCount] = useState(0);
   const logoClickTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleLogin = useCallback(async (username: string, password: string) => {
-    const now = Date.now();
-    const timeSinceLastAttempt = now - lastLoginAttempt;
-
-    // Rate limiting
-    if (loginAttempts >= 3 && timeSinceLastAttempt < 60000) {
-      const remainingTime = Math.ceil((60000 - timeSinceLastAttempt) / 1000);
-      setLoginError(`Too many attempts. Please wait ${remainingTime} seconds.`);
-      return;
-    }
-
     setIsLoading(true);
     setLoginError('');
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 800));
-
-      if (username === 'admin' && password === 'carefolio123') {
-        setIsAuthenticated(true);
-        setUser({ username, role: 'admin' });
-        setLoginAttempts(0);
-        setLastLoginAttempt(0);
-
-        toast.success('Welcome to Carefolio Dashboard', {
-          description: 'Successfully signed in as Administrator',
-          duration: 3000,
-        });
-      } else {
-        const newAttempts = loginAttempts + 1;
-        setLoginAttempts(newAttempts);
-        setLastLoginAttempt(now);
-
-        const attemptsLeft = Math.max(0, 3 - newAttempts);
-        setLoginError(
-          newAttempts >= 3
-            ? 'Account temporarily locked. Please wait 1 minute before trying again.'
-            : `Invalid credentials. ${attemptsLeft} attempt${attemptsLeft !== 1 ? 's' : ''} remaining.`
-        );
-
-        toast.error('Authentication Failed', {
-          description: 'Invalid username or password',
-          duration: 4000,
-        });
-      }
+      // A browser-bundled credential is not an authentication boundary. Keep
+      // the route protected until a server-side identity provider is wired.
+      void username;
+      void password;
+      setLoginError('Administrative authentication has not been configured for this preview.');
+      toast.error('Admin access is not configured', {
+        description: 'Connect an approved server-side identity provider before publishing.',
+        duration: 4000,
+      });
     } catch (error) {
       console.error('Login error:', error);
       setLoginError('Authentication service temporarily unavailable. Please try again.');
@@ -88,7 +56,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } finally {
       setIsLoading(false);
     }
-  }, [loginAttempts, lastLoginAttempt]);
+  }, []);
 
   const handleLogout = useCallback(async () => {
     setIsLoading(true);
@@ -98,8 +66,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       setIsAuthenticated(false);
       setUser(null);
-      setLoginAttempts(0);
-      setLastLoginAttempt(0);
       setLoginError('');
 
       toast.success('Signed Out', {

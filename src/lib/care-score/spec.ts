@@ -1,4 +1,4 @@
-// Care Score v1.0 specification.
+// Care Score v1.1 specification.
 // Lifted verbatim from RemoteShe's original src/lib/careScore.ts.
 // Any change here must bump CARE_SCORE_VERSION in src/index.ts according
 // to the SemVer policy in METHODOLOGY.md.

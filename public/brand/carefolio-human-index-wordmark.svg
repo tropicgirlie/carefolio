@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 112" role="img" aria-labelledby="title">
+  <title id="title">Carefolio</title>
+  <g transform="translate(2)">
+    <path d="M12 69A43 43 0 0 1 88 37" fill="none" stroke="#5635BD" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="64" cy="25" r="6.5" fill="#E4A522"/><circle cx="39" cy="46" r="7.5" fill="#5635BD"/><circle cx="73" cy="58" r="6.5" fill="#B94F73"/>
+    <g fill="none" stroke="#17142B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 94c16-14 27-22 38-24 9-2 15 1 24 2 7 1 14-3 20-8 4-3 8 0 5 4-5 7-13 12-22 16"/>
+      <path d="M37 80c11 1 19 4 27 6 8 2 13 0 18-4M70 72l12-10c4-3 8 0 5 4M62 71l11-12c4-4 8-1 6 3"/>
+    </g>
+  </g>
+  <text x="117" y="79" font-family="Fraunces, Georgia, serif" font-size="65" font-weight="500" fill="#17142B">Care<tspan fill="#5635BD">folio</tspan></text>
+</svg>

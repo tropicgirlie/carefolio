@@ -39,3 +39,23 @@ The cross-project check compares versions, tiers and full signal breakdowns
 for every exported company and numeric threshold fixture. Deploy formula
 changes to both products together; local checks do not update either live site.
 
+## Research before publication
+
+Every company runs through the existing Care Score formula. Only records with
+`verification_status: 'verified'` and a computed score above zero enter the
+public directory, feed and sitemap. Other records remain in
+`docs/company-research-queue.json`, regenerated alongside the feed. Zero is
+never replaced with an invented minimum score.
+
+A daily Codex task, **Carefolio company benefit research**, researches up to
+six companies per run using primary employer sources, records findings in
+`docs/company-research-log.md`, updates supported inputs and recalculates scores.
+It prioritises the queue, then investigates missing sources in published
+records. Unresolved companies rotate out for 30 days to avoid repeated empty
+searches. Employee reports retain their separate provenance.
+
+This is a Codex background task, not a deployed server worker. It prepares and
+validates local changes and reports meaningful results; it does not automatically
+push or deploy them. RemoteShe receives updated records after publication of
+the regenerated Carefolio feed. Removing a record from this feed does not by
+itself remove RemoteShe's independent fallback records.

@@ -13,28 +13,112 @@
     <loc>https://www.carefolio.io/corrections</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/google</loc>
-  </url>
-  <url>
     <loc>https://www.carefolio.io/companies/microsoft</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/meta</loc>
+    <loc>https://www.carefolio.io/companies/adobe</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/apple</loc>
+    <loc>https://www.carefolio.io/companies/goldman-sachs</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/google</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/ey</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/citigroup</loc>
   </url>
   <url>
     <loc>https://www.carefolio.io/companies/salesforce</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/hubspot</loc>
+    <loc>https://www.carefolio.io/companies/accenture</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/diageo</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/etsy</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/jpmorgan</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/cisco</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/pwc</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/automattic</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/bofa</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/deloitte</loc>
   </url>
   <url>
     <loc>https://www.carefolio.io/companies/atlassian</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/automattic</loc>
+    <loc>https://www.carefolio.io/companies/unilever</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/sp-global</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/airbnb</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/mckinsey</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/hsbc</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/lululemon</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/meta</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/roche</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/wikimedia</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/hpe</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/jnj</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/patagonia</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/schneider</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/netflix</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/apple</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/datadog</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/stripe</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/elastic</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/spotify</loc>
   </url>
   <url>
     <loc>https://www.carefolio.io/companies/gitlab</loc>
@@ -43,100 +127,28 @@
     <loc>https://www.carefolio.io/companies/twilio</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/datadog</loc>
+    <loc>https://www.carefolio.io/companies/asana</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/elastic</loc>
+    <loc>https://www.carefolio.io/companies/duolingo</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/figma</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/hubspot</loc>
+  </url>
+  <url>
+    <loc>https://www.carefolio.io/companies/notion</loc>
   </url>
   <url>
     <loc>https://www.carefolio.io/companies/canva</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/stripe</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/adobe</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/cisco</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/hpe</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/sas</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/spotify</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/netflix</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/airbnb</loc>
-  </url>
-  <url>
     <loc>https://www.carefolio.io/companies/shopify</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/etsy</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/citigroup</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/goldman-sachs</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/jpmorgan</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/bofa</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/hsbc</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/sp-global</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/wise</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/deloitte</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/accenture</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/retail-inmotion-ireland</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/payroc-ireland</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/eurofins-ireland</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/medtronic-galway</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/ey</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/pwc</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/mckinsey</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/diageo</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/patagonia</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/unilever</loc>
+    <loc>https://www.carefolio.io/companies/ikea</loc>
   </url>
   <url>
     <loc>https://www.carefolio.io/companies/nestle</loc>
@@ -151,36 +163,18 @@
     <loc>https://www.carefolio.io/companies/danone</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/ikea</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/lululemon</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/jnj</loc>
+    <loc>https://www.carefolio.io/companies/eurofins-ireland</loc>
   </url>
   <url>
     <loc>https://www.carefolio.io/companies/novartis</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/roche</loc>
+    <loc>https://www.carefolio.io/companies/wise</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/schneider</loc>
+    <loc>https://www.carefolio.io/companies/sas</loc>
   </url>
   <url>
-    <loc>https://www.carefolio.io/companies/figma</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/notion</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/asana</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/duolingo</loc>
-  </url>
-  <url>
-    <loc>https://www.carefolio.io/companies/wikimedia</loc>
+    <loc>https://www.carefolio.io/companies/retail-inmotion-ireland</loc>
   </url>
 </urlset>

@@ -1,7 +1,8 @@
 import { breakdown, tierFor, SIGNALS, type CareScoreInput } from '../lib/careScore';
 import { COMPANIES } from './carefolio-companies';
+import { publicationStatus } from '../lib/company-publication';
 
-export type EvidenceStatus = 'Indexed' | 'Employer confirmed' | 'Evidence reviewed';
+export type EvidenceStatus = 'Indexed' | 'Employer confirmed' | 'Evidence reviewed' | 'Employee reported · pending review';
 
 export type EvidenceSource = {
   label: string;
@@ -20,6 +21,7 @@ export type IndexRecord = {
   lastReviewed: string;
   inputs: CareScoreInput;
   sources: EvidenceSource[];
+  employeeReport?: (typeof COMPANIES)[number]['employee_report'];
 };
 
 const signalLabels = new Map(SIGNALS.map((signal) => [signal.key, signal.label]));
@@ -38,7 +40,7 @@ function sourcesFor(company: (typeof COMPANIES)[number]): EvidenceSource[] {
   return entries.map(([key, url]) => ({
     label: signalLabels.get(key) ?? key.replaceAll('_', ' '),
     url,
-    note: `Public source linked to the ${signalLabels.get(key) ?? key} signal.`,
+    note: company.evidence_notes?.[key] ?? `Public source linked to the ${signalLabels.get(key) ?? key} signal.`,
   }));
 }
 
@@ -46,15 +48,16 @@ function sourcesFor(company: (typeof COMPANIES)[number]): EvidenceSource[] {
 // generated Carefolio feed rather than acting as a second score authority.
 // Every displayed score is recomputed below from the versioned formula.
 export const indexRecords: IndexRecord[] = COMPANIES
-  .filter((company) => company.verification_status === 'verified')
+  .filter((company) => publicationStatus(company) === 'published')
   .map((company) => ({
     id: company.id,
     name: company.name,
     country: company.country,
     industry: company.industry,
     remotePolicy: company.remote_policy,
-    scope: `${company.remote_policy} · ${company.evidence ? `${Object.keys(company.evidence).length} signal sources linked` : 'signal sources being reconciled'}`,
-    status: company.evidence ? 'Evidence reviewed' : 'Indexed',
+    employeeReport: company.employee_report,
+    scope: `${company.employee_report ? `${company.employee_report.scope} · ` : ''}${company.remote_policy} · ${company.evidence ? `${Object.keys(company.evidence).length} signal sources linked` : 'signal sources being reconciled'}`,
+    status: company.employee_report ? 'Employee reported · pending review' : company.evidence ? 'Evidence reviewed' : 'Indexed',
     lastReviewed: company.last_reviewed ?? '24 August 2026',
     inputs: company,
     sources: sourcesFor(company),
@@ -73,5 +76,17 @@ export const scoredIndexRecords: ScoredIndexRecord[] = indexRecords
   })
   .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
 
+// Retain every unpublished company for research; never invent a minimum score.
+export const pendingResearchCompanies = COMPANIES
+  .filter((company) => publicationStatus(company) === 'research_pending')
+  .map((company) => ({
+    id: company.id,
+    name: company.name,
+    country: company.country,
+    website: company.website,
+    status: 'research_pending' as const,
+    reason: breakdown(company).computed === 0 ? 'No scored benefit evidence yet' : 'Research review pending',
+  }));
+
 export const evidenceDisclaimer =
-  'Care Scores are based on publicly available employer information and evidence submitted by companies. Scores are reviewed monthly and may change when benefits or policies change. A score is a research aid, not an endorsement or a guarantee of an individual employee’s experience.';
+  'Care Scores are based on publicly available employer information and evidence submitted by companies or employees. Employee reports are labelled separately and may be awaiting policy verification. Scores are reviewed monthly and may change when benefits or policies change. A score is a research aid, not an endorsement or a guarantee of an individual employee’s experience.';

@@ -10,11 +10,19 @@ async function loadModule(path) {
 }
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const [score, { scoredIndexRecords }, feed] = await Promise.all([
+const [score, { scoredIndexRecords, pendingResearchCompanies }, feed] = await Promise.all([
   loadModule(resolve(root, 'src/lib/careScore.ts')),
   loadModule(resolve(root, 'src/data/index-records.ts')),
   readFile(resolve(root, 'public/carefolio-index-feed.json'), 'utf8').then(JSON.parse),
 ]);
+const { publicationStatus } = await loadModule(resolve(root, 'src/lib/company-publication.ts'));
+assert.equal(publicationStatus({ verification_status: 'verified', carefolio_score: 99 }), 'research_pending');
+assert.equal(publicationStatus({ verification_status: 'auto', learning_budget: true }), 'research_pending');
+assert.equal(publicationStatus({ verification_status: 'verified', learning_budget: true }), 'published');
+const queue = JSON.parse(await readFile(resolve(root, 'docs/company-research-queue.json'), 'utf8'));
+assert.deepEqual(queue.companies, pendingResearchCompanies);
+const publishedIds = new Set(feed.companies.map(c => c.id));
+assert.ok(pendingResearchCompanies.every(c => !publishedIds.has(c.id)));
 assert.equal(score.MAX_RAW_TOTAL, 100);
 assert.equal(score.SIGNALS.length, 16);
 assert.equal(score.breakdown({}).computed, 0);
@@ -37,6 +45,7 @@ assert.equal(feed.companies.length, scoredIndexRecords.length);
 assert.ok(feed.companies.length > 0);
 assert.equal(new Set(feed.companies.map(c => c.id)).size, feed.companies.length, 'Duplicate company IDs');
 for (const [index, company] of feed.companies.entries()) {
+  assert.ok(company.carefolio_score > 0, `Zero score must stay unpublished: ${company.id}`);
   const record = scoredIndexRecords[index];
   assert.deepEqual(company, { ...record.inputs, carefolio_score: record.score, rank: index + 1, evidence_status: record.status, last_reviewed: record.lastReviewed }, `Stale feed record: ${company.id}`);
   assert.equal(company.carefolio_score, score.breakdown(company).computed);

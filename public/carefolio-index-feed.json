@@ -1,7 +1,7 @@
 {
   "schema_version": "carefolio-index-feed/v1",
   "care_score_version": "1.1.0",
-  "generated_at": "2026-09-10T08:26:49.175Z",
+  "generated_at": "2026-09-25T07:46:40.074Z",
   "companies": [
     {
       "id": "microsoft",
@@ -1463,6 +1463,48 @@
       "last_reviewed": "24 August 2026"
     },
     {
+      "id": "eurofins-ireland",
+      "name": "Eurofins (Ireland · group organisation)",
+      "industry": "Laboratory Testing / Life Sciences",
+      "country": "Ireland",
+      "remote_policy": "On-site / Hybrid by role",
+      "website": "https://www.eurofins.com/",
+      "maternity_leave_weeks": 12,
+      "paternity_leave_weeks": 12,
+      "ivf_coverage": false,
+      "fertility_support": false,
+      "childcare_support": false,
+      "caregiver_leave": false,
+      "adoption_support": false,
+      "learning_budget": true,
+      "health_insurance": false,
+      "menopause_support": false,
+      "period_leave": false,
+      "return_to_work_program": false,
+      "equal_pay_audited": false,
+      "pay_transparency": false,
+      "mental_health_budget": true,
+      "women_leadership_percent": 8,
+      "carefolio_score": 23,
+      "verification_status": "verified",
+      "last_reviewed": "25 September 2026",
+      "employee_report": {
+        "received_at": "2026-09-25",
+        "scope": "Employee-reported Eurofins group organisation in Ireland under Gilles; not Biomnis; legal employer and policy eligibility unconfirmed",
+        "note": "Reports 12 weeks of fully paid maternity leave (clarified from the initial six-month description), 12 weeks of paid paternity leave, mental health support and learning/training support. Reports no reproductive health benefits, childcare, caregiver leave, adoption support or health insurance. Group senior leadership is 8% women in the 2025 ESG report, earning 2 points; this is a global group governance metric, not an Ireland-only percentage. Equal-pay audit, salary-band transparency and a formal return-to-work programme remain unconfirmed. New reported benefits await policy verification; existing public links do not substantiate these new claims."
+      },
+      "evidence": {
+        "women_leaders": "https://cdnmedia.eurofins.com/eurofins-us/media/dzxfkwto/eurofins-esg-report_fy25-final.pdf",
+        "organisation_scope": "https://cdnmedia.eurofins.com/corporate-eurofins/media/12158653/gd2022.pdf"
+      },
+      "evidence_notes": {
+        "women_leaders": "2025 ESG report, page 124, Table 38: 8% women in group senior leadership (GOC including CEO and Regional Business Line Leaders), 96% scope coverage. Global group metric; not Ireland-only or all management levels.",
+        "organisation_scope": "2022 group directory, page 228, identifies Eurofins Scientific Services (Ireland) Limited as the Ireland Group Service Centre. Historical organisational context only; does not verify current benefit entitlements. Leave, mental health and learning inputs remain employee-reported."
+      },
+      "rank": 51,
+      "evidence_status": "Employee reported · pending review"
+    },
+    {
       "id": "novartis",
       "name": "Novartis",
       "industry": "Healthcare",
@@ -1487,7 +1529,7 @@
       "women_leadership_percent": null,
       "carefolio_score": 23,
       "verification_status": "verified",
-      "rank": 51,
+      "rank": 52,
       "evidence_status": "Indexed",
       "last_reviewed": "24 August 2026"
     },
@@ -1516,7 +1558,7 @@
       "women_leadership_percent": null,
       "carefolio_score": 22,
       "verification_status": "verified",
-      "rank": 52,
+      "rank": 53,
       "evidence_status": "Indexed",
       "last_reviewed": "24 August 2026"
     },
@@ -1545,7 +1587,7 @@
       "women_leadership_percent": null,
       "carefolio_score": 18,
       "verification_status": "verified",
-      "rank": 53,
+      "rank": 54,
       "evidence_status": "Indexed",
       "last_reviewed": "24 August 2026"
     },
@@ -1581,104 +1623,7 @@
         "health_insurance": "https://retailinmotion.com/culture-values/",
         "gender_pay_gap_reporting": "https://www.retailinmotion.com/wp-content/uploads/2025/12/Retail-inMotion_Gender-Pay-Gap-Report-2024.pdf"
       },
-      "rank": 54,
-      "evidence_status": "Evidence reviewed"
-    },
-    {
-      "id": "eurofins-ireland",
-      "name": "Eurofins (Ireland)",
-      "industry": "Laboratory Testing / Life Sciences",
-      "country": "Ireland",
-      "remote_policy": "On-site / Hybrid by role",
-      "website": "https://location.eurofins.com/en/ele/eurofins-food-testing-ireland-limited/",
-      "maternity_leave_weeks": null,
-      "paternity_leave_weeks": null,
-      "ivf_coverage": false,
-      "fertility_support": false,
-      "childcare_support": false,
-      "caregiver_leave": false,
-      "adoption_support": false,
-      "learning_budget": true,
-      "health_insurance": false,
-      "menopause_support": false,
-      "period_leave": false,
-      "return_to_work_program": false,
-      "equal_pay_audited": false,
-      "pay_transparency": false,
-      "mental_health_budget": false,
-      "women_leadership_percent": null,
-      "carefolio_score": 4,
-      "verification_status": "verified",
-      "last_reviewed": "29 August 2026",
-      "evidence": {
-        "learning_budget": "https://location.eurofins.com/en/ele/eurofins-food-testing-ireland-limited/",
-        "gender_pay_gap_reporting": "https://cdnmedia.eurofins.com/european-west/media/afadqia4/gender-pay-gap-report_ie-2025.pdf"
-      },
       "rank": 55,
-      "evidence_status": "Evidence reviewed"
-    },
-    {
-      "id": "medtronic-galway",
-      "name": "Medtronic (Galway)",
-      "industry": "Medical Technology",
-      "country": "Ireland",
-      "remote_policy": "On-site / Hybrid by role",
-      "website": "https://www.medtronic.com/en-ie/our-company/careers.html",
-      "maternity_leave_weeks": null,
-      "paternity_leave_weeks": null,
-      "ivf_coverage": false,
-      "fertility_support": false,
-      "childcare_support": false,
-      "caregiver_leave": false,
-      "adoption_support": false,
-      "learning_budget": false,
-      "health_insurance": false,
-      "menopause_support": false,
-      "period_leave": false,
-      "return_to_work_program": false,
-      "equal_pay_audited": false,
-      "pay_transparency": false,
-      "mental_health_budget": false,
-      "women_leadership_percent": null,
-      "carefolio_score": 0,
-      "verification_status": "verified",
-      "last_reviewed": "29 August 2026",
-      "evidence": {
-        "gender_pay_gap_reporting": "https://www.medtronic.com/content/dam/medtronic-wide/public/western-europe/customer-support-services/principles-ethics/2025-ireland-gender-pay-gap-report.pdf"
-      },
-      "rank": 56,
-      "evidence_status": "Evidence reviewed"
-    },
-    {
-      "id": "payroc-ireland",
-      "name": "Payroc (Ireland)",
-      "industry": "Fintech / Payments",
-      "country": "Ireland",
-      "remote_policy": "Remote Flexible",
-      "website": "https://payroc.com/about/careers/",
-      "maternity_leave_weeks": null,
-      "paternity_leave_weeks": null,
-      "ivf_coverage": false,
-      "fertility_support": false,
-      "childcare_support": false,
-      "caregiver_leave": false,
-      "adoption_support": false,
-      "learning_budget": false,
-      "health_insurance": false,
-      "menopause_support": false,
-      "period_leave": false,
-      "return_to_work_program": false,
-      "equal_pay_audited": false,
-      "pay_transparency": false,
-      "mental_health_budget": false,
-      "women_leadership_percent": null,
-      "carefolio_score": 0,
-      "verification_status": "verified",
-      "last_reviewed": "29 August 2026",
-      "evidence": {
-        "ireland_location_and_flexibility": "https://payroc.com/about/careers/"
-      },
-      "rank": 57,
       "evidence_status": "Evidence reviewed"
     }
   ]

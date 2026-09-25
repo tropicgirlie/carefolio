@@ -1,0 +1,612 @@
+{
+  "companies": [
+    {
+      "id": "payroc-ireland",
+      "name": "Payroc (Ireland)",
+      "country": "Ireland",
+      "website": "https://payroc.com/about/careers/",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "medtronic-galway",
+      "name": "Medtronic (Galway)",
+      "country": "Ireland",
+      "website": "https://www.medtronic.com/en-ie/our-company/careers.html",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "webflow",
+      "name": "Webflow",
+      "country": "USA",
+      "website": "https://webflow.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "intercom",
+      "name": "Intercom",
+      "country": "Ireland",
+      "website": "https://www.intercom.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "country": "USA",
+      "website": "https://careers.zoom.us",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "typeform",
+      "name": "Typeform",
+      "country": "Spain",
+      "website": "https://www.typeform.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "squarespace",
+      "name": "Squarespace",
+      "country": "USA",
+      "website": "https://www.squarespace.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "autodesk",
+      "name": "Autodesk",
+      "country": "USA",
+      "website": "https://www.autodesk.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "experian",
+      "name": "Experian",
+      "country": "Ireland",
+      "website": "https://www.experian.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "equinix-inc",
+      "name": "Equinix",
+      "country": "USA",
+      "website": "https://careers.equinix.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "liberty-mutual-insurance",
+      "name": "Liberty Mutual Insurance",
+      "country": "USA",
+      "website": "https://jobs.libertymutualgroup.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "contentful",
+      "name": "Contentful",
+      "country": "Germany",
+      "website": "https://www.contentful.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "kyndryl",
+      "name": "Kyndryl",
+      "country": "USA",
+      "website": "https://www.kyndryl.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "oscar-health",
+      "name": "Oscar Health",
+      "country": "USA",
+      "website": "https://www.hioscar.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "samsara-inc",
+      "name": "Samsara",
+      "country": "USA",
+      "website": "https://www.samsara.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "country": "USA",
+      "website": "https://linear.app/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "pipedrive",
+      "name": "Pipedrive",
+      "country": "Estonia",
+      "website": "https://www.pipedrive.com/en/jobs",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "remote",
+      "name": "Remote",
+      "country": "Netherlands",
+      "website": "https://remote.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "allstate",
+      "name": "Allstate",
+      "country": "USA",
+      "website": "https://www.allstate.jobs",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "applied-materials",
+      "name": "Applied Materials",
+      "country": "USA",
+      "website": "https://www.appliedmaterials.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "broadridge",
+      "name": "Broadridge",
+      "country": "USA",
+      "website": "https://www.broadridge.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "ensono",
+      "name": "Ensono",
+      "country": "USA",
+      "website": "https://www.ensono.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "forcepoint",
+      "name": "Forcepoint",
+      "country": "USA",
+      "website": "https://www.forcepoint.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "ge-vernova",
+      "name": "GE Vernova",
+      "country": "USA",
+      "website": "https://careers.gevernova.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "henry-schein",
+      "name": "Henry Schein",
+      "country": "USA",
+      "website": "https://www.henryschein.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "hitachi-energy",
+      "name": "Hitachi Energy",
+      "country": "Sweden",
+      "website": "https://www.hitachienergy.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "keeptruckin",
+      "name": "Motive (KeepTruckin)",
+      "country": "USA",
+      "website": "https://gomotive.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "labcorp",
+      "name": "Labcorp",
+      "country": "USA",
+      "website": "https://careers.labcorp.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "telus-digital",
+      "name": "TELUS Digital",
+      "country": "Canada",
+      "website": "https://jobs2.telusdigital.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "the-muse",
+      "name": "The Muse",
+      "country": "USA",
+      "website": "https://www.themuse.com/careers",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "angeheuert-gmbh-personalberatung",
+      "name": "ANGEHEUERT GmbH",
+      "country": "Germany",
+      "website": "https://www.angeheuert.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "aoe-solutions-gmbh",
+      "name": "AOE Solutions GmbH",
+      "country": "Germany",
+      "website": "https://www.aoe.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "bbht-beratungsgesellschaft-mbh-co-kg",
+      "name": "BBHT Beratungsgesellschaft",
+      "country": "Germany",
+      "website": "https://www.bbht.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "bikeleasing-service-gmbh-co-kg",
+      "name": "Bikeleasing-Service GmbH",
+      "country": "Germany",
+      "website": "https://www.bikeleasing.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "caspar-health",
+      "name": "Caspar Health",
+      "country": "Germany",
+      "website": "https://www.caspar.health",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "cuju",
+      "name": "CUJU",
+      "country": "Germany",
+      "website": "https://cuju.io",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "datads",
+      "name": "DatAds",
+      "country": "Germany",
+      "website": "https://www.datads.io",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "easybill-gmbh",
+      "name": "easybill GmbH",
+      "country": "Germany",
+      "website": "https://www.easybill.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "ecophil-gmbh",
+      "name": "ecophil GmbH",
+      "country": "Germany",
+      "website": "https://www.ecophil.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "ecoturn-gmbh",
+      "name": "Ecoturn GmbH",
+      "country": "Germany",
+      "website": "https://www.ecoturn.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "effinova-gmbh",
+      "name": "EffiNova GmbH",
+      "country": "Germany",
+      "website": "https://effinova.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "famegrowth",
+      "name": "FameGrowth",
+      "country": "Germany",
+      "website": "https://famegrowth.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "genossenschaftsverband-bayern-e-v",
+      "name": "Genossenschaftsverband Bayern e.V.",
+      "country": "Germany",
+      "website": "https://www.gv-bayern.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "hopn",
+      "name": "HOPn",
+      "country": "Germany",
+      "website": "https://hopn.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "hurra-com",
+      "name": "hurra.com",
+      "country": "Germany",
+      "website": "https://www.hurra.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "ideenkind-gmbh",
+      "name": "ideenKiND GmbH",
+      "country": "Germany",
+      "website": "https://ideenkind.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "interius-solutions-gmbh",
+      "name": "Interius Solutions GmbH",
+      "country": "Germany",
+      "website": "https://interius.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "it42morrow-ift-gmbh",
+      "name": "IT42morrow IFT GmbH",
+      "country": "Germany",
+      "website": "https://it42morrow.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "itconfigall-gmbh",
+      "name": "ITconfig/all GmbH",
+      "country": "Germany",
+      "website": "https://itconfigall.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "kiwimo-product-gmbh",
+      "name": "Kiwimo-Product GmbH",
+      "country": "Germany",
+      "website": "https://kiwimo.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "lohnklar-ug",
+      "name": "Lohnklar UG",
+      "country": "Germany",
+      "website": "https://lohnklar.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "naturgeg-vital-gmbh",
+      "name": "NaturGEG Vital GmbH",
+      "country": "Germany",
+      "website": "https://naturgeg.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "neobim-gmbh",
+      "name": "neoBIM GmbH",
+      "country": "Germany",
+      "website": "https://neobim.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "neurawork-gmbh-co-kg",
+      "name": "Neurawork GmbH & Co. KG",
+      "country": "Germany",
+      "website": "https://neurawork.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "onlinevision",
+      "name": "OnlineVision",
+      "country": "Germany",
+      "website": "https://onlinevision.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "parto-group-gmbh",
+      "name": "Parto Group GmbH",
+      "country": "Germany",
+      "website": "https://parto-group.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "priesmeier-bartsch-gbr",
+      "name": "Priesmeier & Bartsch GbR",
+      "country": "Germany",
+      "website": "https://priesmeier-bartsch.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "simple-first-consulting-gmbh",
+      "name": "Simple First Consulting GmbH",
+      "country": "Germany",
+      "website": "https://simplefirst.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "syte-gmbh",
+      "name": "syte GmbH",
+      "country": "Germany",
+      "website": "https://syte.ai",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "thefamilygroup",
+      "name": "TheFamilyGroup",
+      "country": "Germany",
+      "website": "https://thefamilygroup.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "voffice-software",
+      "name": "vOffice Software",
+      "country": "Germany",
+      "website": "https://voffice.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "wintama-it-solutions-gmbh",
+      "name": "Wintama IT Solutions GmbH",
+      "country": "Germany",
+      "website": "https://wintama.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "xaas",
+      "name": "XAAS",
+      "country": "Germany",
+      "website": "https://xaas.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "yfood-labs-gmbh",
+      "name": "yfood Labs GmbH",
+      "country": "Germany",
+      "website": "https://yfood.eu",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "yoffix",
+      "name": "Yoffix",
+      "country": "Germany",
+      "website": "https://yoffix.com",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "a-team",
+      "name": "A.Team",
+      "country": "USA",
+      "website": "https://a.team",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "autohdr",
+      "name": "AutoHDR",
+      "country": "USA",
+      "website": "https://autohdr.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "bulldog-digital-media",
+      "name": "Bulldog Digital Media",
+      "country": "United Kingdom",
+      "website": "https://bulldogdigital.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "caul-group",
+      "name": "Caul Group",
+      "country": "USA",
+      "website": "https://caulgroup.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "coalition-technologies",
+      "name": "Coalition Technologies",
+      "country": "USA",
+      "website": "https://coalitiontechnologies.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "credit-wellness-llc",
+      "name": "Credit Wellness, LLC",
+      "country": "USA",
+      "website": "https://creditwellness.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "dry-ground-ai",
+      "name": "Dry Ground AI",
+      "country": "USA",
+      "website": "https://dryground.ai",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "everai",
+      "name": "EverAI",
+      "country": "France",
+      "website": "https://ever.ai",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    },
+    {
+      "id": "iapwe",
+      "name": "IAPWE",
+      "country": "USA",
+      "website": "https://iapwe.org",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "mitre-media",
+      "name": "Mitre Media",
+      "country": "Canada",
+      "website": "https://mitremedia.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "parkosecure-gmbh",
+      "name": "Parkosecure GmbH",
+      "country": "Germany",
+      "website": "https://parkosecure.de",
+      "status": "research_pending",
+      "reason": "Research review pending"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { writeFile } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
 async function loadModule(relativePath) {
@@ -16,7 +16,7 @@ async function loadModule(relativePath) {
   return import(`data:text/javascript;base64,${encoded}`);
 }
 
-const [{ scoredIndexRecords }, { CARE_SCORE_VERSION }] = await Promise.all([
+const [{ scoredIndexRecords, pendingResearchCompanies }, { CARE_SCORE_VERSION }] = await Promise.all([
   loadModule('../src/data/index-records.ts'),
   loadModule('../src/lib/careScore.ts'),
 ]);
@@ -38,3 +38,8 @@ await writeFile(
   new URL('../public/carefolio-index-feed.json', import.meta.url),
   `${JSON.stringify(feed, null, 2)}\n`,
 );
+
+// Research queue stays outside public assets: these are not scored results.
+await mkdir(new URL('../docs/', import.meta.url), { recursive: true });
+await writeFile(new URL('../docs/company-research-queue.json', import.meta.url),
+  `${JSON.stringify({ companies: pendingResearchCompanies }, null, 2)}\n`);

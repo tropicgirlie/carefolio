@@ -1,22 +1,6 @@
 {
   "companies": [
     {
-      "id": "payroc-ireland",
-      "name": "Payroc (Ireland)",
-      "country": "Ireland",
-      "website": "https://payroc.com/about/careers/",
-      "status": "research_pending",
-      "reason": "No scored benefit evidence yet"
-    },
-    {
-      "id": "medtronic-galway",
-      "name": "Medtronic (Galway)",
-      "country": "Ireland",
-      "website": "https://www.medtronic.com/en-ie/our-company/careers.html",
-      "status": "research_pending",
-      "reason": "No scored benefit evidence yet"
-    },
-    {
       "id": "webflow",
       "name": "Webflow",
       "country": "USA",
@@ -549,14 +533,6 @@
       "name": "Caul Group",
       "country": "USA",
       "website": "https://caulgroup.com",
-      "status": "research_pending",
-      "reason": "No scored benefit evidence yet"
-    },
-    {
-      "id": "coalition-technologies",
-      "name": "Coalition Technologies",
-      "country": "USA",
-      "website": "https://coalitiontechnologies.com",
       "status": "research_pending",
       "reason": "No scored benefit evidence yet"
     },

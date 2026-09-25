@@ -2,7 +2,7 @@ import { breakdown, tierFor, SIGNALS, type CareScoreInput } from '../lib/careSco
 import { COMPANIES } from './carefolio-companies';
 import { publicationStatus } from '../lib/company-publication';
 
-export type EvidenceStatus = 'Indexed' | 'Employer confirmed' | 'Evidence reviewed' | 'Employee reported · pending review';
+export type EvidenceStatus = 'Indexed' | 'Employer confirmed' | 'Evidence reviewed' | 'Employee reported · pending review' | 'Research reviewed · provisional';
 
 export type EvidenceSource = {
   label: string;
@@ -22,6 +22,7 @@ export type IndexRecord = {
   inputs: CareScoreInput;
   sources: EvidenceSource[];
   employeeReport?: (typeof COMPANIES)[number]['employee_report'];
+  researchReview?: (typeof COMPANIES)[number]['research_review'];
 };
 
 const signalLabels = new Map(SIGNALS.map((signal) => [signal.key, signal.label]));
@@ -56,8 +57,9 @@ export const indexRecords: IndexRecord[] = COMPANIES
     industry: company.industry,
     remotePolicy: company.remote_policy,
     employeeReport: company.employee_report,
+    researchReview: company.research_review,
     scope: `${company.employee_report ? `${company.employee_report.scope} · ` : ''}${company.remote_policy} · ${company.evidence ? `${Object.keys(company.evidence).length} signal sources linked` : 'signal sources being reconciled'}`,
-    status: company.employee_report ? 'Employee reported · pending review' : company.evidence ? 'Evidence reviewed' : 'Indexed',
+    status: company.employee_report ? 'Employee reported · pending review' : company.research_review?.unresolved_signals ? 'Research reviewed · provisional' : company.evidence ? 'Evidence reviewed' : 'Indexed',
     lastReviewed: company.last_reviewed ?? '24 August 2026',
     inputs: company,
     sources: sourcesFor(company),

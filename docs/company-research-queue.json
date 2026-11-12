@@ -1,6 +1,54 @@
 {
   "companies": [
     {
+      "id": "meta",
+      "name": "Meta",
+      "country": "USA",
+      "website": "https://www.metacareers.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "country": "Canada",
+      "website": "https://www.shopify.com/careers",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "mckinsey",
+      "name": "McKinsey & Company",
+      "country": "USA",
+      "website": "https://www.mckinsey.com/careers",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "danone",
+      "name": "Danone",
+      "country": "France",
+      "website": "https://careers.danone.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "ikea",
+      "name": "IKEA",
+      "country": "Sweden",
+      "website": "https://www.ikea.com/global/en/this-is-ikea/working-at-ikea",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
+      "id": "lululemon",
+      "name": "Lululemon",
+      "country": "Canada",
+      "website": "https://careers.lululemon.com",
+      "status": "research_pending",
+      "reason": "No scored benefit evidence yet"
+    },
+    {
       "id": "webflow",
       "name": "Webflow",
       "country": "USA",
@@ -30,7 +78,7 @@
       "country": "Spain",
       "website": "https://www.typeform.com/careers",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "squarespace",
@@ -129,14 +177,6 @@
       "reason": "Research review pending"
     },
     {
-      "id": "allstate",
-      "name": "Allstate",
-      "country": "USA",
-      "website": "https://www.allstate.jobs",
-      "status": "research_pending",
-      "reason": "Research review pending"
-    },
-    {
       "id": "applied-materials",
       "name": "Applied Materials",
       "country": "USA",
@@ -214,7 +254,7 @@
       "country": "Canada",
       "website": "https://jobs2.telusdigital.com",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "the-muse",
@@ -222,7 +262,7 @@
       "country": "USA",
       "website": "https://www.themuse.com/careers",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "angeheuert-gmbh-personalberatung",
@@ -230,7 +270,7 @@
       "country": "Germany",
       "website": "https://www.angeheuert.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "aoe-solutions-gmbh",
@@ -246,7 +286,7 @@
       "country": "Germany",
       "website": "https://www.bbht.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "bikeleasing-service-gmbh-co-kg",
@@ -254,7 +294,7 @@
       "country": "Germany",
       "website": "https://www.bikeleasing.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "caspar-health",
@@ -262,7 +302,7 @@
       "country": "Germany",
       "website": "https://www.caspar.health",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "cuju",
@@ -270,7 +310,7 @@
       "country": "Germany",
       "website": "https://cuju.io",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "datads",
@@ -278,7 +318,7 @@
       "country": "Germany",
       "website": "https://www.datads.io",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "easybill-gmbh",
@@ -286,7 +326,7 @@
       "country": "Germany",
       "website": "https://www.easybill.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "ecophil-gmbh",
@@ -294,7 +334,7 @@
       "country": "Germany",
       "website": "https://www.ecophil.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "ecoturn-gmbh",
@@ -302,7 +342,7 @@
       "country": "Germany",
       "website": "https://www.ecoturn.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "effinova-gmbh",
@@ -310,7 +350,7 @@
       "country": "Germany",
       "website": "https://effinova.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "famegrowth",
@@ -318,7 +358,7 @@
       "country": "Germany",
       "website": "https://famegrowth.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "genossenschaftsverband-bayern-e-v",
@@ -334,7 +374,7 @@
       "country": "Germany",
       "website": "https://hopn.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "hurra-com",
@@ -342,7 +382,7 @@
       "country": "Germany",
       "website": "https://www.hurra.com",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "ideenkind-gmbh",
@@ -350,7 +390,7 @@
       "country": "Germany",
       "website": "https://ideenkind.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "interius-solutions-gmbh",
@@ -358,7 +398,7 @@
       "country": "Germany",
       "website": "https://interius.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "it42morrow-ift-gmbh",
@@ -366,7 +406,7 @@
       "country": "Germany",
       "website": "https://it42morrow.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "itconfigall-gmbh",
@@ -374,7 +414,7 @@
       "country": "Germany",
       "website": "https://itconfigall.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "kiwimo-product-gmbh",
@@ -382,7 +422,7 @@
       "country": "Germany",
       "website": "https://kiwimo.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "lohnklar-ug",
@@ -390,7 +430,7 @@
       "country": "Germany",
       "website": "https://lohnklar.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "naturgeg-vital-gmbh",
@@ -398,7 +438,7 @@
       "country": "Germany",
       "website": "https://naturgeg.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "neobim-gmbh",
@@ -406,7 +446,7 @@
       "country": "Germany",
       "website": "https://neobim.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "neurawork-gmbh-co-kg",
@@ -414,7 +454,7 @@
       "country": "Germany",
       "website": "https://neurawork.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "onlinevision",
@@ -422,7 +462,7 @@
       "country": "Germany",
       "website": "https://onlinevision.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "parto-group-gmbh",
@@ -438,7 +478,7 @@
       "country": "Germany",
       "website": "https://priesmeier-bartsch.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "simple-first-consulting-gmbh",
@@ -462,7 +502,7 @@
       "country": "Germany",
       "website": "https://thefamilygroup.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "voffice-software",
@@ -470,7 +510,7 @@
       "country": "Germany",
       "website": "https://voffice.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "wintama-it-solutions-gmbh",
@@ -494,7 +534,7 @@
       "country": "Germany",
       "website": "https://yfood.eu",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "yoffix",
@@ -502,7 +542,7 @@
       "country": "Germany",
       "website": "https://yoffix.com",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     },
     {
       "id": "a-team",
@@ -582,7 +622,7 @@
       "country": "Germany",
       "website": "https://parkosecure.de",
       "status": "research_pending",
-      "reason": "Research review pending"
+      "reason": "No scored benefit evidence yet"
     }
   ]
 }

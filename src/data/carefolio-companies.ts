@@ -2,7 +2,15 @@ import { breakdown } from '../lib/careScore'
 import { applyCompanyResearch } from '../lib/company-research'
 
 export interface Company {
-  research_review?: { reviewed_at: string; summary: string; source_supported_points: number; unresolved_signals: number }
+  research_review?: {
+    reviewed_at: string
+    summary: string
+    source_supported_points: number
+    employee_reported_points: number
+    evidence_backed_points: number
+    evidence_coverage_percent: number
+    unresolved_signals: number
+  }
   benefit_evidence?: Record<string, { status: 'confirmed' | 'unavailable' | 'unknown'; source_url?: string; locations?: string[]; employment_types?: string[]; verified_at?: string; value?: number; note?: string }>
   id: string
   name: string
@@ -152,7 +160,7 @@ const COMPANY_INPUTS: Company[] = [
   { id: 'remote', name: 'Remote', industry: 'HR Tech / EOR', country: 'Netherlands', remote_policy: 'Fully Remote', website: 'https://remote.com/careers', maternity_leave_weeks: 16, paternity_leave_weeks: 16, ivf_coverage: false, fertility_support: true, childcare_support: false, caregiver_leave: true, adoption_support: false, learning_budget: true, health_insurance: true, menopause_support: false, period_leave: false, return_to_work_program: false, equal_pay_audited: false, pay_transparency: true, mental_health_budget: true, women_leadership_percent: null, carefolio_score: 48, verification_status: 'auto' },
 
   // Allstate: 6 wks maternity + STD, adoption $5k, dependent care FSA (childcare), EAP, AWIN women's network
-  { id: 'allstate', name: 'Allstate', industry: 'Insurance', country: 'USA', remote_policy: 'Hybrid', website: 'https://www.allstate.jobs', maternity_leave_weeks: 6, paternity_leave_weeks: 4, ivf_coverage: false, fertility_support: false, childcare_support: true, caregiver_leave: false, adoption_support: true, learning_budget: true, health_insurance: true, menopause_support: false, period_leave: false, return_to_work_program: false, equal_pay_audited: false, pay_transparency: false, mental_health_budget: true, women_leadership_percent: null, carefolio_score: 33, verification_status: 'auto' },
+  { id: 'allstate', name: 'Allstate', industry: 'Insurance', country: 'USA', remote_policy: 'Hybrid', website: 'https://www.allstate.jobs', maternity_leave_weeks: 6, paternity_leave_weeks: 4, ivf_coverage: false, fertility_support: false, childcare_support: true, caregiver_leave: false, adoption_support: true, learning_budget: true, health_insurance: true, menopause_support: false, period_leave: false, return_to_work_program: false, equal_pay_audited: false, pay_transparency: false, mental_health_budget: true, women_leadership_percent: null, carefolio_score: 33, verification_status: 'verified' },
 
   // Applied Materials: paid maternity/paternity, fertility benefits, EAP mental health, WPDN women's network, 18% women leadership
   { id: 'applied-materials', name: 'Applied Materials', industry: 'Semiconductor', country: 'USA', remote_policy: 'Hybrid', website: 'https://www.appliedmaterials.com/careers', maternity_leave_weeks: 14, paternity_leave_weeks: 6, ivf_coverage: false, fertility_support: true, childcare_support: false, caregiver_leave: false, adoption_support: false, learning_budget: true, health_insurance: true, menopause_support: false, period_leave: false, return_to_work_program: false, equal_pay_audited: false, pay_transparency: false, mental_health_budget: true, women_leadership_percent: 18, carefolio_score: 32, verification_status: 'auto' },

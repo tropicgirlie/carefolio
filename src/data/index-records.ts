@@ -59,7 +59,13 @@ export const indexRecords: IndexRecord[] = COMPANIES
     employeeReport: company.employee_report,
     researchReview: company.research_review,
     scope: `${company.employee_report ? `${company.employee_report.scope} · ` : ''}${company.remote_policy} · ${company.evidence ? `${Object.keys(company.evidence).length} signal sources linked` : 'signal sources being reconciled'}`,
-    status: company.employee_report ? 'Employee reported · pending review' : company.research_review?.unresolved_signals ? 'Research reviewed · provisional' : company.evidence ? 'Evidence reviewed' : 'Indexed',
+    status: company.employee_report && (company.research_review?.employee_reported_points ?? 0) > 0
+      ? 'Employee reported · pending review'
+      : company.research_review?.evidence_coverage_percent === 100
+        ? 'Employer confirmed'
+        : company.research_review?.unresolved_signals
+          ? 'Research reviewed · provisional'
+          : company.evidence ? 'Evidence reviewed' : 'Indexed',
     lastReviewed: company.last_reviewed ?? '24 August 2026',
     inputs: company,
     sources: sourcesFor(company),

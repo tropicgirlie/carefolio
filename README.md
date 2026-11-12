@@ -18,9 +18,11 @@ after five minutes and retaining the last valid feed on fetch failure.
 It recomputes scores using its copy of the same formula.
 
 Care Score v1.1.0 is `round(sum(earned signal points) / 100 * 100)`:
-16 signals, 100 available points. Unknown inputs earn zero and stored legacy
-scores cannot override the calculation. Evidence review metadata is separate
-from the numerical score; the formula itself does not verify source URLs.
+16 signals, 100 available points. Unknown inputs, statutory entitlements and
+stored legacy defaults earn zero. Research applies only confirmed employer
+policies or clearly labelled employee reports to the formula. Public records
+must have evidence for every awarded point; evidence coverage distinguishes
+public-employer sourcing from employee-reported claims pending verification.
 
 Use `npm run build` for production, including Vercel. Its prebuild step
 regenerates the feed and rejects stale records, duplicate IDs, version

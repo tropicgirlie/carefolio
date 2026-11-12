@@ -6,23 +6,44 @@ type Finding = { status: string; value: boolean | number | null; note: string; s
 type Review = { id: string; reviewed_at: string; summary: string; signals: Record<string, Finding> };
 const byId = new Map((reviews as Review[]).map(review => [review.id, review]));
 
-/** Apply researched inputs, never replace unknown benefits with an absence. */
+const numericSignals = new Set([
+  'maternity_leave_weeks',
+  'paternity_leave_weeks',
+  'women_leadership_percent',
+]);
+
+function neutralValue(field: string) {
+  return numericSignals.has(field) ? null : false;
+}
+
+/**
+ * Build the score from reviewed evidence only.
+ *
+ * Unknown is still distinct from an explicit absence in `benefit_evidence`, but
+ * neither state earns employer points. This prevents statutory entitlements or
+ * legacy defaults from being misrepresented as employer-provided benefits.
+ */
 export function applyCompanyResearch(company: Company): Company {
   const review = byId.get(company.id);
   if (!review) return company;
   const updated = { ...company, evidence: { ...company.evidence }, evidence_notes: { ...company.evidence_notes } };
   const supported: Record<string, boolean | number> = {};
+  const employeeReported: Record<string, boolean | number> = {};
+  const evidenceBacked: Record<string, boolean | number> = {};
   const benefit_evidence: NonNullable<Company['benefit_evidence']> = {};
   let unresolved = 0;
   for (const [field, finding] of Object.entries(review.signals)) {
     const confirmed = ['confirmed', 'contradicted'].includes(finding.status) && finding.value !== null;
+    const reported = finding.status === 'employee_report' && finding.value !== null;
+    const scoreable = confirmed || reported;
     const component = finding.value_basis === 'minimum';
     if (!confirmed || component) unresolved++;
-    if (confirmed) {
-      supported[field] = finding.value!;
-      const previous = (updated as unknown as Record<string, unknown>)[field];
-      (updated as unknown as Record<string, unknown>)[field] = component && typeof previous === 'number' && typeof finding.value === 'number'
-        ? Math.max(previous, finding.value) : finding.value;
+    (updated as unknown as Record<string, unknown>)[field] = neutralValue(field);
+    if (scoreable) {
+      (updated as unknown as Record<string, unknown>)[field] = finding.value;
+      evidenceBacked[field] = finding.value!;
+      if (confirmed) supported[field] = finding.value!;
+      if (reported) employeeReported[field] = finding.value!;
     }
     const url = finding.source_urls[0];
     if (url) updated.evidence[field] = url;
@@ -42,6 +63,9 @@ export function applyCompanyResearch(company: Company): Company {
   }
   const score = breakdown(updated).computed;
   const sourcePoints = breakdown(supported).computed;
+  const employeeReportedPoints = breakdown(employeeReported).computed;
+  const evidenceBackedPoints = breakdown(evidenceBacked).computed;
+  const evidenceCoveragePercent = score > 0 ? Math.round((sourcePoints / score) * 100) : 0;
   // These newly scored employers have scoped evidence for every awarded point.
   const newlyReviewed = ['payroc-ireland', 'coalition-technologies'].includes(company.id) && score > 0 && score === sourcePoints;
   return {
@@ -49,6 +73,14 @@ export function applyCompanyResearch(company: Company): Company {
     verification_status: newlyReviewed ? 'verified' : company.verification_status,
     last_reviewed: review.reviewed_at,
     benefit_evidence,
-    research_review: { reviewed_at: review.reviewed_at, summary: review.summary, source_supported_points: sourcePoints, unresolved_signals: unresolved },
+    research_review: {
+      reviewed_at: review.reviewed_at,
+      summary: review.summary,
+      source_supported_points: sourcePoints,
+      employee_reported_points: employeeReportedPoints,
+      evidence_backed_points: evidenceBackedPoints,
+      evidence_coverage_percent: evidenceCoveragePercent,
+      unresolved_signals: unresolved,
+    },
   };
 }

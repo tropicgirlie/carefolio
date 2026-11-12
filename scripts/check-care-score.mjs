@@ -17,6 +17,8 @@ const [score, { scoredIndexRecords, pendingResearchCompanies }, feed] = await Pr
 ]);
 const { publicationStatus } = await loadModule(resolve(root, 'src/lib/company-publication.ts'));
 assert.equal(publicationStatus({ verification_status: 'verified', carefolio_score: 99 }), 'research_pending');
+assert.equal(publicationStatus({ verification_status: 'verified', health_insurance: true, research_review: { evidence_backed_points: 0 } }), 'research_pending');
+assert.equal(publicationStatus({ verification_status: 'verified', health_insurance: true, research_review: { evidence_backed_points: 5 } }), 'published');
 assert.equal(publicationStatus({ verification_status: 'auto', learning_budget: true }), 'research_pending');
 assert.equal(publicationStatus({ verification_status: 'verified', learning_budget: true }), 'published');
 const queue = JSON.parse(await readFile(resolve(root, 'docs/company-research-queue.json'), 'utf8'));

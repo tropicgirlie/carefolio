@@ -27,12 +27,20 @@ for (const company of COMPANIES) {
     if (finding.status === 'unknown' || finding.status === 'employee_report') assert.equal(company.benefit_evidence[field].status, 'unknown');
   }
   assert.equal(company.carefolio_score, breakdown(company).computed);
+  assert.equal(company.carefolio_score, company.research_review.evidence_backed_points, `${company.id}: every awarded point must have reviewed evidence`);
+  assert.equal(
+    company.research_review.evidence_coverage_percent,
+    company.carefolio_score > 0 ? Math.round((company.research_review.source_supported_points / company.carefolio_score) * 100) : 0,
+    `${company.id}: employer-source coverage`,
+  );
 }
 const euro = COMPANIES.find(c => c.id === 'eurofins-ireland');
 assert.equal(euro.carefolio_score, 23);
 assert.equal(euro.maternity_leave_weeks, 12);
 assert(euro.employee_report);
 assert.equal(COMPANIES.find(c => c.id === 'payroc-ireland').carefolio_score, 5);
+assert.equal(COMPANIES.find(c => c.id === 'simple-first-consulting-gmbh').carefolio_score, 6);
+assert.equal(COMPANIES.find(c => c.id === 'wintama-it-solutions-gmbh').carefolio_score, 4);
 
 if (process.argv[2]) {
   const remoteRoot = process.argv[2];

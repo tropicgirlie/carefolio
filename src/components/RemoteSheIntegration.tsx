@@ -13,7 +13,7 @@ interface RemoteSheIntegrationProps {
 
 export function RemoteSheIntegration({ variant, companyName, className = '' }: RemoteSheIntegrationProps) {
   const handleRemoteSheClick = () => {
-    window.open('https://remoteshe.com', '_blank');
+    window.open('https://www.remoteshe.co', '_blank');
   };
 
   // Company Profile variant - "Work at this company"
@@ -224,7 +224,7 @@ export function RemoteSheIntegration({ variant, companyName, className = '' }: R
           <span style={{ fontWeight: 500 }}>Tools in this ecosystem:</span>
           <br />
           <a
-            href="https://remoteshe.com"
+            href="https://www.remoteshe.co"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}

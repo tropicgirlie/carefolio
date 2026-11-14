@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
@@ -10,6 +10,17 @@ async function loadModule(path) {
 }
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+async function checkCanonicalRemoteSheLinks(directory) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) await checkCanonicalRemoteSheLinks(path);
+    else if (/\.(tsx?|jsx?|md|html)$/.test(entry.name)) {
+      const source = await readFile(path, 'utf8');
+      assert(!/https?:\/\/(?:www\.)?remoteshe\.com\b/i.test(source), `Noncanonical RemoteShe link: ${path}`);
+    }
+  }
+}
+await checkCanonicalRemoteSheLinks(resolve(root, 'src'));
 const [score, { scoredIndexRecords, pendingResearchCompanies }, feed] = await Promise.all([
   loadModule(resolve(root, 'src/lib/careScore.ts')),
   loadModule(resolve(root, 'src/data/index-records.ts')),
@@ -25,6 +36,7 @@ const queue = JSON.parse(await readFile(resolve(root, 'docs/company-research-que
 assert.deepEqual(queue.companies, pendingResearchCompanies);
 const publishedIds = new Set(feed.companies.map(c => c.id));
 assert.ok(pendingResearchCompanies.every(c => !publishedIds.has(c.id)));
+assert.deepEqual(feed.pending_company_ids, pendingResearchCompanies.map(c => c.id).sort());
 assert.equal(score.MAX_RAW_TOTAL, 100);
 assert.equal(score.SIGNALS.length, 16);
 assert.equal(score.breakdown({}).computed, 0);
@@ -41,7 +53,7 @@ for (const [field, boundaries] of Object.entries({
     fixtures.push(input);
   }
 }
-assert.equal(feed.schema_version, 'carefolio-index-feed/v1');
+assert.equal(feed.schema_version, 'carefolio-index-feed/v2');
 assert.equal(feed.care_score_version, score.CARE_SCORE_VERSION);
 assert.equal(feed.companies.length, scoredIndexRecords.length);
 assert.ok(feed.companies.length > 0);

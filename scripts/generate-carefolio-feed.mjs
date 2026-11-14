@@ -22,7 +22,7 @@ const [{ scoredIndexRecords, pendingResearchCompanies }, { CARE_SCORE_VERSION }]
 ]);
 
 const feed = {
-  schema_version: 'carefolio-index-feed/v1',
+  schema_version: 'carefolio-index-feed/v2',
   care_score_version: CARE_SCORE_VERSION,
   generated_at: new Date().toISOString(),
   companies: scoredIndexRecords.map((record, index) => ({
@@ -32,6 +32,7 @@ const feed = {
     evidence_status: record.status,
     last_reviewed: record.lastReviewed,
   })),
+  pending_company_ids: pendingResearchCompanies.map((company) => company.id).sort(),
 };
 
 await writeFile(
